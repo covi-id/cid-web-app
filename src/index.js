@@ -5,6 +5,8 @@ import Root from './root.js'
 
 import './index.css'
 
-ReactDOM.render(<Root />, document.getElementById('root'))
+ReactDOM.render(
+  <Root />,
 
-serviceWorker.unregister()
+  document.getElementById('root')
+)

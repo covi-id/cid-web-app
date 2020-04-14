@@ -9,13 +9,10 @@ export const Container = styled.div`
   text-align: center;
   align-items: center;
   display: flex;
-  background: url('../../assets/images/desktop-landing-background.svg') white
-    no-repeat center;
+  background: url(${BackgroundDesktop}) white no-repeat center;
   background-size: cover;
 `
-export const MainLogo = styled.img.attrs({
-  src: '../../assets/images/logo-dark.svg',
-})`
+export const MainLogo = styled.img.attrs({ src: Logo })`
   width: 100%;
   height: 200px;
 `
