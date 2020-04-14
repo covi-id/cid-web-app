@@ -1,8 +1,4 @@
 import styled from 'styled-components'
-import FirstIcon from '../../assets/icons/landing-icon.svg'
-import PlusIcon from '../../assets/icons/plus-icon.svg'
-import BackgroundDesktop from '../../assets/images/desktop-landing-background.svg'
-import Logo from '../../assets/images/logo-dark.svg'
 
 export const Container = styled.div`
   width: 100vw;
@@ -11,10 +7,13 @@ export const Container = styled.div`
   text-align: center;
   align-items: center;
   display: flex;
-  background: url(${BackgroundDesktop}) white no-repeat center;
+  background: url('../../assets/images/desktop-landing-background.svg') white
+    no-repeat center;
   background-size: cover;
 `
-export const MainLogo = styled.img.attrs({ src: Logo })`
+export const MainLogo = styled.img.attrs({
+  src: '../../assets/images/logo-dark.svg',
+})`
   width: 100%;
   height: 200px;
 `
@@ -63,12 +62,16 @@ export const Icon = styled.img`
   width: 100px;
   margin: 0 auto 30px auto;
 `
-export const Plus = styled(Icon).attrs({ src: PlusIcon })`
+export const Plus = styled(Icon).attrs({
+  src: '../../assets/icons/plus-icon.svg',
+})`
   width: 29px;
   margin: 0px;
   margin-left: 4px;
 `
-export const LandingIcon = styled(Icon).attrs({ src: FirstIcon })``
+export const LandingIcon = styled(Icon).attrs({
+  src: '../../assets/icons/landing-icon.svg',
+})``
 
 export const Heading = styled.div`
   width: 100%;

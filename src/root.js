@@ -6,7 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 import Landing from './pages/landing/index.js'
-import ProofRequest from './pages/proofRequest/'
+import ProofRequest from './pages/proofRequest'
 
 export default function Root() {
   return (
