@@ -17,10 +17,10 @@ const FormikRegister = () => {
     <FormContainer>
       <Formik
         initialValues={{
-          name: '',
-          email: '',
-          password: '',
-          passwordConfirmation: '',
+          firstName: '',
+          lastName: '',
+          IDNumber: '',
+          mobileNumber: '',
         }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
@@ -29,13 +29,13 @@ const FormikRegister = () => {
         {({ values, handleChange, handleBlur, handleSubmit, errors }) => (
           <Form onSubmit={handleSubmit}>
             <Field>
-              <Label>Name</Label>
-              <label htmlFor='name'></label>
+              <Label>First Name</Label>
+              <label htmlFor='firstName'></label>
               <Input
-                id='name'
-                name='name'
-                type='string'
-                placeholder=' Your Name'
+                id='firstName'
+                name='firstName'
+                type='text'
+                placeholder='First Name'
                 onChange={handleChange}
                 value={values.name}
               />
@@ -43,47 +43,47 @@ const FormikRegister = () => {
             </Field>
 
             <Field>
-              <Label>Email</Label>
-              <label htmlFor='email'></label>
+              <Label>Last Name</Label>
+              <label htmlFor='lastName'></label>
               <Input
-                id='email'
-                name='email'
-                type='email'
-                placeholder='example@findingx.com'
+                id='lastName'
+                name='lastName'
+                type='text'
+                placeholder='Last Name'
                 onChange={handleChange}
-                value={values.email}
+                value={values.lastName}
               />
-              <Error>{errors.email}</Error>
+              <Error>{errors.lastName}</Error>
             </Field>
 
             <Field>
-              <Label>Password</Label>
-              <label htmlFor='password'></label>
+              <Label>ID Number</Label>
+              <label htmlFor='IDNumber'></label>
               <Input
-                id='password'
-                name='password'
-                type='password'
-                placeholder='Enter password'
+                id='IDNumber'
+                name='IDNumber'
+                type='number'
+                placeholder='Enter ID Number'
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.password}
+                value={values.IDNumber}
               />
-              <Error>{errors.password}</Error>
+              <Error>{errors.IDNumber}</Error>
             </Field>
 
             <Field>
-              <Label>Confirm password</Label>
-              <label htmlFor='passwordConfirmation'></label>
+              <Label>ID Number</Label>
+              <label htmlFor='mobileNumber'></label>
               <Input
-                id='passwordConfirmation'
-                name='passwordConfirmation'
-                type='password'
-                placeholder='Confirm password'
+                id='mobileNumber'
+                name='mobileNumber'
+                type='number'
+                placeholder='Enter Mobile Number'
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.passwordConfirmation}
+                value={values.mobileNumber}
               />
-              <Error>{errors.passwordConfirmation}</Error>
+              <Error>{errors.IDNumber}</Error>
             </Field>
 
             <Center>

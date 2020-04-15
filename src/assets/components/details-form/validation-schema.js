@@ -1,40 +1,48 @@
-import {object, string} from 'yup'
+import { object, string } from 'yup'
 
-import * as Yup from 'yup'
-
-const containsSpecialCharacters = value => {
+const containsSpecialCharacters = (value) => {
   return /[$!%*#?&]/gm.test(value)
 }
 
 const validationSchema = object().shape({
-  name: string('Required')
+  lastName: string()
+    .label('lastName')
     .required('Required')
     .test(
       'Special characters',
       'Must not contain special characters',
-      value => !containsSpecialCharacters(value)
+      (value) => !containsSpecialCharacters(value)
     ),
-  email: string('Required')
-    .email('Invalid email address')
-    .required('Required')
-    .test(
-      'Special characters',
-      'Must not contain special characters',
-      value => !containsSpecialCharacters(value)
-    ),
-  password: string()
-    .label('Password')
-    .required('Required')
-    .matches(/[a-z]{1,}/, 'Requires lowercase character')
-    .matches(/[@$!%*#?&.,]{1,}/, 'Requires special character')
-    .matches(/[A-Z]{1,}/, 'Requires uppercase character')
-    .matches(/[0-9]{1,}/, 'Requires number')
-    .min(6, 'Must be at least 6 characters')
-    .max(32, 'Must be 32 characters or less'),
 
-  passwordConfirmation: Yup.string().oneOf(
-    [Yup.ref('password'), null],
-    'Passwords do not match'
-  ),
+  lastName: string()
+    .label('lastName')
+    .required('Required')
+    .test(
+      'Special characters',
+      'Must not contain special characters',
+      (value) => !containsSpecialCharacters(value)
+    ),
+
+  mobileNumber: string()
+    .label('mobileNumber')
+    .required('Required')
+    .min(10, 'Please enter a valid South African mobile number')
+    .max(10, 'Please enter a valid South African mobile number')
+    .test(
+      'Special characters',
+      'Cannot contain special characters',
+      (value) => !containsSpecialCharacters(value)
+    ),
+
+  IDNumber: string('Required')
+    .label('IDNumber')
+    .required('Required')
+    .min(13, 'Must be 13 characters')
+    .max(13, 'Must be 13 characters')
+    .test(
+      'Special characters',
+      'Cannot not contain special characters',
+      (value) => !containsSpecialCharacters(value)
+    ),
 })
 export default validationSchema

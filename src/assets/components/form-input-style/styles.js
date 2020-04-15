@@ -19,6 +19,12 @@ export const Input = styled.input`
   background: #c9c0fa;
   padding-left: 6%;
 
+  &:active,
+  :focus,
+  :visited {
+    outline: none;
+  }
+
   :placeholder:active {
     outline: none;
   }
