@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, MainLogo, Header } from './styles.js'
+import FormikRegister from '../../components/details-form/index.js'
 
 const ProofRequest = () => {
   return (
@@ -7,7 +8,9 @@ const ProofRequest = () => {
       <Header>
         <MainLogo />
       </Header>
-      <Container>PROOF REQUEST</Container>
+      <Container>
+        <FormikRegister />
+      </Container>
     </>
   )
 }

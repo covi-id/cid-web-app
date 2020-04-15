@@ -1,0 +1,3 @@
+const containsSpecialCharacters = (value) => {
+  return /[$!%*#?&]/gm.test(value)
+}
