@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container, MainLogo, Header } from './styles.js'
-import { Formik } from 'formik'
 
 const IssueCredential = () => {
   return (

@@ -8,7 +8,6 @@ import {
   Text,
   Heading,
 } from './styles.js'
-import { Formik } from 'formik'
 
 const IssueQRCode = () => {
   return (

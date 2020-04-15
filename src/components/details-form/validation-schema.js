@@ -2,7 +2,7 @@ import { object, string } from 'yup'
 import containsSpecialCharacters from 'components/details-form/validation-schema'
 
 const validationSchema = object().shape({
-  lastName: string()
+  firstName: string()
     .label('First Name')
     .required('Required')
     .test(
