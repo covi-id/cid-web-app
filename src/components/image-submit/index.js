@@ -4,7 +4,7 @@ import { SubmitContainer } from './styles'
 const ImageSubmit = () => {
   return (
     <SubmitContainer>
-      <div>JOU MA SE CONTAINER</div>
+      <div>CONTAINER FOR IMAGE UPLOAD</div>
     </SubmitContainer>
   )
 }

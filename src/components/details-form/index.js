@@ -1,16 +1,13 @@
 import React from 'react'
 import { Formik } from 'formik'
-import { Form, FormContainer } from '../details-form/styles'
+import { Form, FormContainer } from './styles'
 import ImageSubmit from '../image-submit/index.js'
-import {
-  SubmitButton,
-  Center,
-} from '../../components/form-styling/form button/styles.js'
+import { SubmitButton, Center } from '../form-styling/form button/styles.js'
 import { Field, Input, Label } from '../form-input-style/styles.js'
-import { Error } from '../../components/form-styling/error-message/styles'
-import validationSchema from './validation-schema'
-import api from '../../../api/index.js'
-import history from '../../../utils/history.js'
+import { Error } from '../form-styling/error-message/styles'
+import validationSchema from 'components/details-form/validation-schema'
+// import api from 'api'
+// import history from '/utils/history'
 
 const FormikRegister = () => {
   return (
@@ -24,7 +21,7 @@ const FormikRegister = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          api.auth.createUser(values).then(history.pushState('/step-2'))
+          // api.auth.createUser(values).then(history.pushState('/step-2'))
         }}>
         {({ values, handleChange, handleBlur, handleSubmit, errors }) => (
           <Form onSubmit={handleSubmit}>

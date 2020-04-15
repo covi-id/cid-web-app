@@ -11,6 +11,7 @@ import IssueCredential from './pages/issueCredential/index.js'
 import IssueQRCode from './pages/issueQRCode/index.js'
 
 export default function Root() {
+  console.log(process.env.BASE_URL)
   return (
     <Router>
       <Switch>

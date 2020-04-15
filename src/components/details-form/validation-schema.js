@@ -1,12 +1,9 @@
 import { object, string } from 'yup'
-
-const containsSpecialCharacters = (value) => {
-  return /[$!%*#?&]/gm.test(value)
-}
+import containsSpecialCharacters from 'components/details-form/validation-schema'
 
 const validationSchema = object().shape({
   lastName: string()
-    .label('lastName')
+    .label('First Name')
     .required('Required')
     .test(
       'Special characters',
@@ -15,7 +12,7 @@ const validationSchema = object().shape({
     ),
 
   lastName: string()
-    .label('lastName')
+    .label('Last Name')
     .required('Required')
     .test(
       'Special characters',
@@ -24,7 +21,7 @@ const validationSchema = object().shape({
     ),
 
   mobileNumber: string()
-    .label('mobileNumber')
+    .label('Mobile Number')
     .required('Required')
     .min(10, 'Please enter a valid South African mobile number')
     .max(10, 'Please enter a valid South African mobile number')
@@ -35,7 +32,7 @@ const validationSchema = object().shape({
     ),
 
   IDNumber: string('Required')
-    .label('IDNumber')
+    .label('ID Number')
     .required('Required')
     .min(13, 'Must be 13 characters')
     .max(13, 'Must be 13 characters')
