@@ -9,15 +9,15 @@
 }
 
 @font-face {
-  font-family: 'Montserrat-Bold';
+  font-family: "Montserrat";
   src: url(./assets/fonts/Montserrat-Bold.ttf);
-  font-weight: 600;
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Montserrat-SemiBold';
+  font-family: "Montserrat";
   src: url(./assets/fonts/Montserrat-SemiBold.ttf);
   font-weight: 500;
   font-style: normal;
@@ -25,7 +25,7 @@
 }
 
 @font-face {
-  font-family: 'Montserrat-ExtraLight';
+  font-family: "Montserrat";
   src: url(./assets/fonts/Montserrat-ExtraLight.ttf);
   font-weight: 300;
   font-style: normal;
@@ -34,17 +34,20 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Montserrat";
+  font-size: 17px;
+  letter-spacing: 0.02em;
 }
 
+html,
 body {
   margin: 0;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 17px;
+  height: 100%;
 }
 
-code {
-  font-family: 'Montserrat';
-  font-size: 17px;
+#root {
+  height: 100%;
 }

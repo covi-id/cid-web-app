@@ -1,36 +1,19 @@
-import React from 'react'
-import {
-  Container,
-  LandingIcon,
-  Center,
-  Heading,
-  Btn,
-  Plus,
-  Text,
-  MainLogo,
-  Header,
-  Opener,
-} from './styles.js'
+import React from "react";
+import { Container, LandingIcon, Heading } from "./styles.js";
+import ButtonLink from "components/buttonLink/index.js";
 
 const Landing = () => {
   return (
-    <>
-      <Header>
-        <MainLogo />
-      </Header>
-      <Container>
-        <Center>
-          <LandingIcon />
-          <Heading>Hi there,</Heading>
-          <Opener href='/proof-request'>
-            <Btn>
-              <Text>Create new wallet</Text>
-              <Plus />
-            </Btn>
-          </Opener>
-        </Center>
-      </Container>
-    </>
-  )
-}
-export default Landing
+    <Container>
+      <LandingIcon />
+      <Heading>Hi there,</Heading>
+      <ButtonLink
+        to="/proof-request"
+        icon={require("assets/icons/plus-icon.svg")}
+      >
+        Create a new wallet
+      </ButtonLink>
+    </Container>
+  );
+};
+export default Landing;

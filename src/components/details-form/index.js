@@ -1,87 +1,49 @@
-import React from 'react'
-import { Formik } from 'formik'
-import { Form, FormContainer } from './styles'
-import ImageSubmit from '../image-submit/index.js'
-// import { SubmitButton, Center } from '../form-styling/form button/styles.js'
-import { Field, Input, Label } from '../form-input-style/styles.js'
-import { Error } from '../form-styling/error-message/styles'
-import validationSchema from 'components/details-form/validation-schema'
-// import api from 'api'
-// import history from '/utils/history'
+import React, { useCallback } from "react";
+import { Formik } from "formik";
+import { Form, FormContainer } from "./styles";
+import ImageSubmit from "../image-submit/index.js";
+import validationSchema from "components/details-form/validationSchema";
+import TextInput from "components/textInput";
+
+const INITIAL_VALUES = {
+  firstName: "",
+  lastName: "",
+  idNumber: "",
+  mobileNumber: ""
+};
 
 const FormikRegister = () => {
   return (
     <FormContainer>
       <Formik
-        initialValues={{
-          firstName: '',
-          lastName: '',
-          IDNumber: '',
-          mobileNumber: '',
-        }}
+        initialValues={INITIAL_VALUES}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
+        onSubmit={values => {
           // api.auth.createUser(values).then(history.pushState('/step-2'))
-        }}>
-        {({ values, handleChange, handleBlur, handleSubmit, errors }) => (
+        }}
+      >
+        {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
-            <Field>
-              <Label>First Name</Label>
-              <label htmlFor='firstName'></label>
-              <Input
-                id='firstName'
-                name='firstName'
-                type='text'
-                placeholder='First Name'
-                onChange={handleChange}
-                value={values.name}
-              />
-              <Error>{errors.name}</Error>
-            </Field>
-
-            <Field>
-              <Label>Last Name</Label>
-              <label htmlFor='lastName'></label>
-              <Input
-                id='lastName'
-                name='lastName'
-                type='text'
-                placeholder='Last Name'
-                onChange={handleChange}
-                value={values.lastName}
-              />
-              <Error>{errors.lastName}</Error>
-            </Field>
-
-            <Field>
-              <Label>ID Number</Label>
-              <label htmlFor='IDNumber'></label>
-              <Input
-                id='IDNumber'
-                name='IDNumber'
-                type='number'
-                placeholder='Enter ID Number'
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.IDNumber}
-              />
-              <Error>{errors.IDNumber}</Error>
-            </Field>
-
-            <Field>
-              <Label>ID Number</Label>
-              <label htmlFor='mobileNumber'></label>
-              <Input
-                id='mobileNumber'
-                name='mobileNumber'
-                type='number'
-                placeholder='Enter Mobile Number'
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.mobileNumber}
-              />
-              <Error>{errors.IDNumber}</Error>
-            </Field>
+            <TextInput
+              placeholder="Enter name"
+              name="firstName"
+              label="Name"
+            />
+            <TextInput
+              name="lastName"
+              placeholder="Enter surname"
+              label="Surname"
+            />
+            <TextInput
+              name="idNumber"
+              placeholder="Enter ID number"
+              label="ID Number"
+            />
+            <TextInput
+              name="mobileNumber"
+              placeholder="Enter mobile number"
+              label="Mobile Number"
+            />
 
             {/* <Center>
               <SubmitButton onClick={handleSubmit} type='submit'>
@@ -93,7 +55,7 @@ const FormikRegister = () => {
       </Formik>
       <ImageSubmit />
     </FormContainer>
-  )
-}
+  );
+};
 
-export default FormikRegister
+export default FormikRegister;

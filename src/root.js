@@ -1,36 +1,38 @@
-import React from 'react'
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-} from 'react-router-dom'
-import Landing from './pages/landing/index.js'
-import ProofRequest from './pages/proofRequest'
-import IssueCredential from './pages/issueCredential/index.js'
-import IssueQRCode from './pages/issueQRCode/index.js'
+  Redirect
+} from "react-router-dom";
+import Landing from "./pages/landing/index.js";
+import ProofRequest from "./pages/proofRequest";
+import IssueCredential from "./pages/issueCredential/index.js";
+import IssueQRCode from "./pages/issueQRCode/index.js";
+import Main from "components/main/index.js";
 
-export default function Root() {
-  console.log(process.env.BASE_URL)
-  return (
-    <Router>
+const Root = () => (
+  <Router>
+    <Main>
       <Switch>
-        <Route exact path='/'>
-          <Redirect to='/landing'></Redirect>
-        </Route>
-        <Route exact path='/landing'>
+        <Route exact path="/">
           <Landing />
         </Route>
-        <Route exact path='/proof-request'>
+        <Route exact path="/proof-request">
           <ProofRequest />
         </Route>
-        <Route exact path='/issue-credential'>
+        <Route exact path="/issue-credential">
           <IssueCredential />
         </Route>
-        <Route exact path='/issue-qr-code'>
+        <Route exact path="/issue-qr-code">
           <IssueQRCode />
         </Route>
+        <Route path="*">
+          <Redirect to="/"></Redirect>
+        </Route>
       </Switch>
-    </Router>
-  )
-}
+    </Main>
+  </Router>
+);
+
+export default Root;
