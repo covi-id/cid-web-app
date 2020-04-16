@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik } from 'formik'
 import { Form, FormContainer } from './styles'
 import ImageSubmit from '../image-submit/index.js'
-import { SubmitButton, Center } from '../form-styling/form button/styles.js'
+// import { SubmitButton, Center } from '../form-styling/form button/styles.js'
 import { Field, Input, Label } from '../form-input-style/styles.js'
 import { Error } from '../form-styling/error-message/styles'
 import validationSchema from 'components/details-form/validation-schema'
@@ -83,11 +83,11 @@ const FormikRegister = () => {
               <Error>{errors.IDNumber}</Error>
             </Field>
 
-            <Center>
+            {/* <Center>
               <SubmitButton onClick={handleSubmit} type='submit'>
                 Next
               </SubmitButton>
-            </Center>
+            </Center> */}
           </Form>
         )}
       </Formik>

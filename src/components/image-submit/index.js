@@ -13,7 +13,7 @@ const ImageSubmit = () => {
   return (
     <SubmitContainer>
       <HeadingContainer>
-        <Heading>ImageUpload</Heading>
+        <Heading>Upload image</Heading>
       </HeadingContainer>
       <ImageUpload>
         <TextContainer>
