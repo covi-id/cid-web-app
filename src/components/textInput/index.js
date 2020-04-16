@@ -26,7 +26,7 @@ const TextInput = ({
 
   return (
     <Container>
-      <Label for={name}>
+      <Label htmlFor={name}>
         {label} <ErrorMessage show={error}>{error}</ErrorMessage>
       </Label>
       <Input

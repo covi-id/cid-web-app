@@ -8,7 +8,7 @@ const Landing = () => {
       <LandingIcon />
       <Heading>Hi there,</Heading>
       <ButtonLink
-        to="/proof-request"
+        to="/create-wallet"
         icon={require("assets/icons/plus-icon.svg")}
       >
         Create a new wallet

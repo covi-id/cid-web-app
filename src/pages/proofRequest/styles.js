@@ -1,19 +1,13 @@
 import styled from "styled-components";
-import BackgroundDesktop from "../../assets/images/desktop-landing-background.svg";
-import Logo from "../../assets/images/logo-dark.svg";
 
 export const Container = styled.div`
-  width: 100%;
+  width: 600px;
   height: 100%;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   margin: auto;
-`;
-export const MainLogo = styled.img.attrs({ src: Logo })`
-  width: 100%;
-  height: 200px;
 `;
 
 export const Heading = styled.div`
@@ -31,14 +25,10 @@ export const Text = styled.div`
   height: 20px;
   vertical-align: middle;
   text-align: center;
-
   font-size: 17px;
   letter-spacing: 0.01em;
   font-weight: bold;
   color: #654cf0;
-  margin-right: 23px;
-  padding-top: 4.5px;
-  padding-left: 10px;
 `;
 export const Header = styled.div`
   position: absolute;
@@ -64,8 +54,6 @@ export const StepText = styled.p`
 export const HeadingContainer = styled.div`
   justify-content: left;
   display: flex;
-  width: 44%;
-  margin-bottom: 1.3%;
 `;
 export const StepHeading = styled.h1`
   font-size: 48px;

@@ -18,7 +18,7 @@ const Root = () => (
         <Route exact path="/">
           <Landing />
         </Route>
-        <Route exact path="/proof-request">
+        <Route exact path="/create-wallet">
           <ProofRequest />
         </Route>
         <Route exact path="/issue-credential">
