@@ -53,14 +53,6 @@ export const Input = styled.input`
     /* Firefox 18- */
     color: #ffffff;
   }
-
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #c9c0fa inset !important;
-    color: #ffffff !important;
-  }
 `
 export const Label = styled.div`
   color: #654cf0;

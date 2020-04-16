@@ -54,3 +54,18 @@ a {
   text-decoration: none;
   font-weight: bold;
 }
+
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus,
+:-internal-autofill-selected,
+:-webkit-autofill:active {
+  font-size: 1.06rem !important;
+  -webkit-box-shadow: 0 0 0 100px #c9c0fa inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+input[type='file']:focus,
+input[type='file']:active {
+  outline: none !important;
+}
