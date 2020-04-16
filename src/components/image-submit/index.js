@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useDropzone } from 'react-dropzone'
 import {
   SubmitContainer,
   ImageUpload,
@@ -15,14 +16,26 @@ const ImageSubmit = () => {
       <HeadingContainer>
         <Heading>Upload image</Heading>
       </HeadingContainer>
-      <ImageUpload>
-        <TextContainer>
-          <Text>
-            Drag and drop or attach file <Link href=' '>here.</Link>
-          </Text>
-        </TextContainer>
-      </ImageUpload>
+      <ImageUpload>{MyDropzone()}</ImageUpload>
     </SubmitContainer>
   )
 }
 export default ImageSubmit
+
+function MyDropzone() {
+  const onDrop = useCallback((acceptedFiles) => {
+    alert('File uploaded!')
+  }, [])
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+
+  return (
+    <div {...getRootProps()}>
+      <input {...getInputProps()} />
+      <TextContainer>
+        <Text>
+          Drag and drop or attach file <Link href=' '>here.</Link>
+        </Text>
+      </TextContainer>
+    </div>
+  )
+}
