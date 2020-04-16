@@ -27,5 +27,6 @@ export const SubmitButton = styled.button`
 export const Center = styled.div`
   text-align: center;
   align-content: center;
-  margin-top: 10%;
+  width: 26%;
+  margin-top: -2.8%;
 `
