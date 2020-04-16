@@ -1,5 +1,5 @@
-import { object, string, bool } from 'yup'
-import { containsSpecialCharacters } from 'utils/regex'
+import { object, string } from 'yup'
+import containsSpecialCharacters from 'components/details-form/validation-schema'
 
 const validationSchema = object().shape({
   firstName: string()
@@ -31,7 +31,7 @@ const validationSchema = object().shape({
       (value) => !containsSpecialCharacters(value)
     ),
 
-  idNumber: string('Required')
+  IDNumber: string('Required')
     .label('ID Number')
     .required('Required')
     .min(13, 'Must be 13 characters')
@@ -40,15 +40,6 @@ const validationSchema = object().shape({
       'Special characters',
       'Cannot not contain special characters',
       (value) => !containsSpecialCharacters(value)
-    ),
-
-  consent: bool('Required')
-    .label('Consent')
-    .required()
-    .test(
-      'Test for true',
-      'You must agree to the privacy policy before proceeding',
-      (value) => value === true
     ),
 })
 export default validationSchema

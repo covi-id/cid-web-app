@@ -75,7 +75,7 @@ export const Heading = styled.div`
   height: 100%;
   margin-bottom: 14px;
 
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: bold;
   color: #654cf0;
 `
@@ -86,7 +86,7 @@ export const Text = styled.div`
   vertical-align: middle;
   text-align: center;
 
-  font-size: 17px;
+  font-size: 1.06rem;
   letter-spacing: 0.01em;
   font-weight: bold;
   color: #654cf0;

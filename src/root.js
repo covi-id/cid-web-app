@@ -5,10 +5,10 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-import Landing from './pages/landing/index.js'
+import Landing from './pages/landing'
 import ProofRequest from './pages/proofRequest'
-import IssueCredential from './pages/issueCredential/index.js'
-import IssueQRCode from './pages/issueQRCode/index.js'
+import IssueCredential from './pages/issueCredential'
+import IssueQRCode from './pages/issueQRCode'
 
 export default function Root() {
   console.log(process.env.BASE_URL)

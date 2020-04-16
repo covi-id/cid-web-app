@@ -6,5 +6,5 @@ export const Error = styled.div`
   height: 0px;
   width: 100%;
   text-align: left;
-margin-left: 10%;
+  margin-left: 10%;
 `

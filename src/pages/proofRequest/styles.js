@@ -9,6 +9,7 @@ export const Container = styled.div`
   text-align: center;
   align-items: center;
   display: flex;
+  flex-direction: column;
   background: url(${BackgroundDesktop}) white no-repeat center;
   background-size: cover;
 `
@@ -22,7 +23,7 @@ export const Heading = styled.div`
   height: 100%;
   margin-bottom: 14px;
 
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: bold;
   color: #654cf0;
 `
@@ -33,7 +34,7 @@ export const Text = styled.div`
   vertical-align: middle;
   text-align: center;
 
-  font-size: 17px;
+  font-size: 1.06rem;
   letter-spacing: 0.01em;
   font-weight: bold;
   color: #654cf0;
@@ -47,3 +48,40 @@ export const Header = styled.div`
   left: 5%;
 `
 
+export const StepIndicator = styled.div`
+  width: 43%;
+  height: 5%;
+  margin-top: -2.1%;
+  margin-bottom: 0.2%;
+`
+
+export const StepTextContainer = styled.div`
+  width: 200px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background: #efecfe;
+  border-radius: 2em;
+  vertical-align: middle;
+`
+
+export const StepText = styled.div`
+  margin: auto;
+  color: #c9c0fa;
+  font-weight: 600;
+  font-size: 1.4vw;
+`
+
+export const HeadingContainer = styled.div`
+  justify-content: left;
+  display: flex;
+  width: 44%;
+  margin-bottom: 1.3%;
+`
+export const StepHeading = styled.div`
+  font-size: 2.8vw;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  font-family: 'Montserrat';
+  color: #654cf0;
+`

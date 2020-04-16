@@ -53,5 +53,6 @@ yarn-error.log
 yarn.lock
 # Npm lock
 package-lock.json
+build
 
 src/assets/images/.DS_Store

@@ -2,26 +2,32 @@ import React from 'react'
 import { Formik } from 'formik'
 import { Form, FormContainer } from './styles'
 import ImageSubmit from '../image-submit/index.js'
-import { SubmitButton, Center } from '../form-styling/form button/styles.js'
 import { Field, Input, Label } from '../form-input-style/styles.js'
 import { Error } from '../form-styling/error-message/styles'
 import validationSchema from 'components/details-form/validation-schema'
-// import api from 'api'
-// import history from '/utils/history'
+import { useHistory } from 'react-router-dom'
+import { SubmitButton, Center } from 'components/form-button/styles'
+import Checkbox from 'components/checkbox'
 
 const FormikRegister = () => {
+  let history = useHistory()
   return (
     <FormContainer>
       <Formik
         initialValues={{
           firstName: '',
           lastName: '',
-          IDNumber: '',
+          idNumber: '',
           mobileNumber: '',
+          consent: false,
         }}
+        validateOnBlur
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          // api.auth.createUser(values).then(history.pushState('/step-2'))
+          history.push({
+            pathname: 'issue-credential',
+            state: { form1: { ...values } },
+          })
         }}>
         {({ values, handleChange, handleBlur, handleSubmit, errors }) => (
           <Form onSubmit={handleSubmit}>
@@ -34,9 +40,9 @@ const FormikRegister = () => {
                 type='text'
                 placeholder='First Name'
                 onChange={handleChange}
-                value={values.name}
+                value={values.firstName}
               />
-              <Error>{errors.name}</Error>
+              <Error>{errors.firstName}</Error>
             </Field>
 
             <Field>
@@ -55,32 +61,55 @@ const FormikRegister = () => {
 
             <Field>
               <Label>ID Number</Label>
-              <label htmlFor='IDNumber'></label>
+              <label htmlFor='idNumber'></label>
               <Input
-                id='IDNumber'
-                name='IDNumber'
-                type='number'
+                id='idNumber'
+                name='idNumber'
+                type='text'
                 placeholder='Enter ID Number'
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.IDNumber}
+                value={values.idNumber}
               />
-              <Error>{errors.IDNumber}</Error>
+              <Error>{errors.idNumber}</Error>
             </Field>
 
             <Field>
-              <Label>ID Number</Label>
+              <Label>Mobile Number</Label>
               <label htmlFor='mobileNumber'></label>
               <Input
                 id='mobileNumber'
                 name='mobileNumber'
-                type='number'
+                type='text'
                 placeholder='Enter Mobile Number'
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.mobileNumber}
               />
-              <Error>{errors.IDNumber}</Error>
+              <Error>{errors.mobileNumber}</Error>
+            </Field>
+
+            <Field>
+              <Checkbox
+                id='consent'
+                name='consent'
+                handleChange={handleChange}
+                checked={values.consent}
+                labelInlineInd={true}
+                label={
+                  <>
+                    By proceeding, I consent to the{' '}
+                    <a
+                      href='https://docs.google.com/document/d/19u3WE-w5VfNNyxQrYmZxsRRHH-WY0VBfE1eMmxRf9rQ/edit?usp=sharing'
+                      target='_blank'
+                      rel='noopener noreferrer'>
+                      {' '}
+                      privacy policy
+                    </a>
+                  </>
+                }
+              />
+              <Error>{errors.consent}</Error>
             </Field>
 
             <Center>

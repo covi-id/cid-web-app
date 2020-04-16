@@ -1,3 +1,3 @@
-const containsSpecialCharacters = (value) => {
+export const containsSpecialCharacters = (value) => {
   return /[$!%*#?&]/gm.test(value)
 }
