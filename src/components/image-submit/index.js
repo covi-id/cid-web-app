@@ -1,10 +1,27 @@
 import React from 'react'
-import { SubmitContainer } from './styles'
+import {
+  SubmitContainer,
+  ImageUpload,
+  Heading,
+  HeadingContainer,
+  TextContainer,
+  Text,
+  Link,
+} from './styles'
 
 const ImageSubmit = () => {
   return (
     <SubmitContainer>
-      <div>CONTAINER FOR IMAGE UPLOAD</div>
+      <HeadingContainer>
+        <Heading>ImageUpload</Heading>
+      </HeadingContainer>
+      <ImageUpload>
+        <TextContainer>
+          <Text>
+            Drag and drop or attach file <Link href=' '>here.</Link>
+          </Text>
+        </TextContainer>
+      </ImageUpload>
     </SubmitContainer>
   )
 }

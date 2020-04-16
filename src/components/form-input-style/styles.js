@@ -2,13 +2,13 @@ import styled from 'styled-components'
 
 export const Field = styled.div`
   justify-content: left;
-  height: 20%;
+  height: 21.4%;
   text-align: left;
 `
 
 export const Input = styled.input`
   font-family: 'Montserrat';
-  font-size: 1.4rem;
+  font-size: 1.4vw;
   font-weight: 400;
   border: none;
   height: 56%;
@@ -55,7 +55,7 @@ export const Input = styled.input`
 export const Label = styled.div`
   color: #654cf0;
   font-weight: 600;
-  font-size: 1.4rem;
+  font-size: 1.4vw;
   margin-left: 5%;
-  margin-bottom: 2%;
+  margin-bottom: 4%;
 `
