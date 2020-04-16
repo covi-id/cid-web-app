@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Field = styled.div`
   justify-content: left;
-  height: 20%;
+  height: 21.4%;
   text-align: left;
 `
 
@@ -57,5 +57,5 @@ export const Label = styled.div`
   font-weight: 600;
   font-size: 1.4rem;
   margin-left: 5%;
-  margin-bottom: 2%;
+  margin-bottom: 4%;
 `

@@ -1,10 +1,13 @@
 import React from 'react'
-import { SubmitContainer } from './styles'
+import { SubmitContainer, ImageUpload, TextContainer, Text } from './styles'
 
 const ImageSubmit = () => {
   return (
     <SubmitContainer>
-      <div>CONTAINER FOR IMAGE UPLOAD</div>
+      <TextContainer>
+        <Text>ImageUpload</Text>
+      </TextContainer>
+      <ImageUpload></ImageUpload>
     </SubmitContainer>
   )
 }
