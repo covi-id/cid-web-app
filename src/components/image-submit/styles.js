@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import QRSvg from 'assets/images/ImageUpload.svg'
+import ClipIcon from 'assets/icons/clip-icon.svg'
 
 export const ImageUpload = styled.div`
   width: 80%;
@@ -17,16 +17,37 @@ export const SubmitContainer = styled.div`
   vertical-align: middle;
 `
 
-export const TextContainer = styled.div`
+export const HeadingContainer = styled.div`
   width: 80%;
   display: flex;
   justify-content: left;
 `
 
-export const Text = styled.div`
+export const Heading = styled.div`
   color: #654cf0;
   font-weight: 600;
   font-size: 1.4rem;
   margin-left: 15%;
   margin-bottom: 5.3%;
+`
+export const Clip = styled.img.attrs({ src: ClipIcon })`
+  width: 10%;
+`
+
+export const TextContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  width: 80%;
+  margin: 0 auto;
+`
+
+export const Text = styled.div`
+  color: #a99afa;
+  font-size: 1.4vw;
+  font-weight: 600;
+  margin: 72% 0 0 0;
+`
+export const Link = styled.a`
+  color: #7158f6;
 `
