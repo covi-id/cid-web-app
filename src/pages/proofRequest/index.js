@@ -10,13 +10,10 @@ import {
   StepHeading,
 } from './styles.js'
 
-import { SubmitButton, Center } from 'components/form button/styles'
+import { SubmitButton, Center } from 'components/form-button/styles'
 
-import FormikRegister from 'components/details-form/index.js'
-
-function navToNext() {
-  return (window.location.href = 'issue-credential')
-}
+import FormikRegister from 'components/details-form'
+import { Link } from 'react-router-dom'
 
 const ProofRequest = () => {
   return (
@@ -35,9 +32,6 @@ const ProofRequest = () => {
           <StepHeading>Enter details</StepHeading>
         </HeadingContainer>
         <FormikRegister />
-        <Center>
-          <SubmitButton onClick={() => navToNext()}>Next</SubmitButton>
-        </Center>
       </Container>
     </>
   )
