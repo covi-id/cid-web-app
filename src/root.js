@@ -5,11 +5,10 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import Landing from "./pages/landing/index.js";
-import ProofRequest from "./pages/proofRequest";
-import IssueCredential from "./pages/issueCredential/index.js";
-import IssueQRCode from "./pages/issueQRCode/index.js";
-import Main from "components/main/index.js";
+
+import Landing from "pages/landing/index.js";
+import ProofRequest from "pages/createWalletPage";
+import Main from "components/main";
 
 const Root = () => (
   <Router>
@@ -20,12 +19,6 @@ const Root = () => (
         </Route>
         <Route exact path="/create-wallet">
           <ProofRequest />
-        </Route>
-        <Route exact path="/issue-credential">
-          <IssueCredential />
-        </Route>
-        <Route exact path="/issue-qr-code">
-          <IssueQRCode />
         </Route>
         <Route path="*">
           <Redirect to="/"></Redirect>
