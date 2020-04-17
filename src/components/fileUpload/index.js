@@ -8,15 +8,14 @@ import {
   FileContainer,
   DropzoneLabel,
   AttachmentIcon,
-  Label,
   CloseButton,
-  ErrorMessage
 } from "./styles";
 import toBase64 from "utils/toBase64";
+import FormLabel from "components/shared/formLabel";
 
 const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
-  const { setFieldValue, handleBlur } = formik;
-  const error = formik.errors[name];
+  const { setFieldValue } = formik;
+  const error = formik.touched[name] && formik.errors[name];
 
   const [image, setImage] = useState(null);
   const onDrop = useCallback(
@@ -42,16 +41,14 @@ const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
 
   return (
     <Container>
-      <Label>
-        {label} <ErrorMessage show={!!error}>{error}</ErrorMessage>
-      </Label>
+      <FormLabel error={error} description={label} name={name} />
 
       <CloseButton active={!!image} onClick={removeHandler}>
         <img src={require("assets/images/close_icon.svg")} alt="close icon" />
       </CloseButton>
 
       <FileContainer {...getRootProps()} backgroundImage={image}>
-        <input onBlur={handleBlur} name={name} {...getInputProps()} />
+        <input name={name} {...getInputProps()} />
         {image ? null : isDragActive ? (
           <DropzoneLabel>{dropText}</DropzoneLabel>
         ) : (

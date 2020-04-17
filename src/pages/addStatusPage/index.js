@@ -9,16 +9,16 @@ import {
   StepHeading
 } from "./styles.js";
 
-const CreateWalletPage = () => (
+const AddStatusPage = () => (
   <Container>
     <HeadingContainer>
       <StepIndicator>
-        <StepText> Step 1/2</StepText>
+        <StepText> Step 2/2</StepText>
       </StepIndicator>
-      <StepHeading>Enter details</StepHeading>
+      <StepHeading>COVI-ID status</StepHeading>
     </HeadingContainer>
     <CreateWallet />
   </Container>
 );
 
-export default CreateWalletPage;
+export default AddStatusPage;

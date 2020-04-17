@@ -17,6 +17,7 @@ const FileContainer = styled.div`
   border-radius: 20px;
   display: flex;
   padding: 0 50px;
+  margin-top: 8px;
   text-align: center;
   flex-direction: column;
   align-items: center;
@@ -89,29 +90,11 @@ const AttachmentIcon = styled.img.attrs({
   margin: 10px;
 `;
 
-const ErrorMessage = styled.label`
-  font-size: 14px;
-  font-weight: 500;
-  color: #e90000;
-  opacity: 0;
-  transition: 0.2s ease-out;
-  padding-top: 8px;
-  text-align: right;
-  font-style: italic;
-
-  ${({ show }) =>
-    show &&
-    css`
-      opacity: 1;
-    `}
-`;
-
 export {
   Container,
   FileContainer,
   DropzoneLabel,
   AttachmentIcon,
   Label,
-  CloseButton,
-  ErrorMessage
+  CloseButton
 };

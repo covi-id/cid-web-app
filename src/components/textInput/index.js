@@ -1,8 +1,10 @@
 import React, { useCallback } from "react";
 import { string, oneOf, oneOfType, bool, number } from "prop-types";
 
-import { Container, Label, Input, ErrorMessage } from "./styles";
+import { Input } from "./styles";
 import { connect } from "formik";
+import FormItemWrapper from "components/shared/formItemWrapper";
+import FormLabel from "components/shared/formLabel";
 
 const TextInput = ({
   placeholder,
@@ -25,10 +27,8 @@ const TextInput = ({
   );
 
   return (
-    <Container>
-      <Label htmlFor={name}>
-        {label} <ErrorMessage show={error}>{error}</ErrorMessage>
-      </Label>
+    <FormItemWrapper>
+      <FormLabel name={name} description={label} error={error} />
       <Input
         value={value}
         name={name}
@@ -40,7 +40,7 @@ const TextInput = ({
         onBlur={handleBlur}
         onFocus={onFocus}
       />
-    </Container>
+    </FormItemWrapper>
   );
 };
 

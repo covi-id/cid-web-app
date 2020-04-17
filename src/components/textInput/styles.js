@@ -1,21 +1,4 @@
-import styled, { css } from "styled-components";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 12px;
-  align-items: flex-start;
-  width: 100%;
-`;
-
-const Label = styled.label`
-  font-size: 17px;
-  color: #654cf0;
-  font-weight: bold;
-  height: 25px;
-  width: 100%;
-  text-align: left;
-`;
+import styled from "styled-components";
 
 const Input = styled.input`
   font-size: 16px;
@@ -41,21 +24,4 @@ const Input = styled.input`
   }
 `;
 
-const ErrorMessage = styled.label`
-  font-size: 14px;
-  font-weight: 500;
-  color: #e90000;
-  opacity: 0;
-  transition: 0.2s ease-out;
-  padding-top: 8px;
-  text-align: right;
-  font-style: italic;
-
-  ${({ show }) =>
-    show &&
-    css`
-      opacity: 1;
-    `}
-`;
-
-export { Container, Label, Input, ErrorMessage };
+export { Input };
