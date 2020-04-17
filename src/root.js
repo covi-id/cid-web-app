@@ -1,36 +1,38 @@
-import React from 'react'
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-} from 'react-router-dom'
-import Landing from './pages/landing'
-import ProofRequest from './pages/proofRequest'
-import IssueCredential from './pages/issueCredential'
-import IssueQRCode from './pages/issueQRCode'
+  Redirect
+} from "react-router-dom";
 
-export default function Root() {
-  console.log(process.env.BASE_URL)
-  return (
-    <Router>
+import Landing from "pages/landing/index.js";
+import Step1 from "pages/createWalletPage";
+import Step2 from "pages/addStatusPage";
+import Main from "components/main";
+
+const Root = () => (
+  <Router>
+    <Main>
       <Switch>
-        <Route exact path='/'>
-          <Redirect to='/landing'></Redirect>
-        </Route>
-        <Route exact path='/landing'>
+        <Route exact path="/">
           <Landing />
         </Route>
-        <Route exact path='/proof-request'>
-          <ProofRequest />
+        <Route path="/create-wallet/status">
+          <Step2 />
         </Route>
-        <Route exact path='/issue-credential'>
-          <IssueCredential />
+        <Route path="/create-wallet/details">
+          <Step1 />
         </Route>
-        <Route exact path='/issue-qr-code'>
-          <IssueQRCode />
+        <Route path="/create-wallet/status">
+          <Step2 />
+        </Route>
+        <Route path="*">
+          <Redirect to="/"></Redirect>
         </Route>
       </Switch>
-    </Router>
-  )
-}
+    </Main>
+  </Router>
+);
+
+export default Root;

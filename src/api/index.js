@@ -1,23 +1,30 @@
-import axios from 'axios'
-import auth from './routes/auth'
+import axios from "axios";
+
+import wallet from "./routes/wallet";
+import { ENV } from "utils/environment";
 
 const instance = axios.create({
-  baseURL: 'http://api.coviid.me/api/',
-  headers: { 'Content-Type': 'application/json' },
-})
-
-instance.BASE_URL = 'http://api.coviid.me/api/'
+  baseURL: ENV.BASE_URL,
+  headers: { "Content-Type": "application/json", "X-AgentId": ENV.X_AGENT_ID }
+});
 
 instance.interceptors.response.use(
-  (response) => {
-    return response
+  response => {
+    return response;
   },
-  function (error) {
-    console.log(error)
-    return Promise.reject(error.response)
+  function(error) {
+    console.error(error);
+    return Promise.reject(error.response);
   }
-)
+);
+
+instance.interceptors.response.use(
+  response => response.data,
+  async ({ response }) => {
+    return Promise.reject(response && response.data.meta.message);
+  }
+);
 
 export default {
-  auth: auth(instance),
-}
+  wallet: wallet(instance)
+};

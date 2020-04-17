@@ -9,15 +9,15 @@
 }
 
 @font-face {
-  font-family: 'Montserrat-Bold';
+  font-family: "Montserrat";
   src: url(./assets/fonts/Montserrat-Bold.ttf);
-  font-weight: 600;
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Montserrat-SemiBold';
+  font-family: "Montserrat";
   src: url(./assets/fonts/Montserrat-SemiBold.ttf);
   font-weight: 500;
   font-style: normal;
@@ -25,7 +25,7 @@
 }
 
 @font-face {
-  font-family: 'Montserrat-ExtraLight';
+  font-family: "Montserrat";
   src: url(./assets/fonts/Montserrat-ExtraLight.ttf);
   font-weight: 300;
   font-style: normal;
@@ -34,38 +34,20 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Montserrat";
+  font-size: 17px;
+  letter-spacing: 0.02em;
 }
 
+html,
 body {
   margin: 0;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1.11vw;
+  height: 100%;
 }
 
-code {
-  font-family: 'Montserrat';
-  font-size: 1.06rem;
-}
-
-a {
-  color: #654cf0;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-:-webkit-autofill,
-:-webkit-autofill:hover,
-:-webkit-autofill:focus,
-:-internal-autofill-selected,
-:-webkit-autofill:active {
-  font-size: 1.06rem !important;
-  -webkit-box-shadow: 0 0 0 100px #c9c0fa inset !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-
-input[type='file']:focus,
-input[type='file']:active {
-  outline: none !important;
+#root {
+  height: 100%;
 }
