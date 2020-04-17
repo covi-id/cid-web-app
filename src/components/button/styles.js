@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const Button = styled.button`
   border-radius: 60px;
@@ -24,6 +24,6 @@ const Button = styled.button`
   &:hover {
     background-color: #02e8a0;
   }
-`;
+`
 
-export { Button };
+export { Button }

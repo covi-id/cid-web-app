@@ -1,10 +1,10 @@
-import React, { useCallback } from "react";
-import { string, oneOf, oneOfType, bool, number } from "prop-types";
+import React, { useCallback } from 'react'
+import { string, oneOf, oneOfType, bool, number } from 'prop-types'
 
-import { Input } from "./styles";
-import { connect } from "formik";
-import FormItemWrapper from "components/shared/formItemWrapper";
-import FormLabel from "components/shared/formLabel";
+import { Input } from './styles'
+import { connect } from 'formik'
+import FormItemWrapper from 'components/shared/formItemWrapper'
+import FormLabel from 'components/shared/formLabel'
 
 const TextInput = ({
   placeholder,
@@ -13,18 +13,18 @@ const TextInput = ({
   name,
   formik,
   disabled,
-  type
+  type,
 }) => {
-  const value = formik.values[name];
-  const error = formik.touched[name] && formik.errors[name];
-  const { handleBlur, onFocus } = formik;
+  const value = formik.values[name]
+  const error = formik.touched[name] && formik.errors[name]
+  const { handleBlur, onFocus } = formik
 
   const handleChange = useCallback(
     ({ target }) => {
-      formik.setFieldValue(name, target.value);
+      formik.setFieldValue(name, target.value)
     },
     [formik, name]
-  );
+  )
 
   return (
     <FormItemWrapper>
@@ -41,16 +41,16 @@ const TextInput = ({
         onFocus={onFocus}
       />
     </FormItemWrapper>
-  );
-};
+  )
+}
 
 TextInput.propTypes = {
   name: string.isRequired,
-  type: oneOf(["text", "password", "number"]),
+  type: oneOf(['text', 'password', 'number']),
   placeholder: string,
   label: string,
   defaultValue: oneOfType([string, number]),
-  disabled: bool
-};
+  disabled: bool,
+}
 
-export default connect(TextInput);
+export default connect(TextInput)
