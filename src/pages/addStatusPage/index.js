@@ -1,6 +1,6 @@
 import React from "react";
 
-import CreateWallet from "containers/createWallet";
+import AddStatus from "containers/addStatus";
 import {
   Container,
   StepText,
@@ -17,7 +17,7 @@ const AddStatusPage = () => (
       </StepIndicator>
       <StepHeading>COVI-ID status</StepHeading>
     </HeadingContainer>
-    <CreateWallet />
+    <AddStatus />
   </Container>
 );
 

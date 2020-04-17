@@ -16,6 +16,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
     box-shadow: 4px 10px 40px rgba(201, 192, 250, 0.8);
+    background-color: #b2a5f7;
   }
 
   &::placeholder {

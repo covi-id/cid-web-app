@@ -46,14 +46,11 @@ const VALIDATION_SCHEMA = object().shape({
 });
 
 const CreateWallet = () => {
-  const history = useHistory();
-  const addDataToState = useCallback(
-    values => {
-      walletFormContainer.set(values);
-      history.push("/create-wallet/status");
-    },
-    [history]
-  );
+  const history = useHistory()
+  const addDataToState = useCallback(values => {
+    walletFormContainer.set(values);
+    history.push('/create-wallet/status')
+  }, []);
   return (
     <Formik
       initialValues={INITIAL_VALUES}

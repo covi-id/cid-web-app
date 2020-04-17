@@ -9,11 +9,12 @@ const Button = styled.button`
   transition: 0.2s ease-out;
   border: none;
   cursor: pointer;
-  background-color: #e1fff6;
-  color: #03ce8e;
+  color: #513cc5;
+  background-color: #03f5a9;
 
   &:disabled {
-    opacity: 0.7;
+    background-color: #e1fff6;
+    color: #03ce8e;
   }
 
   &:focus {
@@ -21,7 +22,7 @@ const Button = styled.button`
   }
 
   &:hover {
-    background-color: #c8ffee;
+    background-color: #02e8a0;
   }
 `;
 

@@ -8,8 +8,8 @@ import {
 
 import Landing from "pages/landing/index.js";
 import Step1 from "pages/createWalletPage";
-import Main from "components/main";
 import Step2 from "pages/addStatusPage";
+import Main from "components/main";
 
 const Root = () => (
   <Router>
@@ -18,10 +18,13 @@ const Root = () => (
         <Route exact path="/">
           <Landing />
         </Route>
-        <Route exact path="/create-wallet/details">
+        <Route path="/create-wallet/status">
+          <Step2 />
+        </Route>
+        <Route path="/create-wallet/details">
           <Step1 />
         </Route>
-        <Route exact path="/create-wallet/status">
+        <Route path="/create-wallet/status">
           <Step2 />
         </Route>
         <Route path="*">

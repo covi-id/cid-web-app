@@ -9,7 +9,7 @@ const Form = styled.form`
 const BodyContainer = styled.div`
   display: flex;
   flex-direction: row;
-
+  
   @media screen and (max-width: 600px) {
     flex-direction: column;
   }
