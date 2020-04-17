@@ -12,6 +12,10 @@ const Header = styled.nav`
   padding: 75px 80px;
   padding-bottom: 20px;
   width: 100%;
+
+  @media screen and (max-width: 600px) {
+    padding: 40px;
+  }
 `;
 
 const MainLogo = styled.img.attrs({ src: Logo })`

@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  margin: auto;
+  /* margin: auto; */
 `;
 
 export const Heading = styled.div`
@@ -30,11 +30,6 @@ export const Text = styled.div`
   font-weight: bold;
   color: #654cf0;
 `;
-export const Header = styled.div`
-  position: absolute;
-  top: -2%;
-  left: 5%;
-`;
 
 export const StepIndicator = styled.div`
   padding: 0 20px;
@@ -42,6 +37,7 @@ export const StepIndicator = styled.div`
   background-color: #efecfe;
   border-radius: 30px;
   display: flex;
+  width: 115px;
 `;
 
 export const StepText = styled.p`
@@ -54,9 +50,15 @@ export const StepText = styled.p`
 export const HeadingContainer = styled.div`
   justify-content: left;
   display: flex;
+  flex-direction: column;
 `;
 export const StepHeading = styled.h1`
   font-size: 48px;
   font-weight: bold;
   color: #654cf0;
+  margin: 10px 0 30px 0;
+
+  @media screen and (max-width: 600px) {
+    font-size: 40px;
+  }
 `;

@@ -11,10 +11,10 @@ import {
 
 const ProofRequest = () => (
   <Container>
-    <StepIndicator>
-      <StepText> Step 1/2</StepText>
-    </StepIndicator>
     <HeadingContainer>
+      <StepIndicator>
+        <StepText> Step 1/2</StepText>
+      </StepIndicator>
       <StepHeading>Enter details</StepHeading>
     </HeadingContainer>
     <CreateWallet />

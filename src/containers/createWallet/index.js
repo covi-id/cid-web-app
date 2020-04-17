@@ -1,34 +1,38 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Formik } from "formik";
 import { object, string } from "yup";
+
 import { Form, Left, Right, Footer, BodyContainer } from "./styles";
 import TextInput from "components/textInput";
 import FileUpload from "components/fileUpload";
 import Button from "components/button";
+import walletFormContainer from "stateContainers/walletFormContainer";
+import { useHistory } from "react-router-dom";
 
 const INITIAL_VALUES = {
-  firstName: "",
-  lastName: "",
-  idNumber: "",
-  mobileNumber: ""
+  name: "",
+  surname: "",
+  id: "",
+  telNumber: "",
+  picture: ""
 };
 
 const VALIDATION_SCHEMA = object().shape({
-  firstName: string()
+  name: string()
     .label("First Name")
     .required("Required"),
 
-  lastName: string()
+  surname: string()
     .label("Last Name")
     .required("Required"),
 
-  mobileNumber: string()
+  telNumber: string()
     .label("Mobile Number")
     .min(10, "Please enter a valid South African mobile number")
     .max(10, "Please enter a valid South African mobile number")
     .required("Required"),
 
-  idNumber: string()
+  id: string()
     .label("ID Number")
     .min(13, "Must be 13 characters")
     .max(13, "Must be 13 characters")
@@ -41,36 +45,38 @@ const VALIDATION_SCHEMA = object().shape({
   )
 });
 
-const FormikRegister = () => {
+const CreateWallet = () => {
+  const history = useHistory();
+  const addDataToState = useCallback(
+    values => {
+      walletFormContainer.set(values);
+      history.push("/create-wallet/status");
+    },
+    [history]
+  );
   return (
     <Formik
       initialValues={INITIAL_VALUES}
       validationSchema={VALIDATION_SCHEMA}
-      onSubmit={values => {
-        // api.auth.createUser(values).then(history.pushState('/step-2'))
-      }}
+      onSubmit={addDataToState}
     >
       {({ handleSubmit }) => (
         <Form onSubmit={handleSubmit}>
           <BodyContainer>
             <Left>
+              <TextInput placeholder="Enter name" name="name" label="Name" />
               <TextInput
-                placeholder="Enter name"
-                name="firstName"
-                label="Name"
-              />
-              <TextInput
-                name="lastName"
+                name="surname"
                 placeholder="Enter surname"
                 label="Surname"
               />
               <TextInput
-                name="idNumber"
+                name="id"
                 placeholder="Enter ID number"
                 label="ID Number"
               />
               <TextInput
-                name="mobileNumber"
+                name="telNumber"
                 placeholder="Enter mobile number"
                 label="Mobile Number"
               />
@@ -97,4 +103,4 @@ const FormikRegister = () => {
   );
 };
 
-export default FormikRegister;
+export default CreateWallet;

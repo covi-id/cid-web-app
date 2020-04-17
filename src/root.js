@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import Landing from "pages/landing/index.js";
-import ProofRequest from "pages/createWalletPage";
+import Step1 from "pages/createWalletPage";
 import Main from "components/main";
 
 const Root = () => (
@@ -17,8 +17,8 @@ const Root = () => (
         <Route exact path="/">
           <Landing />
         </Route>
-        <Route exact path="/create-wallet">
-          <ProofRequest />
+        <Route exact path="/create-wallet/details">
+          <Step1 />
         </Route>
         <Route path="*">
           <Redirect to="/"></Redirect>
