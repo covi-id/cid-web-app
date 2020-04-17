@@ -47,11 +47,12 @@ export const Header = styled.div`
   top: -2%;
   left: 5%;
 `
+
 export const StepIndicator = styled.div`
   width: 43%;
   height: 5%;
-
-  margin-bottom: 0.6%;
+  margin-top: -2.1%;
+  margin-bottom: 0.2%;
 `
 
 export const StepTextContainer = styled.div`

@@ -5,7 +5,7 @@ import { ENV } from "utils/environment";
 
 const instance = axios.create({
   baseURL: ENV.BASE_URL,
-  headers: { "Content-Type": "application/json" }
+  headers: { "Content-Type": "application/json", "X-AgentId": ENV.X_AGENT_ID }
 });
 
 instance.interceptors.response.use(
