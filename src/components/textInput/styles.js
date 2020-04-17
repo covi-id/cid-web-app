@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const Input = styled.input`
   font-size: 16px;
@@ -12,6 +12,7 @@ const Input = styled.input`
   font-weight: 500;
   caret-color: 10px solid #654cf0;
   transition: 0.2s ease-out;
+  color: #ffffff;
 
   &:focus {
     outline: none;
@@ -23,6 +24,6 @@ const Input = styled.input`
     font-size: 16px;
     color: #ffffff;
   }
-`;
+`
 
-export { Input };
+export { Input }

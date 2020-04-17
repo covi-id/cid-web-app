@@ -11,7 +11,7 @@ const Landing = () => {
         to="/create-wallet/details"
         icon={require("assets/icons/plus-icon.svg")}
       >
-        Create a new wallet
+        Create my Covi-ID
       </ButtonLink>
     </Container>
   );

@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 
-import AddStatus from "containers/addStatus";
+import AddStatus from 'containers/addStatus'
 import {
   Container,
   StepText,
   StepIndicator,
   HeadingContainer,
-  StepHeading
-} from "./styles.js";
+  StepHeading,
+} from './styles.js'
 
 const AddStatusPage = () => (
   <Container>
@@ -19,6 +19,6 @@ const AddStatusPage = () => (
     </HeadingContainer>
     <AddStatus />
   </Container>
-);
+)
 
-export default AddStatusPage;
+export default AddStatusPage
