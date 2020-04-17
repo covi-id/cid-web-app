@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Form = styled.form`
   width: 100%;
@@ -19,9 +19,20 @@ const TestDateSection = styled.div`
   }
 `;
 
+const HideContainer = styled.div`
+  opacity: 0;
+  pointer-events: none;
+
+  ${({ show }) =>
+    show &&
+    css`
+      opacity: 1;
+    `}
+`;
+
 const Footer = styled.div`
   text-align: center;
   padding: 50px 0;
 `;
 
-export { Form, Footer, BodyContainer, TestDateSection };
+export { Form, Footer, BodyContainer, TestDateSection, HideContainer };

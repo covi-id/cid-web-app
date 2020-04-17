@@ -17,6 +17,7 @@ const Select = ({
   displayProp,
   valueProp
 }) => {
+  const { setFieldValue } = formik;
   const [open, setOpen] = useState(defaultOpen);
   const [selected, setSelected] = useState(
     items.find(item => item[valueProp] === formik.initialValues[name])
@@ -37,8 +38,8 @@ const Select = ({
 
   async function handleSelect(selected) {
     setOpen(false);
-    setSelected(selected);
-    onSelect({ target: { value: selected[valueProp], name } });
+    console.log({ name, selected });
+    setFieldValue(name, selected.value);
   }
 
   return (
@@ -56,7 +57,7 @@ const Select = ({
           disabled={disabled}
         >
           <Value showPlaceholder={!selected}>
-            {selected?.name || placeholder}
+            {(selected && selected[displayProp]) || placeholder}
           </Value>
           <Icon
             src={require("assets/images/chevron.svg")}

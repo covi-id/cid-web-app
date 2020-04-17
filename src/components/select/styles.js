@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 const Wrapper = styled.div`
   position: relative;
   margin: 10px 0px;
-  width: 100%;
+  width: 275px;
 `;
 
 const Header = styled.div`
@@ -11,12 +11,18 @@ const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  transition: background-color 0.2s;
-  box-shadow: 4px 10px 40px rgba(201, 192, 250, 0.8);
-  background-color: #b2a5f7;
-  border-radius: 40px;
+  transition: 0.2s ease-out;
+  border-radius: 60px;
   min-height: 50px;
   pointer-events: ${props => props.disabled && "none"};
+  background-color: #c9c0fa;
+
+  ${({ active }) =>
+    active &&
+    css`
+      box-shadow: 4px 10px 40px rgba(201, 192, 250, 0.8);
+      background-color: #b2a5f7;
+    `}
 `;
 
 const Title = styled.label`
@@ -55,12 +61,12 @@ const List = styled.ul`
   border-radius: 28px;
   width: 100%;
   margin: 8px 0 0 0;
-  padding: 10px 40px;
   list-style: none;
   font-size: 14px;
   overflow-y: scroll;
   text-align: left;
   z-index: 10;
+  padding-inline-start: 0;
 
   ::-webkit-scrollbar {
     width: 5px;
@@ -79,20 +85,28 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
-  height: 30px;
-  color: ${props => (props.selected ? "#44344F" : "#7C7184")};
-  font-size: 12px;
+  height: 50px;
+  padding: 10px 40px;
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 16px;
   line-height: 110%;
   display: flex;
   align-items: center;
   letter-spacing: 0.02em;
-  font-weight: ${props => (props.selected ? "bold" : "normal")};
   cursor: pointer;
 
   &:hover {
-    font-weight: bold;
-    color: #44344f;
+    color: #ffffff;
+    background-color: #a192f5;
   }
+
+  ${({ selected }) =>
+    selected &&
+    css`
+      font-weight: 500;
+      background-color: #a192f5;
+    `}
 `;
 
 const Icon = styled.img`

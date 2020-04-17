@@ -1,40 +1,34 @@
 import React, { useCallback } from "react";
 import { Formik } from "formik";
-import { object, string, bool } from "yup";
+import { object, bool, date } from "yup";
 
-import {
-  Form,
-  Left,
-  Right,
-  Footer,
-  BodyContainer,
-  TestDateSection
-} from "./styles";
+import { Form, Footer, BodyContainer, TestDateSection } from "./styles";
 import TextInput from "components/textInput";
-import FileUpload from "components/fileUpload";
 import Button from "components/button";
 import walletFormContainer from "stateContainers/walletFormContainer";
-import { useHistory } from "react-router-dom";
 import RadioButton from "components/radioButton";
 import Select from "components/select";
 
 const INITIAL_VALUES = {
   tested: false,
-  testDate: ""
+  testDate: "",
+  testStatus: false,
+  testLab: ""
 };
 
 const VALIDATION_SCHEMA = object().shape({
-  tested: bool().required()
+  tested: bool().required(),
+  testDate: date(),
+  testStatus: bool()
 });
 
 const AddStatus = () => {
-  const history = useHistory();
   const addDataToState = useCallback(
     values => {
       walletFormContainer.set(values);
-      history.push("/create-wallet/status");
+      // history.push("/create-wallet/status");
     },
-    [history]
+    []
   );
   return (
     <Formik
@@ -42,7 +36,7 @@ const AddStatus = () => {
       validationSchema={VALIDATION_SCHEMA}
       onSubmit={addDataToState}
     >
-      {({ handleSubmit }) => (
+      {({ handleSubmit, values }) => (
         <Form onSubmit={handleSubmit}>
           <BodyContainer>
             <RadioButton
@@ -53,19 +47,50 @@ const AddStatus = () => {
               ]}
               label="Have you done a CoviID test?"
             />
-            <TestDateSection>
-              <TextInput
-                name="testDate"
-                placeholder="Enter date"
-                label="Test date"
-              />
-              <Select
-                name="testDate"
-                placeholder="Please select"
-                label="Laboratory"
-                items={[]}
-              />
-            </TestDateSection>
+            {values.tested && (
+              <>
+                <TestDateSection>
+                  <TextInput
+                    name="testDate"
+                    type="date"
+                    placeholder="Enter date"
+                    label="Test date"
+                  />
+                  <Select
+                    abel="Laboratory"
+                    placeholder="Please select"
+                    name="testLab"
+                    displayProp="label"
+                    valueProp="value"
+                    items={[
+                      { label: "Lab 1", value: "lab_1" },
+                      { label: "Lab 2", value: "lab_2" },
+                      { label: "Lab 3", value: "lab_3" },
+                      { label: "Lab 5", value: "lab_4" }
+                    ]}
+                  />
+                </TestDateSection>
+                <RadioButton
+                  name="receivedResult"
+                  options={[
+                    { label: "Yes", value: true },
+                    { label: "No", value: false }
+                  ]}
+                  label="Have you received your results yet?"
+                />
+                <Select
+                  label="Test status"
+                  placeholder="Please select"
+                  name="testStatus"
+                  displayProp="label"
+                  valueProp="value"
+                  items={[
+                    { label: "Positive", value: true },
+                    { label: "Negative", value: false }
+                  ]}
+                />
+              </>
+            )}
           </BodyContainer>
 
           <Footer>

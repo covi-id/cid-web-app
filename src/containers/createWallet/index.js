@@ -50,7 +50,7 @@ const CreateWallet = () => {
   const addDataToState = useCallback(values => {
     walletFormContainer.set(values);
     history.push('/create-wallet/status')
-  }, []);
+  }, [history]);
   return (
     <Formik
       initialValues={INITIAL_VALUES}

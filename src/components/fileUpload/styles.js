@@ -28,7 +28,7 @@ const FileContainer = styled.div`
     backgroundImage &&
     css`
       background-image: url(${backgroundImage});
-      background-position: top left;
+      background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
       border: 2px solid #c9c0fa;
