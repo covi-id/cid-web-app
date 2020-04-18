@@ -3,8 +3,6 @@ import QRCode from 'qrcode.react'
 import html2canvas from 'html2canvas'
 import {
   Container,
-  MainLogo,
-  Header,
   CenterItemsContainer,
   Center,
   Text,
@@ -12,7 +10,6 @@ import {
   ProfilePic,
   PicContainer,
   Tick,
-  QR,
   QRContainer,
   DownloadButton,
 } from './styles'
