@@ -46,7 +46,7 @@ const TextInput = ({
 
 TextInput.propTypes = {
   name: string.isRequired,
-  type: oneOf(['text', 'password', 'number']),
+  type: oneOf(['text', 'password', 'number', 'date']),
   placeholder: string,
   label: string,
   defaultValue: oneOfType([string, number]),
