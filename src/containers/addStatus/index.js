@@ -8,11 +8,13 @@ import Button from 'components/button'
 import walletFormContainer from 'stateContainers/walletFormContainer'
 import RadioButton from 'components/radioButton'
 import Select from 'components/select'
+import api from 'api'
+import { useHistory } from 'react-router-dom'
 
 const INITIAL_VALUES = {
   tested: false,
   testDate: '',
-  testStatus: false,
+  covidStatus: false,
   testLab: '',
 }
 
@@ -23,10 +25,37 @@ const VALIDATION_SCHEMA = object().shape({
 })
 
 const AddStatus = () => {
-  const addDataToState = useCallback((values) => {
-    walletFormContainer.set(values)
-    // history.push("/create-wallet/status");
+  const history = useHistory()
+
+  const addDataToState = useCallback(async (values) => {
+    await walletFormContainer.set({ covidTest: { ...values } })
+    const { name, surname, id, telNumber, picture, covidTest } = {
+      ...walletFormContainer.state,
+    }
+    await api.wallet
+      .createWallet({
+        name,
+        surname,
+        id,
+        telNumber,
+        picture,
+        covidTest: {
+          testDate: covidTest.testDate || new Date(),
+          expiryDate: covidTest.testDate || new Date(),
+          covidStatus: covidTest.covidStatus,
+        },
+      })
+      .then(async (response) => {
+        await walletFormContainer.set({
+          ...response.data,
+        })
+        history.push('/create-wallet/issue')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }, [])
+
   return (
     <Formik
       initialValues={INITIAL_VALUES}
@@ -77,7 +106,7 @@ const AddStatus = () => {
                 <Select
                   label='Test status'
                   placeholder='Please select'
-                  name='testStatus'
+                  name='covidStatus'
                   displayProp='label'
                   valueProp='value'
                   items={[

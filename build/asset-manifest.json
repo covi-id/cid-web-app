@@ -1,20 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.9a45de8f.chunk.css",
-    "main.js": "/static/js/main.227620b7.chunk.js",
-    "main.js.map": "/static/js/main.227620b7.chunk.js.map",
+    "main.css": "/static/css/main.fde28197.chunk.css",
+    "main.js": "/static/js/main.612b527b.chunk.js",
+    "main.js.map": "/static/js/main.612b527b.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.e0d65699.js",
     "runtime-main.js.map": "/static/js/runtime-main.e0d65699.js.map",
-    "static/js/2.43dac59d.chunk.js": "/static/js/2.43dac59d.chunk.js",
-    "static/js/2.43dac59d.chunk.js.map": "/static/js/2.43dac59d.chunk.js.map",
+    "static/js/2.139aa96c.chunk.js": "/static/js/2.139aa96c.chunk.js",
+    "static/js/2.139aa96c.chunk.js.map": "/static/js/2.139aa96c.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.4da19c4d1ab8ddc0b37d02810cec08f9.js": "/precache-manifest.4da19c4d1ab8ddc0b37d02810cec08f9.js",
+    "precache-manifest.6e859054902b94ee50efead895dcf435.js": "/precache-manifest.6e859054902b94ee50efead895dcf435.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.9a45de8f.chunk.css.map": "/static/css/main.9a45de8f.chunk.css.map",
-    "static/js/2.43dac59d.chunk.js.LICENSE.txt": "/static/js/2.43dac59d.chunk.js.LICENSE.txt",
+    "static/css/main.fde28197.chunk.css.map": "/static/css/main.fde28197.chunk.css.map",
+    "static/js/2.139aa96c.chunk.js.LICENSE.txt": "/static/js/2.139aa96c.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/Montserrat-SemiBold.c641dbee.ttf",
     "static/media/QRCode.svg": "/static/media/QRCode.17418b11.svg",
-    "static/media/clip-icon.svg": "/static/media/clip-icon.34f5161a.svg",
+    "static/media/attachment_icon.svg": "/static/media/attachment_icon.34f5161a.svg",
+    "static/media/chevron.svg": "/static/media/chevron.07d32e56.svg",
+    "static/media/close_icon.svg": "/static/media/close_icon.9d4fefd4.svg",
     "static/media/desktop-landing-background.svg": "/static/media/desktop-landing-background.e0518171.svg",
     "static/media/desktop-profile-background.svg": "/static/media/desktop-profile-background.460f5dd1.svg",
     "static/media/desktop-purple-background.svg": "/static/media/desktop-purple-background.9c3e9704.svg",
@@ -27,8 +29,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.e0d65699.js",
-    "static/js/2.43dac59d.chunk.js",
-    "static/css/main.9a45de8f.chunk.css",
-    "static/js/main.227620b7.chunk.js"
+    "static/js/2.139aa96c.chunk.js",
+    "static/css/main.fde28197.chunk.css",
+    "static/js/main.612b527b.chunk.js"
   ]
 }
