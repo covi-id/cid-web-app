@@ -16,7 +16,6 @@ const Checkbox = ({
   disabled,
   labelInlineInd,
 }) => {
-  console.log(checked)
   return (
     <Container>
       <CheckboxLabel inline={labelInlineInd}>{label}</CheckboxLabel>
