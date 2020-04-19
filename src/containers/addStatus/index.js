@@ -49,7 +49,7 @@ const AddStatus = () => {
         })
         .then(async (response) => {
           await walletFormContainer.set({
-            ...response.data,
+            covidStatusUrl: response.data?.covidStatusUrl,
           })
           history.push('/create-wallet/issue')
         })

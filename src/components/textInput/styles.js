@@ -13,7 +13,6 @@ const Input = styled.input`
   caret-color: 10px solid #654cf0;
   transition: 0.2s ease-out;
   color: #ffffff;
-  box-shadow: 4px 10px 40px rgba(201, 192, 250, 0.8);
 
   &:focus {
     outline: none;
