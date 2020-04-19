@@ -2,14 +2,18 @@ import React from 'react'
 
 import CenterWrapper from 'components/centerWrapper'
 import { MainLogo, Container, Header } from './styles'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 const Nav = ({ children }) => {
   const history = useHistory()
+  const location = useLocation()
+
+  const issueQR = location.pathname.includes('create-wallet/issue')
+
   return (
     <Container>
       <Header>
-        <MainLogo onClick={() => history.push('/')} />
+        <MainLogo hide={issueQR} onClick={() => history.push('/')} />
       </Header>
       <CenterWrapper>{children}</CenterWrapper>
     </Container>

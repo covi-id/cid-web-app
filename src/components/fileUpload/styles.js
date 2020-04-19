@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components'
+import * as FormLabel from 'components/shared/formLabel'
 
 const Container = styled.div`
   position: relative;
@@ -7,7 +8,18 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+
+  @media screen and (min-width: 600px) {
+    ${FormLabel.Label} {
+      text-align: center;
+      & label {
+        margin-left: 0px;
+      }
+    }
+
+    margin-top: 9.27%;
+  }
+`
 
 const FileContainer = styled.div`
   height: 100%;
@@ -32,28 +44,32 @@ const FileContainer = styled.div`
       background-size: cover;
       background-repeat: no-repeat;
       border: 2px solid #c9c0fa;
+
+      @media screen and (max-width: 600px) {
+        padding: 65% 0%;
+      }
     `}
 
   &:focus {
     outline: none;
   }
-`;
+`
 
 const Label = styled.label`
-  font-size: 17px;
+  font-size: 1.06rem;
   color: #654cf0;
   font-weight: bold;
   height: 25px;
   width: 100%;
   text-align: left;
   margin-bottom: 13px;
-`;
+`
 
 const DropzoneLabel = styled.label`
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   color: #b2a5f7;
-`;
+`
 
 const CloseButton = styled.button`
   border-radius: 50%;
@@ -81,14 +97,14 @@ const CloseButton = styled.button`
   &:hover {
     background-color: #583dee;
   }
-`;
+`
 
 const AttachmentIcon = styled.img.attrs({
-  src: require("assets/images/attachment_icon.svg"),
-  alt: "attachment icon"
+  src: require('assets/images/attachment_icon.svg'),
+  alt: 'attachment icon',
 })`
   margin: 10px;
-`;
+`
 
 export {
   Container,
@@ -96,5 +112,5 @@ export {
   DropzoneLabel,
   AttachmentIcon,
   Label,
-  CloseButton
-};
+  CloseButton,
+}

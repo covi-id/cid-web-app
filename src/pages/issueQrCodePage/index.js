@@ -5,13 +5,16 @@ import {
   Container,
   CenterItemsContainer,
   Center,
-  Text,
+  Title,
   Heading,
   ProfilePic,
   PicContainer,
   Tick,
   QRContainer,
   DownloadButton,
+  MainLogo,
+  Card,
+  CardContent,
 } from './styles'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -21,9 +24,8 @@ const IssueQRCode = () => {
   const [state, setState] = useState()
 
   const codeStyle = {
-    margin: '5%',
-    height: '25%',
-    width: '25%',
+    width: '100%',
+    height: '100%',
   }
 
   useEffect(() => {
@@ -58,14 +60,19 @@ const IssueQRCode = () => {
 
   return (
     <Container>
-      <Text>
-        <Heading>COVI-ID created</Heading>
-      </Text>
-      <Center>
-        <CenterItemsContainer>
+      <Title>
+        <MainLogo />
+        <Heading>
+          <span>COVI-ID</span> created
+        </Heading>
+      </Title>
+      <Card>
+        <CardContent>
           <PicContainer>
             <ProfilePic src={state?.picture} />
           </PicContainer>
+          <Tick />
+
           <QRContainer>
             {state?.covidStatusUrl && (
               <QRCode
@@ -77,9 +84,8 @@ const IssueQRCode = () => {
             )}
           </QRContainer>
           <DownloadButton onClick={() => download()}>Download</DownloadButton>
-        </CenterItemsContainer>
-        <Tick />
-      </Center>
+        </CardContent>
+      </Card>
     </Container>
   )
 }
