@@ -19,7 +19,6 @@ import {
 import { useState } from 'react'
 import { useEffect } from 'react'
 import walletFormContainer from 'stateContainers/walletFormContainer'
-import ProfilePicture from 'assets/images/profile-picture-2.jpg'
 
 const IssueQRCode = () => {
   const [state, setState] = useState()
@@ -70,8 +69,7 @@ const IssueQRCode = () => {
       <Card>
         <CardContent>
           <PicContainer>
-            <ProfilePic src={ProfilePicture} />
-            {/* <ProfilePic src={state?.picture} /> */}
+            <ProfilePic src={state?.picture} />
           </PicContainer>
           <Tick />
 
