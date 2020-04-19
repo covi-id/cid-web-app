@@ -1,17 +1,16 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-const Label = styled.label`
-  font-size: 17px;
+export const Label = styled.label`
+  font-size: 1.06rem;
   color: #654cf0;
   font-weight: bold;
-  height: 25px;
   width: 100%;
   text-align: left;
 `
 
 const ErrorMessage = styled.label`
-  font-size: 10px;
+  font-size: 0.63rem;
   font-weight: 600;
   color: #ff4870;
   opacity: 0;
