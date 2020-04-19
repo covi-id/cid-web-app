@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const FormItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: 12px;
+  padding-bottom: 7.25%;
   align-items: flex-start;
-  width: 100%;
-`;
+  min-width: 45%;
+`
 
-export default FormItemWrapper;
+export default FormItemWrapper

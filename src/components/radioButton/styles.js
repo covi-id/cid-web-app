@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components'
 
 const Container = styled.div`
   display: flex;
@@ -8,13 +8,13 @@ const Container = styled.div`
   margin-bottom: 12px;
   margin-top: 10px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 1.375rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   margin-right: 40px;
-`;
+`
 
 const Checkmark = styled.span`
   position: absolute;
@@ -30,7 +30,7 @@ const Checkmark = styled.span`
     active &&
     css`
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         display: none;
         display: block;
@@ -42,16 +42,16 @@ const Checkmark = styled.span`
         background: #03ce8e;
       }
     `}
-`;
+`
 
 const Label = styled.span`
   color: #654cf0;
   font-weight: bold;
-  font-size: 17px;
-`;
+  font-size: 1.06rem;
+`
 
 const Options = styled.div`
   display: flex;
-`;
+`
 
-export { Container, Checkmark, Label, Options };
+export { Container, Checkmark, Label, Options }
