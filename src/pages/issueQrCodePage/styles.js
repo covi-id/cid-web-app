@@ -43,6 +43,7 @@ export const CardContent = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  max-width: 170px;
   margin: 8.84% auto;
   position: relative;
 
@@ -82,7 +83,10 @@ export const PicContainer = styled.div`
 
 export const ProfilePic = styled.img.attrs((props) => ({
   src: props.src,
-}))``
+}))`
+  height: auto;
+  width: 100%;
+`
 
 export const MainLogo = styled.img.attrs({ src: Logo })`
   width: 100%;
