@@ -9,6 +9,14 @@ export const BackTick = styled.img.attrs({ src: Back })`
   padding-bottom: 14px;
   padding-right: 10px;
 `
+export const BackButton = styled.button`
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+`
+
 export const InlineContainer = styled.div`
   display: flex;
   flex-direction: row;

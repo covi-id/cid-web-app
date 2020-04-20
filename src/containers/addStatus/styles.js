@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
 import { Input } from 'components/textInput/styles'
 import { Button } from 'components/button/styles'
-import FormItemWrapper from 'components/shared/formItemWrapper'
 
 const Form = styled.form`
   width: 100%;

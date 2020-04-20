@@ -10,6 +10,7 @@ import {
   StepHeading,
   BackTick,
   InlineContainer,
+  BackButton,
 } from './styles.js'
 
 const CreateWalletPage = () => {
@@ -21,7 +22,9 @@ const CreateWalletPage = () => {
           <StepText>Step 1/2</StepText>
         </StepIndicator>
         <InlineContainer>
-          <BackTick onClick={() => history.push('/')} />
+          <BackButton onClick={() => history.push('/')}>
+            <BackTick />
+          </BackButton>
           <StepHeading>Enter details</StepHeading>
         </InlineContainer>
       </HeadingContainer>
