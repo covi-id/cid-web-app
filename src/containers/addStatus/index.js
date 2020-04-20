@@ -74,7 +74,7 @@ const AddStatus = () => {
                 { label: 'Yes', value: true },
                 { label: 'No', value: false },
               ]}
-              label='Have you done a CoviID test?'
+              label='Have you done a Covid-19 test?'
             />
             {values.tested && (
               <>
