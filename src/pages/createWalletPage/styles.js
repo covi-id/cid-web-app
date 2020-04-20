@@ -1,5 +1,19 @@
 import styled from 'styled-components'
 import BackgroundMobile from 'assets/images/mobile-create-wallet-background.svg'
+import Back from 'assets/icons/back-icon.svg'
+
+export const BackTick = styled.img.attrs({ src: Back })`
+  width: 50px;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 14px;
+  padding-right: 10px;
+`
+export const InlineContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: -50px;
+`
 
 export const Container = styled.div`
   height: 100%;
@@ -22,7 +36,6 @@ export const Heading = styled.div`
   width: 100%;
   height: 100%;
   margin-bottom: 14px;
-
   font-size: 3rem;
   font-weight: bold;
   color: #654cf0;
@@ -67,7 +80,7 @@ export const HeadingContainer = styled.div`
   flex-direction: column;
 `
 export const StepHeading = styled.h1`
-  font-size: 3rem;
+  font-size: 2.9rem;
   font-weight: bold;
   color: #654cf0;
   margin: 10px 0 30px 0;
