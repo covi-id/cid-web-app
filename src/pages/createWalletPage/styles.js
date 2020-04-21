@@ -78,6 +78,11 @@ export const StepHeading = styled.h1`
   font-weight: bold;
   color: #654cf0;
 
+  @media screen and (max-width: 768px) {
+    font-size: 28px;
+    margin: 2.42% 0 12.36% 0;
+  }
+
   @media screen and (max-width: 600px) {
     font-size: 28px;
     margin: 2.42% 0 12.36% 0;
