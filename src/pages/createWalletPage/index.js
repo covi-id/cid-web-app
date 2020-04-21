@@ -1,24 +1,36 @@
-import React from "react";
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 
-import CreateWallet from "containers/createWallet";
+import CreateWallet from 'containers/createWallet'
 import {
   Container,
   StepText,
   StepIndicator,
   HeadingContainer,
-  StepHeading
-} from "./styles.js";
+  StepHeading,
+  BackTick,
+  InlineContainer,
+  BackButton,
+} from './styles.js'
 
-const CreateWalletPage = () => (
-  <Container>
-    <HeadingContainer>
-      <StepIndicator>
-        <StepText> Step 1/2</StepText>
-      </StepIndicator>
-      <StepHeading>Enter details</StepHeading>
-    </HeadingContainer>
-    <CreateWallet />
-  </Container>
-);
+const CreateWalletPage = () => {
+  const history = useHistory()
+  return (
+    <Container>
+      <HeadingContainer>
+        <StepIndicator>
+          <StepText>Step 1/2</StepText>
+        </StepIndicator>
+        <InlineContainer>
+          <BackButton onClick={() => history.push('/')}>
+            <BackTick />
+          </BackButton>
+          <StepHeading>Enter details</StepHeading>
+        </InlineContainer>
+      </HeadingContainer>
+      <CreateWallet />
+    </Container>
+  )
+}
 
-export default CreateWalletPage;
+export default CreateWalletPage
