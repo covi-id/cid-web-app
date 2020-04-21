@@ -1,11 +1,22 @@
 import styled from 'styled-components'
-import { Label } from 'components/form-input-style/styles'
 
 const Container = styled.div`
   display: flex;
   flex-direction: row-reverse;
   margin-top: 15px;
   justify-content: flex-end;
+`
+export const Label = styled.div`
+  color: #654cf0;
+  font-weight: 600;
+  font-size: 17px;
+  padding-bottom: 40px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+    white-space: pre-wrap;
+    padding-bottom: 20px;
+  }
 `
 
 const CheckboxLabel = styled(Label)`
@@ -30,8 +41,9 @@ const Icon = styled.svg`
 const HiddenCheckbox = styled.input.attrs({
   type: 'checkbox',
 })`
-  opacity: 0;
+  opacity: 1;
   position: absolute;
+  display: none;
 `
 const StyledCheckbox = styled.div`
   display: inline-block;
@@ -45,12 +57,17 @@ const StyledCheckbox = styled.div`
   ${Icon} {
     visibility: ${(props) => (props.checked ? 'visible' : 'hidden')};
   }
+
+  @media screen and (max-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
 `
 export {
   Container,
+  CheckboxLabel,
   CheckboxContainer,
   Icon,
   StyledCheckbox,
   HiddenCheckbox,
-  CheckboxLabel,
 }
