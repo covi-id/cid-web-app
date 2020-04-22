@@ -9,6 +9,7 @@ export default function (instance) {
           "telNumber": "string",
           "picture": "string",
           "covidTest": {
+            "refNumber": "string",
             "testDate": "2020-04-17T22:00:40.492Z",
             "expiryDate": "2020-04-17T22:00:40.492Z",
             "covidStatus": 0

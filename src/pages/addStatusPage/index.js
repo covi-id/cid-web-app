@@ -1,21 +1,12 @@
 import React from 'react'
 
 import AddStatus from 'containers/addStatus'
-import {
-  Container,
-  StepText,
-  StepIndicator,
-  HeadingContainer,
-  StepHeading,
-} from './styles.js'
+import { Container, HeadingContainer, StepHeading } from './styles.js'
 
 const AddStatusPage = () => (
   <Container>
     <HeadingContainer>
-      <StepIndicator>
-        <StepText> Step 2/2</StepText>
-      </StepIndicator>
-      <StepHeading>COVI-ID status</StepHeading>
+      <StepHeading>New test result</StepHeading>
     </HeadingContainer>
     <AddStatus />
   </Container>

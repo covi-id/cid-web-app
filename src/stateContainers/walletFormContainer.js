@@ -8,6 +8,7 @@ const DEFAULT_STATE = {
   consent: '',
   picture: '',
   covidTest: {
+    refNumber: '',
     testDate: '',
     expiryDate: '',
     covidStatus: 0,
