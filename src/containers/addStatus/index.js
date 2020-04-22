@@ -1,8 +1,15 @@
 import React, { useCallback } from 'react'
 import { Formik } from 'formik'
-import { object, bool, date } from 'yup'
+import { object, bool, date, string } from 'yup'
 
-import { Form, Footer, BodyContainer, TestDateSection } from './styles'
+import {
+  Form,
+  Footer,
+  BodyContainer,
+  TestDateSection,
+  InputWrapper,
+  MakeInline,
+} from './styles'
 import TextInput from 'components/textInput'
 import Button from 'components/button'
 import walletFormContainer from 'stateContainers/walletFormContainer'
@@ -12,7 +19,7 @@ import api from 'api'
 import { useHistory } from 'react-router-dom'
 
 const INITIAL_VALUES = {
-  tested: false,
+  refNumber: '',
   testDate: '',
   covidStatus: false,
   testLab: '',
@@ -20,7 +27,7 @@ const INITIAL_VALUES = {
 }
 
 const VALIDATION_SCHEMA = object().shape({
-  tested: bool().required(),
+  refNumber: string().max(30 | 'Max 30 characters.'),
   testDate: date(),
   testStatus: bool(),
 })
@@ -42,6 +49,7 @@ const AddStatus = () => {
           telNumber,
           picture: picture.split(',')[1],
           covidTest: {
+            refNumber: covidTest.refNumber,
             testDate: covidTest.testDate || new Date(),
             expiryDate: covidTest.testDate || new Date(),
             covidStatus: covidTest.covidStatus,
@@ -68,44 +76,43 @@ const AddStatus = () => {
       {({ handleSubmit, values }) => (
         <Form onSubmit={handleSubmit}>
           <BodyContainer>
-            <RadioButton
-              name='tested'
-              options={[
-                { label: 'Yes', value: true },
-                { label: 'No', value: false },
-              ]}
-              label='Have you done a CoviID test?'
-            />
-            {values.tested && (
-              <>
-                <TestDateSection>
-                  <TextInput
-                    name='testDate'
-                    type='date'
-                    placeholder='Enter date'
-                    label='Test date'
-                  />
-                  <Select
-                    label='Laboratory'
-                    placeholder='Please select'
-                    name='testLab'
-                    displayProp='label'
-                    valueProp='value'
-                    items={[
-                      { label: 'Pathcare', value: 'lab_1' },
-                      { label: 'Lancet Laboratories', value: 'lab_2' },
-                      { label: 'NHLS', value: 'lab_3' },
-                      { label: "I don't know", value: 'lab_4' },
-                    ]}
-                  />
-                </TestDateSection>
+            <>
+              <TestDateSection>
+                <TextInput
+                  label='Test reference number'
+                  placeholder='Enter reference number'
+                  name='refNumber'
+                />
+                <Select
+                  label='Laboratory'
+                  placeholder='Please select'
+                  name='testLab'
+                  displayProp='label'
+                  valueProp='value'
+                  items={[
+                    { label: 'Pathcare', value: 'lab_1' },
+                    { label: 'Lancet Laboratories', value: 'lab_2' },
+                    { label: 'NHLS', value: 'lab_3' },
+                    { label: "I don't know", value: 'lab_4' },
+                  ]}
+                />
+              </TestDateSection>
+              <InputWrapper>
+                <TextInput
+                  name='testDate'
+                  type='date'
+                  placeholder='Enter date'
+                  label='Test date'
+                />
+              </InputWrapper>
+              <MakeInline>
                 <RadioButton
                   name='receivedResult'
                   options={[
                     { label: 'Yes', value: true },
                     { label: 'No', value: false },
                   ]}
-                  label='Have you received your results yet?'
+                  label='Did you get your results?'
                 />
                 {values.receivedResult && (
                   <Select
@@ -120,13 +127,13 @@ const AddStatus = () => {
                     ]}
                   />
                 )}
-              </>
-            )}
+              </MakeInline>
+            </>
           </BodyContainer>
 
           <Footer>
             <Button type='submit' onClick={handleSubmit}>
-              Generate QR
+              Next
             </Button>
           </Footer>
         </Form>

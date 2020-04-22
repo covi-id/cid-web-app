@@ -8,7 +8,7 @@ const Input = styled.input`
   background-color: #c9c0fa;
   padding: 0 20px;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 10px;
   font-weight: 500;
   caret-color: 10px solid #654cf0;
   transition: 0.2s ease-out;

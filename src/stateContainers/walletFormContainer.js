@@ -5,8 +5,10 @@ const DEFAULT_STATE = {
   surname: '',
   id: '',
   telNumber: '',
+  consent: '',
   picture: '',
   covidTest: {
+    refNumber: '',
     testDate: '',
     expiryDate: '',
     covidStatus: 0,

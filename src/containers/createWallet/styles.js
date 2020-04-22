@@ -56,10 +56,14 @@ const Right = styled.div`
 
 const Footer = styled.div`
   text-align: center;
-  padding: 50px 0;
+  padding: 18px 0 50px 30px;
+
+  @media screen and (max-width: 768px) {
+    padding: 30px 0 50px 30px;
+  }
 
   @media screen and (max-width: 600px) {
-    padding: 18.12% 0%;
+    padding: 20px 0px 50px 10px;
   }
 `
 

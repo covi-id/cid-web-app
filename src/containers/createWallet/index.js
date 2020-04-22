@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { Formik } from 'formik'
-import { object, string } from 'yup'
+import { object, string, bool } from 'yup'
 
 import { Form, Left, Right, Footer, BodyContainer } from './styles'
 import TextInput from 'components/textInput'
@@ -8,12 +8,14 @@ import FileUpload from 'components/fileUpload'
 import Button from 'components/button'
 import walletFormContainer from 'stateContainers/walletFormContainer'
 import { useHistory } from 'react-router-dom'
+import Checkbox from 'components/checkbox'
 
 const INITIAL_VALUES = {
   name: '',
   surname: '',
   id: '',
   telNumber: '',
+  consent: false,
   picture: '',
 }
 
@@ -39,6 +41,15 @@ const VALIDATION_SCHEMA = object().shape({
       value
     )
   ),
+  consent: bool()
+    .label('Consent')
+    .required('*Required')
+
+    .test(
+      'Test for true',
+      'You must agree to the privacy policy before proceeding',
+      (value) => value === true
+    ),
 })
 
 const CreateWallet = () => {
@@ -55,7 +66,7 @@ const CreateWallet = () => {
       initialValues={INITIAL_VALUES}
       validationSchema={VALIDATION_SCHEMA}
       onSubmit={addDataToState}>
-      {({ handleSubmit }) => (
+      {({ handleSubmit, handleChange, values }) => (
         <Form onSubmit={handleSubmit}>
           <BodyContainer>
             <Left>
@@ -88,6 +99,25 @@ const CreateWallet = () => {
           </BodyContainer>
 
           <Footer>
+            <Checkbox
+              name='consent'
+              onChange={handleChange}
+              labelInlineInd={true}
+              checked={!!values?.consent}
+              label={
+                <>
+                  By proceeding, I consent to the{' '}
+                  <a
+                    href='https://docs.google.com/document/d/19u3WE-w5VfNNyxQrYmZxsRRHH-WY0VBfE1eMmxRf9rQ/edit?usp=sharing'
+                    target='_blank'
+                    rel='noopener noreferrer'>
+                    {' '}
+                    privacy policy
+                  </a>
+                </>
+              }
+            />
+
             <Button type='submit' onClick={handleSubmit}>
               Next
             </Button>
