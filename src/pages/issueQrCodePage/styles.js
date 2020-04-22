@@ -120,26 +120,7 @@ export const QR = styled.img.attrs({ src: QRCode })`
   margin: 0 auto;
 `
 
-export const Center = styled.div`
-  width: 40.2%;
-  height: 64.8%;
-  position: relative;
-  border-radius: 2em;
-  margin-left: 0.82%;
-  margin-top: 2%;
-  min-width: 600px;
-  min-height: 580px;
-  max-height: 800px;
 
-  @media screen and (max-width: 600px) {
-    min-width: unset;
-    min-height: unset;
-    max-height: unset;
-    margin-top: 7.97%;
-    width: 41.06%;
-    margin-left: 0%;
-  }
-`
 
 export const Title = styled.div`
   justify-content: center;
