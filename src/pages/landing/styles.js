@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import FirstIcon from 'assets/icons/landing-icon.svg'
 import BackgroundMobile from 'assets/images/mobile-landing-background.svg'
+import * as ButtonLink from 'components/buttonLink/styles'
 
 export const Container = styled.div`
   display: flex;
@@ -28,7 +29,12 @@ export const Heading = styled.h2`
   margin: 0;
   margin-bottom: 19.43%;
 
-  font-size: 3rem;
+  font-size: 48px;
   font-weight: bold;
   color: #654cf0;
+`
+export const ButtonsContainer = styled.div`
+  ${ButtonLink.Container} {
+    margin-bottom: 24px;
+  }
 `
