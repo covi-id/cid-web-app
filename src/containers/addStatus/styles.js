@@ -22,7 +22,7 @@ const InputWrapper = styled.div`
   padding-bottom: 20px;
 
   @media screen and (max-width: 600px) {
-width: 215npmpx;
+    width: 215px;
   }
 `
 
