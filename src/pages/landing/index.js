@@ -19,7 +19,7 @@ const Landing = () => {
           Add a test result
         </ButtonLink>
         <ButtonLink
-          to=''
+          to='https://thedeltastudio.typeform.com/to/RCrTgL'
           icon={require('assets/icons/plus-icon.svg')}>
           Register organisation
         </ButtonLink>
