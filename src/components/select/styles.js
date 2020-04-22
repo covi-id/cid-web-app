@@ -33,6 +33,7 @@ const Title = styled.label`
   color: #ffffff;
   font-size: 1rem;
   margin-left: 19px;
+  margin-bottom: 1px;
 `
 
 const Value = styled.label`

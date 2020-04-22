@@ -17,6 +17,25 @@ const BodyContainer = styled.div`
   }
 `
 
+const InputWrapper = styled.div`
+  width: 245px;
+  padding-bottom: 20px;
+
+  @media screen and (max-width: 600px) {
+    width: 215px;
+  }
+`
+
+const MakeInline = styled.div`
+  display: flex;
+  flex: row;
+  height: 70px;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+`
+
 const TestDateSection = styled.div`
   display: flex;
   justify-content: space-between;
@@ -50,6 +69,18 @@ const Footer = styled.div`
   ${Button} {
     background: #03f5a9;
   }
+
+  @media screen and (max-width: 600px) {
+    margin-top: 50px;
+  }
 `
 
-export { Form, Footer, BodyContainer, TestDateSection, HideContainer }
+export {
+  Form,
+  Footer,
+  BodyContainer,
+  TestDateSection,
+  HideContainer,
+  InputWrapper,
+  MakeInline,
+}
