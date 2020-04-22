@@ -5,11 +5,16 @@ import ButtonLink from 'components/buttonLink'
 const cardsInfo = [
   {
     icon: '1',
-    text: 'Wa wa wee wah',
-    buttonText: 'One',
+    text: 'Scan my QR using my phone',
+    buttonText: 'Scan QR code',
   },
-  { icon: '2', text: 'Wa wa wee wah', buttonText: 'Two' },
-  { icon: '3', text: 'Wa wa wee wah', buttonText: 'Three' },
+  {
+    icon: '2',
+    text: 'I have my QR image downloaded',
+    buttonText: 'Upload QR code',
+  },
+
+  { icon: '3', text: "I don't have a Covi-ID yet", buttonText: 'Generate ' },
 ]
 
 const Card = () => {
