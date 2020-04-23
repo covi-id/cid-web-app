@@ -11,6 +11,7 @@ import Step1 from 'pages/createWalletPage'
 import Step2 from 'pages/addStatusPage'
 import Step3 from 'pages/issueQrCodePage'
 import Main from 'components/main'
+import ConnectCoviid from 'pages/cardsPage'
 
 const Root = () => (
   <Router>
@@ -18,6 +19,9 @@ const Root = () => (
       <Switch>
         <Route exact path='/'>
           <Landing />
+        </Route>
+        <Route path='/connect-coviid'>
+          <ConnectCoviid/>
         </Route>
         <Route path='/create-wallet/details'>
           <Step1 />

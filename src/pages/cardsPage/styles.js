@@ -33,8 +33,8 @@ export const Heading = styled.h2`
   font-weight: bold;
   color: #654cf0;
 `
-export const ButtonsContainer = styled.div`
-  ${ButtonLink.Container} {
-    margin-bottom: 24px;
-  }
+export const CardsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  
 `
