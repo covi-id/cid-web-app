@@ -11,6 +11,8 @@ import Step1 from 'pages/createWalletPage'
 import Step2 from 'pages/addStatusPage'
 import Step3 from 'pages/issueQrCodePage'
 import Main from 'components/main'
+import ConnectCoviid from 'pages/cardsPage'
+import VerificationConsent from 'pages/verificationConsentPage'
 
 const Root = () => (
   <Router>
@@ -18,6 +20,9 @@ const Root = () => (
       <Switch>
         <Route exact path='/'>
           <Landing />
+        </Route>
+        <Route path='/connect-coviid'>
+          <ConnectCoviid />
         </Route>
         <Route path='/create-wallet/details'>
           <Step1 />
@@ -28,6 +33,10 @@ const Root = () => (
         <Route path='/create-wallet/issue'>
           <Step3 />
         </Route>
+        <Route path='/consent-verification'>
+          <VerificationConsent />
+        </Route>
+
         <Route path='*'>
           <Redirect to='/'></Redirect>
         </Route>
