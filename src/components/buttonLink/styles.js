@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Container = styled(Link)`
   display: flex;
   text-decoration: none;
-  height: 50px;
+  height: 60px;
   justify-content: space-evenly;
 
   align-items: center;
@@ -22,7 +22,9 @@ const Container = styled(Link)`
 
 const Text = styled.span`
   padding: 10px;
-  width: 200px;
+  padding-bottom: 13px;
+  font-size: 16px;
+  width: 210px;
 `
 
 const Icon = styled.img`
