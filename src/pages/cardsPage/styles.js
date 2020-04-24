@@ -25,16 +25,29 @@ export const Icon = styled.img`
 export const LandingIcon = styled(Icon).attrs({ src: FirstIcon })``
 
 export const Heading = styled.h2`
-  width: 100%;
-  margin: 0;
-  margin-bottom: 19.43%;
+  width: 310px;
 
   font-size: 48px;
   font-weight: bold;
   color: #654cf0;
 `
+export const HeadingContainer = styled.div`
+  margin-bottom: 60px;
+  margin-top: -50px;
+  justify-content: center;
+
+  @media screen and (max-width: 600px) {
+    margin-top: 40px;
+  }
+`
+
 export const CardsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  
+  margin-top: -50px;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    margin-top: -140px;
+  }
 `

@@ -1,15 +1,36 @@
 import React from 'react'
-import { StyledCard, Icon, Text, TextBox } from './styles'
+import {
+  StyledCard,
+  Icon,
+  Text,
+  TextBox,
+  ItemWrapper,
+  PhoneLogo,
+  QrLogo,
+  CovidLogo,
+} from './styles'
 import ButtonLink from 'components/buttonLink'
 
 const cardsInfo = [
   {
-    icon: '1',
-    text: 'Wa wa wee wah',
-    buttonText: 'One',
+    icon: <PhoneLogo />,
+    text: 'Scan my QR using my phone',
+    buttonText: 'Scan QR code',
+    link: '',
   },
-  { icon: '2', text: 'Wa wa wee wah', buttonText: 'Two' },
-  { icon: '3', text: 'Wa wa wee wah', buttonText: 'Three' },
+  {
+    icon: <QrLogo />,
+    text: 'I have my QR image download',
+    buttonText: 'Upload QR code',
+    link: '',
+  },
+
+  {
+    icon: <CovidLogo />,
+    text: "I don't have a Covi-ID yet",
+    buttonText: 'Generate ',
+    link: '/create-wallet/details',
+  },
 ]
 
 const Card = () => {
@@ -17,11 +38,13 @@ const Card = () => {
     <>
       {cardsInfo.map((card, index) => (
         <StyledCard key={index}>
-          <Icon src={card.icon} />
-          <TextBox>
-            <Text>{card.text}</Text>
-            <ButtonLink>{card.buttonText}</ButtonLink>
-          </TextBox>
+          <ItemWrapper>
+            {card.icon}
+            <TextBox>
+              <Text>{card.text}</Text>
+              <ButtonLink to={card.link}>{card.buttonText}</ButtonLink>
+            </TextBox>
+          </ItemWrapper>
         </StyledCard>
       ))}
     </>
