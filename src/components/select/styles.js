@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 const Wrapper = styled.div`
   position: relative;
   margin: 10px 0px;
-  width: 275px;
+  width: 100%;
 
   @media screen and (max-width: 600px) {
     width: 100%;

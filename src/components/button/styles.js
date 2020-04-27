@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled, { css } from "styled-components";
 
 const Button = styled.button`
   border-radius: 60px;
-  min-width: 180px;
+  width: 180px;
   min-height: 50px;
   font-size: 0.94rem;
   font-weight: bold;
@@ -11,6 +11,7 @@ const Button = styled.button`
   cursor: pointer;
   color: #513cc5;
   background-color: #03f5a9;
+  margin: 25px auto;
 
   &:disabled {
     background-color: #e1fff6;
@@ -24,6 +25,18 @@ const Button = styled.button`
   &:hover {
     background-color: #02e8a0;
   }
-`
 
-export { Button }
+  ${({ secondary }) =>
+    secondary &&
+    css`
+      color: #b6b3c9;
+      background-color: transparent;
+
+      &:hover {
+        background-color: transparent;
+        color: #8b86a9;
+      }
+    `}
+`;
+
+export { Button };

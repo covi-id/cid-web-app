@@ -9,22 +9,20 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (min-width: 600px) {
+  @media screen and (max-width: 600px) {
     ${FormLabel.Label} {
       text-align: center;
       & label {
         margin-left: 0px;
       }
     }
-
-    margin-top: 9.27%;
   }
 `
 
 const FileContainer = styled.div`
-  height: 100%;
+  height: 240px;
   border: 2px dashed #c9c0fa;
-  width: 100%;
+  width: 240px;
   background-color: #f1f0f8;
   border-radius: 20px;
   display: flex;

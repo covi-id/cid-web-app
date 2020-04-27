@@ -12,6 +12,7 @@ import {
 } from "./styles";
 import toBase64 from "utils/toBase64";
 import FormLabel from "components/shared/formLabel";
+import FormItemWrapper from "components/shared/formItemWrapper";
 
 const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
   const { setFieldValue } = formik;
@@ -40,6 +41,7 @@ const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
   });
 
   return (
+    <FormItemWrapper>
     <Container>
       <FormLabel error={error} description={label} name={name} />
 
@@ -59,6 +61,7 @@ const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
         )}
       </FileContainer>
     </Container>
+    </FormItemWrapper>
   );
 };
 
