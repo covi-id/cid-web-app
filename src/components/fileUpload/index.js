@@ -8,26 +8,35 @@ import {
   FileContainer,
   DropzoneLabel,
   AttachmentIcon,
-  CloseButton,
+  CloseButton
 } from "./styles";
 import toBase64 from "utils/toBase64";
 import FormLabel from "components/shared/formLabel";
 import FormItemWrapper from "components/shared/formItemWrapper";
+import ImageCrop from "components/imageCrop";
+import b64toBlob from "utils/b64toBlob";
 
 const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
+  const [uncroppedImage, setUncroppedImage] = useState(null)
   const { setFieldValue } = formik;
   const error = formik.touched[name] && formik.errors[name];
-
   const [image, setImage] = useState(null);
+
   const onDrop = useCallback(
     async acceptedFiles => {
       const file = acceptedFiles[0];
       const base64Image = await toBase64(file);
-      setFieldValue(name, base64Image);
-      setImage(URL.createObjectURL(file));
+      setUncroppedImage(base64Image);
     },
-    [name, setFieldValue]
+    []
   );
+
+  const closeHandler = useCallback((image) => {
+    setFieldValue(name, image);
+    const file = b64toBlob(image, 'image/png')
+    setImage(URL.createObjectURL(file));
+    setUncroppedImage(null)
+  }, [name, setFieldValue]);
 
   const removeHandler = useCallback(() => {
     setFieldValue(name, "");
@@ -42,25 +51,31 @@ const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
 
   return (
     <FormItemWrapper>
-    <Container>
-      <FormLabel error={error} description={label} name={name} />
+      <ImageCrop
+        open={!!uncroppedImage}
+        closeHandler={closeHandler}
+        cropHandler={closeHandler}
+        imageB64={uncroppedImage}
+      />
+      <Container>
+        <FormLabel error={error} description={label} name={name} />
 
-      <CloseButton active={!!image} onClick={removeHandler}>
-        <img src={require("assets/images/close_icon.svg")} alt="close icon" />
-      </CloseButton>
+        <CloseButton active={!!image} onClick={removeHandler}>
+          <img src={require("assets/images/close_icon.svg")} alt="close icon" />
+        </CloseButton>
 
-      <FileContainer {...getRootProps()} backgroundImage={image}>
-        <input name={name} {...getInputProps()} />
-        {image ? null : isDragActive ? (
-          <DropzoneLabel>{dropText}</DropzoneLabel>
-        ) : (
-          <>
-            <AttachmentIcon />
-            <DropzoneLabel>{placeholder}</DropzoneLabel>
-          </>
-        )}
-      </FileContainer>
-    </Container>
+        <FileContainer {...getRootProps()} backgroundImage={image}>
+          <input name={name} {...getInputProps()} />
+          {image ? null : isDragActive ? (
+            <DropzoneLabel>{dropText}</DropzoneLabel>
+          ) : (
+            <>
+              <AttachmentIcon />
+              <DropzoneLabel>{placeholder}</DropzoneLabel>
+            </>
+          )}
+        </FileContainer>
+      </Container>
     </FormItemWrapper>
   );
 };

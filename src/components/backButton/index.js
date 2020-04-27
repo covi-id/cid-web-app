@@ -6,8 +6,8 @@ import { BackButton as Button, BackTick } from "./styles";
 const BackButton = ({ path = "/" }) => {
   const history = useHistory();
   return (
-    <Button>
-      <BackTick onClick={() => history.push(path)} />
+    <Button onClick={() => history.push(path)}>
+      <BackTick />
     </Button>
   );
 };

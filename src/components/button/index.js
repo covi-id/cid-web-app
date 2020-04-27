@@ -3,8 +3,13 @@ import { oneOf, func } from "prop-types";
 import { Button as StyledButton } from "./styles";
 import isPropTypeHexCode from "utils/isPropTypeHexCode";
 
-const Button = ({ children, type, onClick, disabled, loading }) => (
-  <StyledButton type={type} onClick={onClick} disabled={disabled}>
+const Button = ({ children, type, onClick, disabled, loading, variant }) => (
+  <StyledButton
+    type={type}
+    onClick={onClick}
+    disabled={disabled}
+    variant={variant}
+  >
     {children}
   </StyledButton>
 );

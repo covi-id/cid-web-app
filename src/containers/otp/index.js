@@ -41,7 +41,7 @@ const OtpContainer = ({ receiver = "0766971653" }) => {
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <OtpInput name="otp" />
-            <Button type="button" secondary>
+            <Button type="button" variant="secondary">
               Resend OTP
             </Button>
             <Button type="submit">Submit</Button>

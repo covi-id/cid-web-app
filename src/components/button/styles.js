@@ -9,12 +9,10 @@ const Button = styled.button`
   transition: 0.2s ease-out;
   border: none;
   cursor: pointer;
-  color: #513cc5;
-  background-color: #03f5a9;
   margin: 25px auto;
 
   &:disabled {
-    background-color: #e1fff6;
+    /* background-color: #e1fff6; */
     color: #03ce8e;
   }
 
@@ -26,17 +24,35 @@ const Button = styled.button`
     background-color: #02e8a0;
   }
 
-  ${({ secondary }) =>
-    secondary &&
-    css`
-      color: #b6b3c9;
-      background-color: transparent;
+  ${({ variant }) => {
+    if (variant === "secondary") {
+      return `
+          color: #b6b3c9;
+          background-color: transparent;
 
-      &:hover {
-        background-color: transparent;
-        color: #8b86a9;
-      }
-    `}
+          &:hover {
+            background-color: transparent;
+            color: #8b86a9;
+          }`;
+    }
+
+    if (variant === "tertiary") {
+      console.log({ variant })
+      return `
+          background-color: #f1f0f8;
+          color: #534f69;
+
+          &:hover {
+            background-color: #e1dff0;
+          }
+        `;
+    }
+
+    return `
+          color: #513cc5;
+          background-color: #03f5a9;
+        `;
+  }}}
 `;
 
 export { Button };
