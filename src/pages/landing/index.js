@@ -19,7 +19,9 @@ const Landing = () => {
           Add a test result
         </ButtonLink>
         <ButtonLink
-          to='https://thedeltastudio.typeform.com/to/RCrTgL'
+          target='_blank'
+          rel='noreferrer noopener'
+          href='https://thedeltastudio.typeform.com/to/RCrTgL'
           icon={require('assets/icons/plus-icon.svg')}>
           Register organisation
         </ButtonLink>
