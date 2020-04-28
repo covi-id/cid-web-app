@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     background: url(${BackgroundMobile}) white no-repeat center;
     align-items: unset;
   }
@@ -34,7 +34,7 @@ export const TextContainer = styled.div`
   padding: 10px;
   flex-direction: column;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
   }
 `
 export const Text = styled.div`
@@ -74,7 +74,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
   }
 `
 export const ButtonWrapper = styled.div`

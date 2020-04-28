@@ -12,7 +12,7 @@ const Header = styled.nav`
   padding: 75px 80px 0 75px;
   width: 100%;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     padding: 9.66%;
     padding-bottom: 0%;
   }
@@ -22,7 +22,7 @@ const MainLogo = styled.img.attrs({ src: Logo })`
   width: 161px;
   display: ${props => props.hide && "none"};
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 110px;
   }
 `;

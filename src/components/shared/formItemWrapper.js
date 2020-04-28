@@ -7,7 +7,7 @@ const FormItemWrapper = styled.div`
   align-items: center;
   width: 100%;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     align-items: center;
     padding-bottom: 20px;
   }

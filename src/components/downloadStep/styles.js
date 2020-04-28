@@ -7,7 +7,7 @@ export const StepWrapper = styled.div`
 
   margin: 30px 0px 20px 0px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
 
     margin: 0px auto;
@@ -21,7 +21,7 @@ export const StepWrapper = styled.div`
 export const LeftWrapper = styled.div`
   width: 60px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     margin: 0 auto;
     width: 100px;
     justify-content: center;
@@ -38,7 +38,7 @@ export const NumberBox = styled.div`
   margin-top: 10px;
   margin: 10px 20px 0 0px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     margin: 0 auto;
     width: 30px;
     height: 30px;
@@ -53,7 +53,7 @@ export const StepNumber = styled.div`
   color: #b2a5f7;
   margin: 6px auto;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     margin: 2px auto;
   }
 `
@@ -65,7 +65,7 @@ export const RightWrapper = styled.div`
   width: 400px;
   justify-content: left;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
   }
 `
@@ -79,7 +79,7 @@ export const StepText = styled.div`
   margin: 0px auto 10px 2px;
   text-align: left;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
     text-align: center;
 

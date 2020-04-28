@@ -17,26 +17,26 @@ import ImageCrop from "components/imageCrop";
 import b64toBlob from "utils/b64toBlob";
 
 const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
-  const [uncroppedImage, setUncroppedImage] = useState(null)
+  const [uncroppedImage, setUncroppedImage] = useState(null);
   const { setFieldValue } = formik;
   const error = formik.touched[name] && formik.errors[name];
   const [image, setImage] = useState(null);
 
-  const onDrop = useCallback(
-    async acceptedFiles => {
-      const file = acceptedFiles[0];
-      const base64Image = await toBase64(file);
-      setUncroppedImage(base64Image);
-    },
-    []
-  );
+  const onDrop = useCallback(async acceptedFiles => {
+    const file = acceptedFiles[0];
+    const base64Image = await toBase64(file);
+    setUncroppedImage(base64Image);
+  }, []);
 
-  const closeHandler = useCallback((image) => {
-    setFieldValue(name, image);
-    const file = b64toBlob(image, 'image/png')
-    setImage(URL.createObjectURL(file));
-    setUncroppedImage(null)
-  }, [name, setFieldValue]);
+  const cropHandler = useCallback(
+    image => {
+      setFieldValue(name, image);
+      const file = b64toBlob(image, "image/png");
+      setImage(URL.createObjectURL(file));
+      setUncroppedImage(null);
+    },
+    [name, setFieldValue]
+  );
 
   const removeHandler = useCallback(() => {
     setFieldValue(name, "");
@@ -49,12 +49,16 @@ const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
     onDrop
   });
 
+  const closeHandler = useCallback(() => {
+    setUncroppedImage(null);
+  }, []);
+
   return (
     <FormItemWrapper>
       <ImageCrop
         open={!!uncroppedImage}
         closeHandler={closeHandler}
-        cropHandler={closeHandler}
+        cropHandler={cropHandler}
         imageB64={uncroppedImage}
       />
       <Container>

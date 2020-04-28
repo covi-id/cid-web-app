@@ -10,7 +10,7 @@ const Container = styled.div`
   width: 100%;
   z-index: 10;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     height: 100%;
     overflow: hidden;
   }
@@ -19,12 +19,13 @@ const Container = styled.div`
 const CloseContainer = styled.div`
   width: 100%;
   text-align: right;
-  padding-right: 20px;
-  padding-top: 20px;
+  padding-right: 40px;
+  padding-top: 40px;
 `;
 
 const CloseImg = styled.img.attrs({ src: CloseIcon })`
   width: 20px;
+  cursor: pointer;
 `;
 
 const InnerContainer = styled.div`
@@ -34,11 +35,11 @@ const InnerContainer = styled.div`
   height: 708px;
   margin: 70px auto;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     border-radius: 0;
-    margin: 0;
+    margin: 0 auto;
   }
 `;
 
@@ -48,9 +49,9 @@ const CropArea = styled.div`
   height: 400px;
   margin: auto 120px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
   }
 `;
 

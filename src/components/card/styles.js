@@ -28,7 +28,7 @@ const StyledCard = styled.div`
     margin-top: 30px;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 280px;
     margin: 15px auto;
     margin-right: 15px;
@@ -42,7 +42,7 @@ const Icon = styled.img`
   padding-top: 42px;
   padding-bottom: 34px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 70px;
   }
 `;
@@ -64,7 +64,7 @@ const ItemWrapper = styled.div`
   height: 345px;
   width: 305px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 280px;
   }
 `;
@@ -74,7 +74,7 @@ const TextBox = styled.div`
   height: 170px;
   margin: 0 auto;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 280px;
   }
 `;

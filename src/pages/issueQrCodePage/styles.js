@@ -17,13 +17,13 @@ export const Container = styled.div`
   text-align: center;
   align-items: center;
   display: flex;
-  background: url(${BackgroundDesktop}) white no-repeat center;
+  /* background: url(${BackgroundDesktop}) white no-repeat center; */
   background-size: cover;
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 600px) {
-    background: url(${BackgroundMobile}) white no-repeat center;
+  @media screen and (max-width: 768px) {
+    /* background: url(${BackgroundMobile}) white no-repeat center; */
     justify-content: unset;
     width: 100%;
   }
@@ -38,7 +38,7 @@ export const Card = styled.div`
   border-radius: 40px;
   margin-left: -40px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     background: url(${MobileCenterPiece}) no-repeat;
     width: unset;
     margin: 0 auto;
@@ -56,7 +56,7 @@ export const CardContent = styled.div`
   margin: 20px auto;
   position: relative;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     flex-direction: column;
   }
@@ -67,7 +67,7 @@ export const Right = styled.div`
   width: 400px;
   height: 390px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     height: 100%;
   }
@@ -87,7 +87,7 @@ export const QRContainer = styled.div`
   display: flex;
   margin: 0 80px 0 0;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 200px;
     height: 200px;
     margin: 0 auto 60px auto;
@@ -105,7 +105,7 @@ export const Title = styled.div`
   text-align: center;
   margin: 120px auto 30px auto;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     margin-top: unset;
   }
@@ -122,7 +122,7 @@ export const Heading = styled.div`
     font-weight: inherit;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     text-transform: capitalize;
     font-size: 2.5rem;
     & span {
@@ -138,7 +138,7 @@ export const CardBold = styled.div`
   color: #110a37;
   margin-top: 30px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     font-size: 20px;
     width: 120px;
     margin: 20px auto;
@@ -150,7 +150,7 @@ export const SocialsOverride = styled.div`
     width: 10px;
     margin: 0px auto 10px 70px;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
       margin: 0px auto 0px 60px;
     }
   }
@@ -164,7 +164,7 @@ export const Override = styled.div`
     min-width: 120px;
     font-size: 14px;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
       margin: 0px auto 26px auto;
     }
   }

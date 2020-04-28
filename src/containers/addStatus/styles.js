@@ -4,7 +4,7 @@ import { Button } from "components/button/styles";
 
 const Form = styled.form`
   width: 100%;
-  max-width: 600px;
+  max-width: 768px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +14,7 @@ const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
   }
 `;
@@ -30,7 +30,7 @@ const InputWrapper = styled.div`
   width: 245px;
   padding-bottom: 20px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 215px;
   }
 `;
@@ -40,7 +40,7 @@ const MakeInline = styled.div`
   flex: row;
   height: 70px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
   }
 `;
@@ -49,12 +49,12 @@ const TestDateSection = styled.div`
   display: flex;
   justify-content: flex-start;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
   }
 
   ${Input} {
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
       width: 100%;
     }
   }
@@ -79,7 +79,7 @@ const Footer = styled.div`
     background: #03f5a9;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     margin-top: 50px;
   }
 `;

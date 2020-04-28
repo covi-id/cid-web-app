@@ -10,7 +10,7 @@ export const SocialWrapper = styled.div`
   width: 178px;
   height: 50px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 280px;
     margin: 10px auto 70px auto;
   }
@@ -22,7 +22,7 @@ export const SocialLinks = styled.div`
   justify-content: space-evenly;
   cursor: pointer;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     margin: 20px auto 40px auto;
   }
 `
@@ -37,7 +37,7 @@ export const SmallIcon = styled.img`
 export const Facebook = styled(SmallIcon).attrs({ src: FacebookIcon })``
 export const Twitter = styled(SmallIcon).attrs({ src: TwitterIcon })`
   margin-left: 1px;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     margin-left: 14px;
   }
 `

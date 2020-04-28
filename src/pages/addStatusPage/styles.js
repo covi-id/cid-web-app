@@ -9,7 +9,7 @@ export const Container = styled.div`
   margin-top: 8%;
 
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     /* background: url(${BackgroundMobile}) white no-repeat;
     background-size: cover;
@@ -47,7 +47,7 @@ export const StepIndicator = styled.div`
   width: 42.43%;
   white-space: nowrap;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     padding: 0;
     width: 41.3%;
   }
@@ -71,7 +71,7 @@ export const StepHeading = styled.h1`
   color: #654cf0;
   margin: 10px 0 30px 0;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     font-size: 2.5rem;
   }
 `;

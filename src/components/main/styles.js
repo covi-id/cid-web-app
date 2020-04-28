@@ -1,25 +1,28 @@
-import styled, { css } from 'styled-components'
-import BackgroundDesktop from 'assets/images/desktop-landing-background.svg'
-import BackgroundMobile from 'assets/images/mobile-landing-background.svg'
-import BackgroundDesktopDark from 'assets/images/desktop-purple-background.svg'
+import styled, { css } from "styled-components";
+import BackgroundDesktop from "assets/images/desktop-landing-background.svg";
+import BackgroundMobile from "assets/images/mobile-landing-background.svg";
+import BackgroundDesktopDark from "assets/images/desktop-purple-background.svg";
 
 const Wrapper = styled.div`
   display: flex;
-  background: url(${BackgroundDesktop}) white no-repeat center;
+  background: ${({ background }) =>
+    background
+      ? `url(${background.desktop}) white no-repeat center;`
+      : `url(${BackgroundDesktop}) white no-repeat center;`};
   background-size: cover;
   background-position: bottom left;
-  height: 100%;
+  height: 100vh;
 
-  ${({ darkInd }) =>
-    darkInd &&
-    css`
-      background: url(${BackgroundDesktopDark}) white no-repeat center;
-      background-size: cover;
-    `}
+  @media screen and (max-width: 768px) {
+    background: ${({ background }) =>
+      background
+        ? `url(${background.mobile}) #f1f1f8 no-repeat center;`
+        : `url(${BackgroundMobile}) white no-repeat center;`};
+    background-size: contain;
+    background-position: top left;
 
-  @media screen and (max-width: 600px) {
-    background: url(${BackgroundMobile}) white no-repeat center;
+    min-height: 100vh;
   }
-`
+`;
 
-export { Wrapper }
+export { Wrapper };
