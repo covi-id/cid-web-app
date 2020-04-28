@@ -22,7 +22,7 @@ export const Container = styled.div`
 
 export const Icon = styled.img`
   width: 68px;
-  margin: -80px auto 10px auto;
+  margin: 80px auto 10px auto;
 
   @media screen and (max-width: 600px) {
     width: 48px;

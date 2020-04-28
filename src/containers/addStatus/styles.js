@@ -1,12 +1,14 @@
-import styled, { css } from 'styled-components'
-import { Input } from 'components/textInput/styles'
-import { Button } from 'components/button/styles'
+import styled, { css } from "styled-components";
+import { Input } from "components/textInput/styles";
+import { Button } from "components/button/styles";
 
 const Form = styled.form`
   width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
-`
+  align-items: center;
+`;
 
 const BodyContainer = styled.div`
   display: flex;
@@ -15,7 +17,14 @@ const BodyContainer = styled.div`
   @media screen and (max-width: 600px) {
     flex-direction: column;
   }
-`
+`;
+
+const ItemContainer = styled.div`
+  flex: 1;
+  min-width: 275px;
+  padding-right: 25px;
+  justify-content: center;
+`;
 
 const InputWrapper = styled.div`
   width: 245px;
@@ -24,7 +33,7 @@ const InputWrapper = styled.div`
   @media screen and (max-width: 600px) {
     width: 215px;
   }
-`
+`;
 
 const MakeInline = styled.div`
   display: flex;
@@ -34,11 +43,11 @@ const MakeInline = styled.div`
   @media screen and (max-width: 600px) {
     flex-direction: column;
   }
-`
+`;
 
 const TestDateSection = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   @media screen and (max-width: 600px) {
     flex-direction: column;
@@ -49,7 +58,7 @@ const TestDateSection = styled.div`
       width: 100%;
     }
   }
-`
+`;
 
 const HideContainer = styled.div`
   opacity: 0;
@@ -60,7 +69,7 @@ const HideContainer = styled.div`
     css`
       opacity: 1;
     `}
-`
+`;
 
 const Footer = styled.div`
   text-align: center;
@@ -73,7 +82,7 @@ const Footer = styled.div`
   @media screen and (max-width: 600px) {
     margin-top: 50px;
   }
-`
+`;
 
 export {
   Form,
@@ -83,4 +92,5 @@ export {
   HideContainer,
   InputWrapper,
   MakeInline,
-}
+  ItemContainer
+};

@@ -1,13 +1,13 @@
 import React from 'react'
-import { string } from 'prop-types'
+import { func } from 'prop-types'
 import { BtnContainer, BtnText } from './styles'
 
-const SmallButton = ({ children, to, buttonStyles = {} }) => (
-  <BtnContainer {...buttonStyles} to={to}>
+const SmallButton = ({ children, onClick, buttonStyles = {} }) => (
+  <BtnContainer onClick={onClick} {...buttonStyles}>
     <BtnText>{children}</BtnText>
   </BtnContainer>
 )
 SmallButton.propTypes = {
-  to: string.isRequired,
+  onClick: func.isRequired,
 }
 export default SmallButton

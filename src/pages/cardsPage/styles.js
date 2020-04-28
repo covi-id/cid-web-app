@@ -11,7 +11,7 @@ export const Container = styled.div`
   text-align: center;
 
   @media screen and (max-width: 600px) {
-    background: url(${BackgroundMobile}) white no-repeat center;
+    /* background: url(${BackgroundMobile}) white no-repeat center; */
     align-items: unset;
   }
 `

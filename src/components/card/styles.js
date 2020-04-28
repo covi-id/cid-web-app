@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import * as ButtonLink from 'components/buttonLink/styles'
-import LogoPhone from 'assets/icons/phone-icon.svg'
-import LogoQr from 'assets/icons/qr-scan-logo.svg'
-import LogoCovid from 'assets/icons/covid-logo.svg'
+import styled from "styled-components";
+import * as ButtonLink from "components/buttonLink/styles";
+import LogoPhone from "assets/icons/phone-icon.svg";
+import LogoQr from "assets/icons/qr-scan-logo.svg";
+import LogoCovid from "assets/icons/covid-logo.svg";
 
 const StyledCard = styled.div`
   height: 350px;
@@ -21,6 +21,13 @@ const StyledCard = styled.div`
     margin-top: 30px;
   }
 
+  ${ButtonLink.InternalLinkContainer} {
+    width: 180px;
+    margin: 0 auto;
+    min-width: 100px;
+    margin-top: 30px;
+  }
+
   @media screen and (max-width: 600px) {
     width: 280px;
     margin: 15px auto;
@@ -29,7 +36,7 @@ const StyledCard = styled.div`
       margin-top: 60px;
     }
   }
-`
+`;
 const Icon = styled.img`
   width: 78px;
   padding-top: 42px;
@@ -38,18 +45,18 @@ const Icon = styled.img`
   @media screen and (max-width: 600px) {
     width: 70px;
   }
-`
+`;
 
-const PhoneLogo = styled(Icon).attrs({ src: LogoPhone })``
+const PhoneLogo = styled(Icon).attrs({ src: LogoPhone })``;
 
 const QrLogo = styled(Icon).attrs({ src: LogoQr })`
   width: 88px;
-`
+`;
 
 const CovidLogo = styled(Icon).attrs({ src: LogoCovid })`
   padding-top: 46px;
   padding-bottom: 30px;
-`
+`;
 
 const ItemWrapper = styled.div`
   align-content: center;
@@ -60,7 +67,7 @@ const ItemWrapper = styled.div`
   @media screen and (max-width: 600px) {
     width: 280px;
   }
-`
+`;
 
 const TextBox = styled.div`
   width: 305px;
@@ -70,7 +77,7 @@ const TextBox = styled.div`
   @media screen and (max-width: 600px) {
     width: 280px;
   }
-`
+`;
 
 const Text = styled.div`
   width: 230px;
@@ -92,7 +99,7 @@ const Text = styled.div`
   /* Black */
 
   color: #110a37;
-`
+`;
 
 export {
   StyledCard,
@@ -102,5 +109,5 @@ export {
   ItemWrapper,
   CovidLogo,
   PhoneLogo,
-  QrLogo,
-}
+  QrLogo
+};
