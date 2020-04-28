@@ -37,10 +37,6 @@ export const Container = styled.div`
 
   @media screen and (max-width: 600px) {
     width: 100%;
-    padding: 28.99% 16.67% 8% 16.67%;
-    background: url(${BackgroundMobile}) white no-repeat;
-    background-size: cover;
-    justify-content: unset;
   }
 `
 

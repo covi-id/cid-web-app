@@ -6,7 +6,7 @@ const Container = styled.div`
   margin: 82px auto;
 
   @media screen and (max-width: 600px) {
-    margin: 95px 25px 0 25px;
+    margin: 95px 50px 0 50px;
   }
 `
 

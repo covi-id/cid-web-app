@@ -1,8 +1,15 @@
 import React, { useCallback } from "react";
 import { Formik } from "formik";
-import { object, string, bool } from "yup";
+import { object, string, bool, ref, number, mixed, reach } from "yup";
 
-import { Form, Left, Right, Footer, BodyContainer } from "./styles";
+import {
+  Form,
+  Left,
+  Right,
+  Footer,
+  BodyContainer,
+  MobileNumberContainer
+} from "./styles";
 import TextInput from "components/textInput";
 import FileUpload from "components/fileUpload";
 import Button from "components/button";
@@ -10,6 +17,7 @@ import walletFormContainer from "stateContainers/walletFormContainer";
 import { useHistory } from "react-router-dom";
 import Checkbox from "components/checkbox";
 import Select from "components/select";
+import FormLabel from "components/shared/formLabel";
 
 const INITIAL_VALUES = {
   name: "",
@@ -18,7 +26,10 @@ const INITIAL_VALUES = {
   telNumber: "",
   consent: false,
   picture: "",
-  idType: ""
+  idType: "",
+  countryCode: "+27",
+  identificationType: "",
+  identificationValue: ""
 };
 
 const VALIDATION_SCHEMA = object().shape({
@@ -36,11 +47,15 @@ const VALIDATION_SCHEMA = object().shape({
     .max(10, "Invalid SA number")
     .required("*Required"),
 
-  id: string()
-    .label("ID Number")
-    .min(13, "Must be 13 characters")
-    .max(13, "Must be 13 characters")
+  identificationType: string()
+    .label("Document Type")
     .required("*Required"),
+
+  identificationValue: string().when("identificationType", {
+    is: "IdentificationDocument",
+    then: string().length(13),
+    otherwise: string().length(8)
+  }).label("Identity Number"),
 
   picture: string("*Required").test("picture", "*Required", value =>
     /^data:image\/(?:gif|png|jpeg|bmp|webp)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g.test(
@@ -67,6 +82,7 @@ const CreateWallet = () => {
     },
     [history]
   );
+
   return (
     <>
       <Formik
@@ -84,37 +100,51 @@ const CreateWallet = () => {
                   placeholder="Enter surname"
                   label="Surname"
                 />
-                <TextInput
-                  name="telNumber"
-                  placeholder="Enter mobile number"
-                  label="Mobile Number"
-                />
+
+                <FormLabel description="Mobile Number" />
+                <MobileNumberContainer>
+                  <TextInput
+                    name="countryCode"
+                    containerStyle={{ width: "100px", marginRight: "10px" }}
+                  />
+                  <TextInput
+                    name="telNumber"
+                    placeholder="Enter mobile number"
+                  />
+                </MobileNumberContainer>
 
                 <Select
                   placeholder="Please select"
-                  label="Identity Document Type"
-                  name="idType"
+                  label="Document Type"
+                  name="identificationType"
                   displayProp="label"
                   valueProp="value"
                   items={[
-                    { label: "SA ID Number", value: 1 },
-                    { label: "Passport", value: 2 },
-                    { label: "Other", value: 3 }
+                    { label: "SA ID Number", value: "IdentificationDocument" },
+                    { label: "Passport", value: "Passport" }
                   ]}
                 />
               </Left>
 
               <Right>
                 <FileUpload
-                  name="picture"
+                  name="photo"
                   label="Upload picture"
                   dropText="Drop files :)"
                   placeholder="Drag and drop or click to add file here."
                 />
                 <TextInput
-                  name="id"
-                  placeholder="Enter 13 digit ID"
-                  label="SA ID Number"
+                  name="identificationValue"
+                  placeholder={
+                    values.identificationType === "IdentificationDocument"
+                      ? "Enter 13 digit ID"
+                      : "Enter passport ID"
+                  }
+                  label={
+                    values.identificationType === "IdentificationDocument"
+                      ? "SA ID Number"
+                      : "Passport Number"
+                  }
                 />
               </Right>
             </BodyContainer>

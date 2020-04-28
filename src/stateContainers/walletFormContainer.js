@@ -1,42 +1,48 @@
-import { Container } from 'unstated'
+import { Container } from "unstated";
 
 const DEFAULT_STATE = {
-  name: '',
-  surname: '',
-  id: '',
-  telNumber: '',
-  consent: '',
-  picture: '',
+  walletId: "",
+  otp: "",
+  person: {
+    firstName: "",
+    lastName: "",
+    mobileNumber: "",
+    consent: "",
+    photo: "",
+    identificationType: "",
+    identificationValue: ""
+  },
   covidTest: {
-    refNumber: '',
-    testDate: '',
-    expiryDate: '',
+    dateTested: "",
     covidStatus: 0,
+    laboratory: 0,
+    identificationType: 0,
+    identificationValue: "string"
   },
   walletParameters: {
-    ownerName: '',
+    ownerName: ""
   },
-  covidStatusUrl: '',
-}
+  covidStatusUrl: ""
+};
 
 class WalletFormContainer extends Container {
   constructor() {
-    super()
-    this.state = DEFAULT_STATE
+    super();
+    this.state = DEFAULT_STATE;
   }
 
   set = async (data = {}) => {
     const newState = {
       ...this.state,
-      ...data,
-    }
-    this.setState(newState)
-    return Promise.resolve()
-  }
+      ...data
+    };
+    this.setState(newState);
+    return Promise.resolve();
+  };
 
   clear = () => {
-    this.setState(DEFAULT_STATE)
-  }
+    this.setState(DEFAULT_STATE);
+  };
 }
 
-export default new WalletFormContainer()
+export default new WalletFormContainer();

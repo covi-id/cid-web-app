@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import Cropper from "react-easy-crop";
 
-import { Container, ButtonContainer, CropArea, InnerContainer } from "./styles";
+import {
+  Container,
+  ButtonContainer,
+  CropArea,
+  InnerContainer,
+  CloseContainer,
+  CloseImg
+} from "./styles";
 import Button from "components/button";
 import Heading1 from "components/shared/h1";
 import getCroppedImg from "utils/cropImage";
@@ -44,6 +51,9 @@ const ImageCrop = ({ imageB64, open, closeHandler, cropHandler }) => {
     open && (
       <Container>
         <InnerContainer>
+          <CloseContainer>
+            <CloseImg />
+          </CloseContainer>
           <Heading1>Crop Image</Heading1>
           <CropArea>
             <Cropper
