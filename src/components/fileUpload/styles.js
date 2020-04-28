@@ -9,7 +9,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     ${FormLabel.Label} {
       text-align: center;
       & label {

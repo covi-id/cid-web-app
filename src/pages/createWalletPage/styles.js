@@ -9,7 +9,7 @@ export const BackTick = styled.img.attrs({ src: Back })`
   padding-top: 6px;
   padding-right: 10px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     padding-bottom: 27px;
     padding-right: 3px;
     width: 33px;
@@ -35,7 +35,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
   }
 `
@@ -49,7 +49,7 @@ export const StepIndicator = styled.div`
   width: 40.685%;
   white-space: nowrap;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     padding: 0;
     width: 41.3%;
   }
@@ -77,7 +77,7 @@ export const StepHeading = styled.h1`
     margin: 2.42% 0 12.36% 0;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     font-size: 28px;
     margin: 2.42% 0 12.36% 0;
   }

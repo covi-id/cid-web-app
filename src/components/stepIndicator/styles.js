@@ -9,7 +9,7 @@ const StepIndicator = styled.div`
   width: 40.685%;
   white-space: nowrap;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     padding: 0;
     width: 41.3%;
   }

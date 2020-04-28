@@ -10,8 +10,8 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
 
-  @media screen and (max-width: 600px) {
-    background: url(${BackgroundMobile}) white no-repeat center;
+  @media screen and (max-width: 768px) {
+    /* background: url(${BackgroundMobile}) white no-repeat center; */
     align-items: unset;
   }
 `
@@ -35,7 +35,7 @@ export const HeadingContainer = styled.div`
   margin-top: -50px;
   justify-content: center;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     margin-top: 40px;
   }
 `
@@ -45,7 +45,7 @@ export const CardsContainer = styled.div`
   flex-direction: row;
   margin-top: -50px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
     margin-top: -140px;
   }

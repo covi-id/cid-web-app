@@ -1,7 +1,7 @@
 import { Container } from "unstated";
 
 const DEFAULT_STATE = {
-  walletId: "",
+  walletId: "CZCRldtjRJneEUTzRSVy63ArOegft5M5k",
   otp: "",
   person: {
     firstName: "",
@@ -17,11 +17,8 @@ const DEFAULT_STATE = {
     dateTested: "",
     covidStatus: 0,
     laboratory: 0,
-    identificationType: 0,
-    identificationValue: "string"
-  },
-  walletParameters: {
-    ownerName: ""
+    referenceNumber: "",
+    hasConsent: false
   },
   covidStatusUrl: ""
 };

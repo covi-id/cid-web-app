@@ -52,7 +52,7 @@ const ImageCrop = ({ imageB64, open, closeHandler, cropHandler }) => {
       <Container>
         <InnerContainer>
           <CloseContainer>
-            <CloseImg />
+            <CloseImg onClick={closeHandler} />
           </CloseContainer>
           <Heading1>Crop Image</Heading1>
           <CropArea>

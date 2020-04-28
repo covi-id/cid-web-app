@@ -10,8 +10,7 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
 
-  @media screen and (max-width: 600px) {
-    background: url(${BackgroundMobileDark}) white no-repeat center;
+  @media screen and (max-width: 768px) {
     align-items: unset;
     background-size: cover;
     flex-direction: column;
@@ -26,9 +25,9 @@ export const SocialText = styled.div`
 
 export const Icon = styled.img`
   width: 68px;
-  margin: -80px auto 10px auto;
+  margin: 80px auto 10px auto;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 48px;
     margin: 80px auto 10px auto;
   }
@@ -46,7 +45,7 @@ export const TextContainer = styled.div`
   display: flex;
   padding: 10px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 200px;
   }
 `
@@ -80,13 +79,13 @@ export const Card = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 315px;
     height: 138px;
     margin: 10px auto;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 290px;
     height: 138px;
     margin: 10px auto;

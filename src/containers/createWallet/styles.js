@@ -17,7 +17,7 @@ const BodyContainer = styled.div`
   display: flex;
   flex-direction: row;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
   }
 `;
@@ -38,18 +38,18 @@ const Right = styled.div`
   text-align: center;
 
   ${AttachmentIcon} {
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
       padding-top: 58%;
     }
   }
 
   ${DropzoneLabel} {
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
       padding-bottom: 58%;
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     margin: 0;
     flex-direction: column-reverse;
   }
@@ -68,7 +68,7 @@ const Footer = styled.div`
     padding: 30px 0 50px 30px;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     padding: 20px 0px 50px 10px;
   }
 `;

@@ -13,11 +13,10 @@ const BackTick = styled.img.attrs({ src: Back })`
   width: 50px;
   margin: 0;
   padding: 0;
-  padding-top: 6px;
+  /* padding-top: 6px; */
   padding-right: 10px;
 
-  @media screen and (max-width: 600px) {
-    padding-bottom: 27px;
+  @media screen and (max-width: 768px) {
     padding-right: 3px;
     width: 33px;
   }
