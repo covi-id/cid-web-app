@@ -13,6 +13,7 @@ import Step3 from 'pages/issueQrCodePage'
 import Main from 'components/main'
 import ConnectCoviid from 'pages/cardsPage'
 import VerificationConsent from 'pages/verificationConsentPage'
+import CoviidUpdated from 'pages/coviidUpdatedPage'
 
 const Root = () => (
   <Router>
@@ -30,11 +31,14 @@ const Root = () => (
         <Route path='/create-wallet/status'>
           <Step2 />
         </Route>
-        <Route path='/create-wallet/issue'>
+        <Route path='/create-wallet/issue/dark'>
           <Step3 />
         </Route>
-        <Route path='/consent-verification'>
+        <Route path='/consent/verification'>
           <VerificationConsent />
+        </Route>
+        <Route path='/consent/coviid-updated/dark'>
+          <CoviidUpdated />
         </Route>
 
         <Route path='*'>
