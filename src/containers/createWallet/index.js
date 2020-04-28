@@ -92,16 +92,20 @@ const CreateWallet = ({ twoStepCallback }) => {
           person: { firstName, lastName, mobileNumber, photo }
         }
       } = walletFormContainer;
+      console.log(photo.split(",")[0]);
       const createWalletData = {
         firstName,
         lastName,
         photo: photo.split(",")[1],
-        mobileNumber: mobileNumber,
+        mobileNumber: mobileNumber
       };
 
       try {
         const { data } = await api.wallet.createWallet(createWalletData);
-        await walletFormContainer.set({ walletId: data.walletId });
+        await walletFormContainer.set({
+          walletId: data.walletId,
+          picture: data.picture
+        });
         twoStepCallback(walletFormContainer.state);
       } catch (error) {
         console.log(error);

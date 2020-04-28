@@ -20,7 +20,8 @@ const DEFAULT_STATE = {
     referenceNumber: "",
     hasConsent: false
   },
-  covidStatusUrl: ""
+  covidStatusUrl: "",
+  picture: ""
 };
 
 class WalletFormContainer extends Container {
