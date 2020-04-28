@@ -8,7 +8,7 @@ const Nav = ({ children }) => {
   const history = useHistory()
   const location = useLocation()
 
-  const issueQR = location.pathname.includes('create-wallet/issue')
+  const issueQR = location.pathname.includes('/dark')
 
   return (
     <Container>

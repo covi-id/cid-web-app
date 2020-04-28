@@ -38,3 +38,7 @@ export const ButtonsContainer = styled.div`
     margin-bottom: 24px;
   }
 `
+export const ExternalLink = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+`

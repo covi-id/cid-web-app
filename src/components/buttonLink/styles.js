@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
-const Container = styled(Link)`
+
+const Container = styled.a`
   display: flex;
   text-decoration: none;
   height: 60px;
