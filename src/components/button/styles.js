@@ -37,7 +37,6 @@ const Button = styled.button`
     }
 
     if (variant === "tertiary") {
-      console.log({ variant })
       return `
           background-color: #f1f0f8;
           color: #534f69;

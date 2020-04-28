@@ -10,7 +10,8 @@ const DEFAULT_STATE = {
     consent: "",
     photo: "",
     identificationType: "",
-    identificationValue: ""
+    identificationValue: "",
+    countryCode: ""
   },
   covidTest: {
     dateTested: "",

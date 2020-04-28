@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import OtpContainer from "containers/otp";
 
-const TwoFactorAuth = ({ children, activateVerification }) => {
-  const [stage, setStage] = useState(0);
-
-  return stage === 0 ? children : <OtpContainer />;
-};
+const TwoFactorAuth = ({ children, otpData = null }) =>
+  !otpData ? children : <OtpContainer otpSubmitData={otpData} />;
 
 export default TwoFactorAuth;
