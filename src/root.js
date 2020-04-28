@@ -23,7 +23,7 @@ ReactGA.initialize('UA-159574842-2', {
   debug: false,
   titleCase: false,
   gaOptions: {
-    cookieDomain: 'www.app.coviid.me',
+    cookieDomain: 'www.coviid.me',
   },
 })
 ReactGA.pageview(window.location.pathname + window.location.search)
