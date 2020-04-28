@@ -1,12 +1,15 @@
 import styled from 'styled-components'
-import BackgroundDesktop from 'assets/images/desktop-purple-background.svg'
-import Logo from 'assets/images/logo-light.svg'
-import CenterPiece from 'assets/images/desktop-profile-background.svg'
-import GreenTick from 'assets/icons/tickIcon.svg'
-import QRCode from 'assets/images/QRCode.svg'
-import { Button } from 'components/button/styles'
+import BackgroundDesktop from 'assets/images/desktop-coviid-background.svg'
+import BackgroundMobile from 'assets/images/mobile-coviid-background.svg'
 
-import BackgroundMobile from 'assets/images/mobile-purple-background.svg'
+import CenterPiece from 'assets/images/desktop-coviid-download-card.svg'
+import MobileCenterPiece from 'assets/images/mobile-coviid-download-card.svg'
+
+import QRCode from 'assets/images/QRCode.svg'
+
+import * as ButtonLink from 'components/buttonLink/styles'
+
+import * as SocialMediaLinks from 'components/socialMediaLinks/styles'
 
 export const Container = styled.div`
   width: 100%;
@@ -21,63 +24,52 @@ export const Container = styled.div`
 
   @media screen and (max-width: 600px) {
     background: url(${BackgroundMobile}) white no-repeat center;
-    background-size: cover;
     justify-content: unset;
+    width: 100%;
   }
 `
 
 export const Card = styled.div`
   display: flex;
-  width: 39.31%;
+  width: 812.5px;
+  height: 462.5px;
   background: url(${CenterPiece}) no-repeat;
   background-size: cover;
   border-radius: 40px;
+  margin-left: -40px;
 
   @media screen and (max-width: 600px) {
+    background: url(${MobileCenterPiece}) no-repeat;
     width: unset;
-    background: none;
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    margin-bottom: 80px;
   }
 `
 
 export const CardContent = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
-  max-width: 170px;
-  margin: 8.84% auto;
+  flex-direction: row;
+
+  margin: 20px auto;
   position: relative;
 
   @media screen and (max-width: 600px) {
     width: 100%;
+    flex-direction: column;
   }
 `
 
-export const Tick = styled.img.attrs({ src: GreenTick })`
-  width: 22.35%;
-  position: absolute;
-  top: 0%;
-  right: 6%;
-
-  @media screen and (max-width: 600px) {
-    width: 22.5%;
-    right: 0;
-    top: 5%;
-    left: unset;
-  }
-`
-
-export const PicContainer = styled.div`
+export const Right = styled.div`
   position: relative;
-  max-width: 170px;
-  max-height: 170px;
-  min-height: 170px;
-  overflow: hidden;
-  border-radius: 50%;
+  width: 400px;
+  height: 390px;
 
   @media screen and (max-width: 600px) {
-    width: unset;
-    margin-bottom: 12.35%;
-    position: unset;
+    width: 100%;
+    height: 100%;
   }
 `
 
@@ -88,29 +80,17 @@ export const ProfilePic = styled.img.attrs((props) => ({
   width: 100%;
 `
 
-export const MainLogo = styled.img.attrs({ src: Logo })`
-  width: 100%;
-  height: 200px;
-  display: none;
-
-  @media screen and (max-width: 600px) {
-    width: 60.14%;
-    height: auto;
-    margin: 12.08% auto 9.91% auto;
-    display: block;
-  }
-`
 export const QRContainer = styled.div`
-  width: 88%;
+  width: 250px;
+  height: 250px;
   justify-content: center;
   display: flex;
-  margin: 12.5% auto;
+  margin: 0 80px 0 0;
 
   @media screen and (max-width: 600px) {
-    margin-top: 5.07%;
-    margin-bottom: 24.7%;
-    width: 88.24%;
-    height: 88.24%;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 60px auto;
   }
 `
 
@@ -120,12 +100,10 @@ export const QR = styled.img.attrs({ src: QRCode })`
   margin: 0 auto;
 `
 
-
-
 export const Title = styled.div`
   justify-content: center;
   text-align: center;
-  margin: 8% auto 2.5% auto;
+  margin: 120px auto 30px auto;
 
   @media screen and (max-width: 600px) {
     width: 100%;
@@ -134,9 +112,10 @@ export const Title = styled.div`
 `
 
 export const Heading = styled.div`
-  font-size: 3rem;
   font-weight: bold;
-  color: #ffffff;
+  font-size: 52px;
+  line-height: 110%;
+  color: #513cc5;
 
   & span {
     font-size: inherit;
@@ -152,18 +131,41 @@ export const Heading = styled.div`
   }
 `
 
-export const Header = styled.div`
-  position: absolute;
-  top: -2%;
-  left: 5%;
-`
-
-export const DownloadButton = styled(Button)`
-  background: #ffffff;
-  color: #513cc5;
-  margin: 0 auto;
+export const CardBold = styled.div`
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 110%;
+  color: #110a37;
+  margin-top: 30px;
 
   @media screen and (max-width: 600px) {
-    margin-top: 10%;
+    font-size: 20px;
+    width: 120px;
+    margin: 20px auto;
+  }
+`
+
+export const SocialsOverride = styled.div`
+  ${SocialMediaLinks.SocialWrapper} {
+    width: 10px;
+    margin: 0px auto 10px 70px;
+
+    @media screen and (max-width: 600px) {
+      margin: 0px auto 0px 60px;
+    }
+  }
+`
+
+export const Override = styled.div`
+  ${ButtonLink.Container} {
+    height: 30px;
+    width: 100%;
+    max-width: 180px;
+    min-width: 120px;
+    font-size: 14px;
+
+    @media screen and (max-width: 600px) {
+      margin: 0px auto 26px auto;
+    }
   }
 `

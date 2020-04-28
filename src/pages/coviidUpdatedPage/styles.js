@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 import FirstIcon from 'assets/icons/coviidIcon.svg'
 import BackgroundMobileDark from 'assets/images/mobile-purple-background.svg'
-import TwitterIcon from 'assets/icons/twitter.svg'
-import FacebookIcon from 'assets/icons/facebook.svg'
-import WhatsappIcon from 'assets/icons/whatsapp.svg'
+import * as SocialMediaLinks from 'components/socialMediaLinks/styles'
 
 export const Container = styled.div`
   display: flex;
@@ -18,6 +16,12 @@ export const Container = styled.div`
     background-size: cover;
     flex-direction: column;
   }
+`
+export const SocialText = styled.div`
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+  color: #ffffff;
 `
 
 export const Icon = styled.img`
@@ -89,53 +93,9 @@ export const Card = styled.div`
   }
 `
 
-export const SocialWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  width: 178px;
-  height: 50px;
-
-  @media screen and (max-width: 600px) {
+export const SocialMediaOverride = styled.div`
+  ${SocialMediaLinks.SocialWrapper} {
     width: 280px;
-    margin: 10px auto 70px auto;
+    margin: 10px auto 20px auto;
   }
-`
-export const SocialLinks = styled.div`
-  font-size: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  cursor: pointer;
-
-  @media screen and (max-width: 600px) {
-    margin: 20px auto 40px auto;
-  }
-`
-
-export const SocialText = styled.div`
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 150%;
-  color: #ffffff;
-`
-
-export const SmallIcon = styled.img`
-  width: 30px;
-  margin: 0 20px 0 10px;
-`
-
-export const Facebook = styled(SmallIcon).attrs({ src: FacebookIcon })``
-export const Twitter = styled(SmallIcon).attrs({ src: TwitterIcon })`
-  margin-left: 1px;
-  @media screen and (max-width: 600px) {
-    margin-left: 14px;
-  }
-`
-export const Whatsapp = styled(SmallIcon).attrs({ src: WhatsappIcon })`
-  width: 20px;
-  margin-top: 5px;
-`
-export const ExternalLink = styled.a`
-  text-decoration: none;
 `
