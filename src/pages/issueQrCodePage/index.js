@@ -6,17 +6,41 @@ import {
   Title,
   Heading,
   ProfilePic,
-  PicContainer,
-  Tick,
+  Right,
   QRContainer,
   DownloadButton,
   MainLogo,
+  QR,
   Card,
   CardContent,
+  CardBold,
+  Override,
+  SocialsOverride,
 } from './styles'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import walletFormContainer from 'stateContainers/walletFormContainer'
+import Nav from 'components/nav'
+import DownloadStep from 'components/downloadStep'
+import ButtonLink from 'components/buttonLink'
+
+import SocialMediaLinks from 'components/socialMediaLinks'
+
+const listItems = [
+  { text: 'Download your Covi-ID', random: <ButtonLink>Download</ButtonLink> },
+  {
+    text: 'Add your latest test results',
+    random: <ButtonLink>Add a test result</ButtonLink>,
+  },
+  {
+    text: 'Share that you’ve just created your Covi-ID',
+    random: (
+      <SocialsOverride>
+        <SocialMediaLinks />
+      </SocialsOverride>
+    ),
+  },
+]
 
 const IssueQRCode = () => {
   const [state, setState] = useState()
@@ -58,34 +82,35 @@ const IssueQRCode = () => {
   }
 
   return (
-    <Container>
-      <Title>
-        <MainLogo />
-        <Heading>
-          <span>COVI-ID</span> created
-        </Heading>
-      </Title>
-      <Card>
-        <CardContent>
-          <PicContainer>
-            <ProfilePic src={state?.picture} />
-          </PicContainer>
-          <Tick />
-
-          <QRContainer>
-            {state?.covidStatusUrl && (
-              <QRCode
-                value={state.covidStatusUrl}
-                bgColor='#513CC5'
-                fgColor='#FFFFFF'
-                style={codeStyle}
-              />
-            )}
-          </QRContainer>
-          <DownloadButton onClick={() => download()}>Download</DownloadButton>
-        </CardContent>
-      </Card>
-    </Container>
+    <>
+      <Container>
+        <Title>
+          <Heading>
+            Covi-ID Generated <br /> successfully
+          </Heading>
+        </Title>
+        <Card>
+          <CardContent>
+            <QRContainer>
+              <QR />
+            </QRContainer>
+            <Right>
+              <CardBold>What do I do next?</CardBold>
+              <Override>
+                {listItems.map((item, index) => (
+                  <DownloadStep
+                    key={index}
+                    step={index + 1}
+                    text={item.text}
+                    random={item.random}
+                  />
+                ))}
+              </Override>
+            </Right>
+          </CardContent>
+        </Card>
+      </Container>
+    </>
   )
 }
 
