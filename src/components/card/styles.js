@@ -101,6 +101,30 @@ const Text = styled.div`
   color: #110a37;
 `;
 
+const FileUpload = styled.div`
+  width: 100%;
+  /* height: 50px; */
+  position: relative;
+  overflow: hidden;
+`;
+
+const FileInput = styled.input`
+  position: absolute;
+  top: 25px;
+  right: 0; /* not left, because only the right part of the input seems to
+             be clickable in some browser I can't remember */
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(
+    opacity=0
+  ); /* and all the other old opacity stuff you
+                             want to support */
+  font-size: 300px; /* wtf, but apparently the most reliable way to make
+                     a large part of the input clickable in most browsers */
+  height: 50px;
+  width: 100%;
+`;
+
 export {
   StyledCard,
   Icon,
@@ -109,5 +133,7 @@ export {
   ItemWrapper,
   CovidLogo,
   PhoneLogo,
-  QrLogo
+  QrLogo,
+  FileUpload,
+  FileInput
 };

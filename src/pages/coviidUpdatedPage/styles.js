@@ -11,7 +11,6 @@ export const Container = styled.div`
   text-align: center;
 
   @media screen and (max-width: 768px) {
-    background: url(${BackgroundMobileDark}) white no-repeat center;
     align-items: unset;
     background-size: cover;
     flex-direction: column;

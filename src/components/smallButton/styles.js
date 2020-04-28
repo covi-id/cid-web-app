@@ -5,14 +5,14 @@ const BtnContainer = styled.button`
   text-decoration: none;
   height: 60px;
   justify-content: space-evenly;
-  margin-top: 20px;
   align-items: center;
   border-radius: 60px;
   font-weight: bold;
   padding: 5px;
   min-width: 180px;
-  margin: 0 14px;
+  margin: 10px auto;
   border: none;
+  max-width: 180px;
 
   ${({ background, color }) =>
     css`

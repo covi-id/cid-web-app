@@ -5,7 +5,7 @@ import { Container } from "./styles.js";
 import ConsentAuth from "components/consentAuth/index.js";
 
 const AddStatusPage = () => {
-  const [testData, setTestData] = useState(null);
+  const [testData, setTestData] = useState({});
   return (
     <Container>
       <ConsentAuth cancel={() => setTestData(null)} testData={testData}>

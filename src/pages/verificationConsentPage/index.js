@@ -44,7 +44,7 @@ const VerificationConsent = ({ cancel }) => {
           ...covidTest,
           hasConsent: value
         });
-        history.push("/consent/coviid-updated/dark");
+        history.push("/create-wallet/status/updated");
       } catch (error) {
       } finally {
         setLoading(false);
@@ -58,10 +58,14 @@ const VerificationConsent = ({ cancel }) => {
         <Card key={index}>
           <TextContainer>
             <Text>{card.paraOne}</Text>
-            <Bold>{card.boldOne}</Bold>
-            <Bold>{card.boldTwo}</Bold>
+            <br />
+            <Text><b>{card.boldOne}</b></Text>
+            <Text><b>{card.boldTwo}</b></Text>
+            <br />
             <Text>{card.paraTwo}</Text>
+            <br />
             <LargeText>{card.largeText}</LargeText>
+            <br />
           </TextContainer>
           <ButtonWrapper>
             <SmallButton

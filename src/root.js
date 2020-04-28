@@ -48,15 +48,12 @@ const Root = () => (
           <Step1 />
         </Route>
 
-        <PrivateRoute path="/create-wallet/status" component={Step2} />
+        <PrivateRoute exact path="/create-wallet/status" component={Step2} />
 
-        <Route path="/create-wallet/created">
-          <Step3 />
-        </Route>
-        <Route path="/consent/verification">
-          <VerificationConsent />
-        </Route>
+        <PrivateRoute exact path="/create-wallet/created" component={Step3} />
+
         <PrivateRoute
+          exact
           path="/create-wallet/status/updated"
           component={CoviidUpdated}
         />

@@ -23,6 +23,7 @@ const ItemContainer = styled.div`
   flex: 1;
   min-width: 275px;
   padding-right: 25px;
+  max-width: 275px;
   justify-content: center;
 `;
 

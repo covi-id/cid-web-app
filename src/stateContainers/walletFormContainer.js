@@ -1,7 +1,7 @@
 import { Container } from "unstated";
 
 const DEFAULT_STATE = {
-  walletId: "",
+  walletId: "CZCRldtjRJneEUTzRSVy63ArOegft5M5k",
   otp: "",
   person: {
     firstName: "",

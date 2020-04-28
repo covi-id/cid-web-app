@@ -7,12 +7,14 @@ import { useLocation } from "react-router-dom";
 function getBackgroundImages(value) {
   const backgroundChangeList = {
     "/create-wallet/status/updated": {
-      desktop: require("assets/images/desktop-coviid-background.svg"),
-      mobile: require("assets/images/mobile-coviid-background.svg")
+      desktop: require("assets/images/desktop-purple-background.svg"),
+      mobile: require("assets/images/mobile-purple-background.svg"),
+      backgroundColor: "#503dc5"
     },
     "/create-wallet/created": {
       desktop: require("assets/images/desktop-coviid-background.svg"),
-      mobile: require("assets/images/mobile-coviid-background.svg")
+      mobile: require("assets/images/mobile-coviid-background.svg"),
+      backgroundColor: "#f1f1f8"
     }
   };
 
