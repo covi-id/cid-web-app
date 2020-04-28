@@ -127,7 +127,7 @@ export const SmallIcon = styled.img`
 
 export const Facebook = styled(SmallIcon).attrs({ src: FacebookIcon })``
 export const Twitter = styled(SmallIcon).attrs({ src: TwitterIcon })`
-  margin-left: -4px;
+  margin-left: 1px;
   @media screen and (max-width: 600px) {
     margin-left: 14px;
   }
