@@ -9,8 +9,7 @@ const Header = styled.nav`
   position: absolute;
   top: 0;
   left: 0;
-  padding: 5.55%;
-  padding-bottom: 20px;
+  padding: 75px 80px;
   width: 100%;
 
   @media screen and (max-width: 600px) {
@@ -20,11 +19,11 @@ const Header = styled.nav`
 `
 
 const MainLogo = styled.img.attrs({ src: Logo })`
-  width: 11.18%;
+  width: 161px;
   display: ${(props) => props.hide && 'none'};
 
   @media screen and (max-width: 600px) {
-    width: 38.89%;
+    width: 110px;
   }
 `
 

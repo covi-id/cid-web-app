@@ -1,11 +1,16 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const FormItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: 7.25%;
+  padding-bottom: 12px;
   align-items: flex-start;
-  min-width: 45%;
-`
+  width: 100%;
 
-export default FormItemWrapper
+  @media screen and (max-width: 600px) {
+    align-items: center;
+    padding-bottom: 20px;
+  }
+`;
+
+export default FormItemWrapper;

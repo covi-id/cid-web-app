@@ -19,6 +19,7 @@ const ErrorMessage = styled.label`
   text-align: right;
   font-style: italic;
   margin-left: 25px;
+  width: 100%;
 
   ${({ show }) =>
     show &&

@@ -3,8 +3,11 @@ import styled from 'styled-components'
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  margin: auto;
-  min-height: 100%;
+  margin: 82px auto;
+
+  @media screen and (max-width: 600px) {
+    margin: 95px 50px 0 50px;
+  }
 `
 
 export { Container }

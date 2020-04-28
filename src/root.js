@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,16 +37,16 @@ const Root = () => (
   <Router history={history}>
     <Main>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <Landing />
         </Route>
-        <Route path='/connect-coviid'>
+        <Route path="/connect-coviid">
           <ConnectCoviid />
         </Route>
-        <Route path='/create-wallet/details'>
+        <Route path="/create-wallet/details">
           <Step1 />
         </Route>
-        <Route path='/create-wallet/status'>
+        <Route path="/create-wallet/status">
           <Step2 />
         </Route>
         <Route path='/create-wallet/issue/dark'>
@@ -59,12 +59,12 @@ const Root = () => (
           <CoviidUpdated />
         </Route>
 
-        <Route path='*'>
-          <Redirect to='/'></Redirect>
+        <Route path="*">
+          <Redirect to="/"></Redirect>
         </Route>
       </Switch>
     </Main>
   </Router>
-)
+);
 
-export default Root
+export default Root;

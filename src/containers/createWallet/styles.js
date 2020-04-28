@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { AttachmentIcon, DropzoneLabel } from 'components/fileUpload/styles'
-import { Button } from 'components/button/styles'
+import styled from "styled-components";
+import { AttachmentIcon, DropzoneLabel } from "components/fileUpload/styles";
+import { Button } from "components/button/styles";
 
 const Form = styled.form`
   width: 100%;
@@ -11,7 +11,7 @@ const Form = styled.form`
     background: #e1fff6;
     color: #03ce8e;
   }
-`
+`;
 
 const BodyContainer = styled.div`
   display: flex;
@@ -20,14 +20,14 @@ const BodyContainer = styled.div`
   @media screen and (max-width: 600px) {
     flex-direction: column;
   }
-`
+`;
 
 const Left = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-`
+`;
 
 const Right = styled.div`
   flex: 1;
@@ -50,9 +50,15 @@ const Right = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    margin: 0 14.5%;
+    margin: 0;
+    flex-direction: column-reverse;
   }
-`
+`;
+
+const MobileNumberContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const Footer = styled.div`
   text-align: center;
@@ -65,6 +71,6 @@ const Footer = styled.div`
   @media screen and (max-width: 600px) {
     padding: 20px 0px 50px 10px;
   }
-`
+`;
 
-export { Form, Left, Right, Footer, BodyContainer }
+export { Form, Left, Right, Footer, BodyContainer, MobileNumberContainer };

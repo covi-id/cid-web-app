@@ -31,18 +31,12 @@ export const InlineContainer = styled.div`
 
 export const Container = styled.div`
   height: 100%;
-  width: 42.43%;
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  margin-top: 8%;
 
   @media screen and (max-width: 600px) {
     width: 100%;
-    padding: 28.99% 16.67% 8% 16.67%;
-    background: url(${BackgroundMobile}) white no-repeat;
-    background-size: cover;
-    justify-content: unset;
   }
 `
 
