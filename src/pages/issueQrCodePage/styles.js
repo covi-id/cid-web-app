@@ -2,12 +2,10 @@ import styled from 'styled-components'
 import BackgroundDesktop from 'assets/images/desktop-coviid-background.svg'
 import BackgroundMobile from 'assets/images/mobile-coviid-background.svg'
 
-import Logo from 'assets/images/logo-light.svg'
 import CenterPiece from 'assets/images/desktop-coviid-download-card.svg'
 import MobileCenterPiece from 'assets/images/mobile-coviid-download-card.svg'
 
 import QRCode from 'assets/images/QRCode.svg'
-import { Button } from 'components/button/styles'
 
 import * as ButtonLink from 'components/buttonLink/styles'
 
@@ -28,7 +26,6 @@ export const Container = styled.div`
     background: url(${BackgroundMobile}) white no-repeat center;
     justify-content: unset;
     width: 100%;
-
   }
 `
 
@@ -91,7 +88,6 @@ export const QRContainer = styled.div`
   margin: 0 80px 0 0;
 
   @media screen and (max-width: 600px) {
-
     width: 200px;
     height: 200px;
     margin: 0 auto 60px auto;
@@ -155,7 +151,7 @@ export const SocialsOverride = styled.div`
     margin: 0px auto 10px 70px;
 
     @media screen and (max-width: 600px) {
-margin: 0px auto 0px 60px;
+      margin: 0px auto 0px 60px;
     }
   }
 `
