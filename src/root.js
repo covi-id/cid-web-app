@@ -3,9 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
-} from "react-router-dom";
-
+  Redirect,
+} from 'react-router-dom'
 import Landing from 'pages/landing/index.js'
 import Step1 from 'pages/createWalletPage'
 import Step2 from 'pages/addStatusPage'
@@ -14,9 +13,28 @@ import Main from 'components/main'
 import ConnectCoviid from 'pages/cardsPage'
 import VerificationConsent from 'pages/verificationConsentPage'
 import CoviidUpdated from 'pages/coviidUpdatedPage'
+import ReactGA from 'react-ga'
+
+import { createBrowserHistory } from 'history'
+
+const history = createBrowserHistory()
+
+ReactGA.initialize('UA-159574842-2', {
+  debug: false,
+  titleCase: false,
+  gaOptions: {
+    cookieDomain: 'www.coviid.me',
+  },
+})
+ReactGA.pageview(window.location.pathname + window.location.search)
+
+history.listen((location) => {
+  ReactGA.set({ page: location.pathname })
+  ReactGA.pageview(location.pathname)
+})
 
 const Root = () => (
-  <Router>
+  <Router history={history}>
     <Main>
       <Switch>
         <Route exact path="/">
