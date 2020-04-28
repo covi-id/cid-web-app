@@ -9,7 +9,7 @@
 
 # Web App
 
-This repository is for the web app of Covi-ID. This product was designed to preserve the privacy of its users, while still being able to prove you do not pose a public health risk. 
+This repository is for the web app of [Covi-ID](https://coviid.me/). This product was designed to preserve the privacy of its users, while still being able to prove you do not pose a public health risk. 
 
 The other related repositories can be found here:
 #### [> `API Core`](https://github.com/covi-id/cid-api-core)
