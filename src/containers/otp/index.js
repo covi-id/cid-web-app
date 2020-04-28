@@ -8,6 +8,7 @@ import Heading1 from "components/shared/h1";
 
 import { Form, LeadText, Container } from "./styles";
 import api from "api";
+import { useHistory } from "react-router-dom";
 
 const INITIAL_VALUES = {
   otp: ""
@@ -22,7 +23,8 @@ const VALIDATION_SCHEMA = object().shape({
 
 const OtpContainer = ({ otpSubmitData }) => {
   const [loading, setLoading] = useState(false);
-  const { person, walletId } = otpSubmitData;
+  const history = useHistory();
+  const { person, walletId, picture } = otpSubmitData;
   const onSubmitHandler = useCallback(
     async ({ otp }) => {
       setLoading(true);
@@ -32,9 +34,11 @@ const OtpContainer = ({ otpSubmitData }) => {
           otp,
           person: {
             ...person,
-            photo: person.photo.split(",")[1]
+            photo: picture
           }
         });
+
+        history.push("/create-wallet/created");
       } catch (error) {
       } finally {
         setLoading(false);

@@ -1,15 +1,15 @@
-import styled from 'styled-components'
-import BackgroundDesktop from 'assets/images/desktop-coviid-background.svg'
-import BackgroundMobile from 'assets/images/mobile-coviid-background.svg'
+import styled from "styled-components";
+import BackgroundDesktop from "assets/images/desktop-coviid-background.svg";
+import BackgroundMobile from "assets/images/mobile-coviid-background.svg";
 
-import CenterPiece from 'assets/images/desktop-coviid-download-card.svg'
-import MobileCenterPiece from 'assets/images/mobile-coviid-download-card.svg'
+import CenterPiece from "assets/images/desktop-coviid-download-card.svg";
+import MobileCenterPiece from "assets/images/mobile-coviid-download-card.svg";
 
-import QRCode from 'assets/images/QRCode.svg'
+import QRCode from "assets/images/QRCode.svg";
 
-import * as ButtonLink from 'components/buttonLink/styles'
+import * as ButtonLink from "components/buttonLink/styles";
 
-import * as SocialMediaLinks from 'components/socialMediaLinks/styles'
+import * as SocialMediaLinks from "components/socialMediaLinks/styles";
 
 export const Container = styled.div`
   width: 100%;
@@ -27,7 +27,7 @@ export const Container = styled.div`
     justify-content: unset;
     width: 100%;
   }
-`
+`;
 
 export const Card = styled.div`
   display: flex;
@@ -46,7 +46,7 @@ export const Card = styled.div`
     height: 100%;
     margin-bottom: 80px;
   }
-`
+`;
 
 export const CardContent = styled.div`
   display: flex;
@@ -60,7 +60,7 @@ export const CardContent = styled.div`
     width: 100%;
     flex-direction: column;
   }
-`
+`;
 
 export const Right = styled.div`
   position: relative;
@@ -71,14 +71,14 @@ export const Right = styled.div`
     width: 100%;
     height: 100%;
   }
-`
+`;
 
-export const ProfilePic = styled.img.attrs((props) => ({
-  src: props.src,
+export const ProfilePic = styled.img.attrs(props => ({
+  src: props.src
 }))`
   height: auto;
   width: 100%;
-`
+`;
 
 export const QRContainer = styled.div`
   width: 250px;
@@ -92,13 +92,12 @@ export const QRContainer = styled.div`
     height: 200px;
     margin: 0 auto 60px auto;
   }
-`
+`;
 
-export const QR = styled.img.attrs({ src: QRCode })`
+export const QR = styled.img`
   width: 100%;
-  height: 220px;
   margin: 0 auto;
-`
+`;
 
 export const Title = styled.div`
   justify-content: center;
@@ -109,7 +108,7 @@ export const Title = styled.div`
     width: 100%;
     margin-top: unset;
   }
-`
+`;
 
 export const Heading = styled.div`
   font-weight: bold;
@@ -129,7 +128,7 @@ export const Heading = styled.div`
       display: none;
     }
   }
-`
+`;
 
 export const CardBold = styled.div`
   font-weight: bold;
@@ -143,7 +142,7 @@ export const CardBold = styled.div`
     width: 120px;
     margin: 20px auto;
   }
-`
+`;
 
 export const SocialsOverride = styled.div`
   ${SocialMediaLinks.SocialWrapper} {
@@ -154,7 +153,7 @@ export const SocialsOverride = styled.div`
       margin: 0px auto 0px 60px;
     }
   }
-`
+`;
 
 export const Override = styled.div`
   ${ButtonLink.Container} {
@@ -168,4 +167,4 @@ export const Override = styled.div`
       margin: 0px auto 26px auto;
     }
   }
-`
+`;
