@@ -12,7 +12,8 @@ const Button = styled.button`
   margin: 25px auto;
 
   &:disabled {
-    /* background-color: #e1fff6; */
+    background-color: #e1fff6;
+    cursor: not-allowed;
     color: #03ce8e;
   }
 

@@ -13,7 +13,8 @@ import {
   Override,
   SocialsOverride,
   DownloadContainer,
-  DownloadLogo
+  DownloadLogo,
+  OverrideButton
 } from "./styles";
 import { useState } from "react";
 import walletFormContainer from "stateContainers/walletFormContainer";
@@ -21,19 +22,16 @@ import DownloadStep from "components/downloadStep";
 import ButtonLink from "components/buttonLink";
 
 import SocialMediaLinks from "components/socialMediaLinks";
-import Button from "components/button";
-
 const IssueQRCode = () => {
   const [listItems] = useState([
     {
       text: "Download your Covi-ID",
       random: (
-        <Button
-          style={{ minHeight: "30px", margin: "unset" }}
+        <OverrideButton
           onClick={() => download()}
         >
           Download
-        </Button>
+        </OverrideButton>
       )
     },
     {

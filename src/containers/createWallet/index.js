@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react'
-import { Formik } from 'formik'
-import { object, string, bool } from 'yup'
+import React, { useCallback, useState } from "react";
+import { Formik } from "formik";
+import { object, string, bool } from "yup";
 
 import {
   Form,
@@ -71,6 +71,7 @@ const VALIDATION_SCHEMA = object().shape({
 })
 
 const CreateWallet = ({ twoStepCallback }) => {
+  const [loading, setLoading] = useState(false);
   const addDataToState = useCallback(
     async (values) => {
       await walletFormContainer.set({
@@ -94,6 +95,8 @@ const CreateWallet = ({ twoStepCallback }) => {
         mobileNumber: mobileNumber,
       }
 
+      setLoading(true);
+
       try {
         const { data } = await api.wallet.createWallet(createWalletData)
         await walletFormContainer.set({
@@ -102,7 +105,9 @@ const CreateWallet = ({ twoStepCallback }) => {
         })
         twoStepCallback(walletFormContainer.state)
       } catch (error) {
-        console.error(error)
+        console.error(error);
+      } finally {
+        setLoading(false);
       }
     },
     [twoStepCallback]
@@ -204,7 +209,7 @@ const CreateWallet = ({ twoStepCallback }) => {
                   }
                 />
 
-                <Button type='submit' onClick={handleSubmit}>
+                <Button disabled={loading} type="submit" onClick={handleSubmit}>
                   Next
                 </Button>
               </Footer>

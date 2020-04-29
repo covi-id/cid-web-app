@@ -28,9 +28,9 @@ const INITIAL_VALUES = {
 
 const VALIDATION_SCHEMA = object().shape({
   referenceNumber: string().max(30 | "Max 30 characters."),
-  dateTested: date().required(),
-  covidStatus: string().required(),
-  laboratory: string().required()
+  dateTested: date().required("*Required"),
+  covidStatus: string().required("*Required"),
+  laboratory: string().required("*Required")
 });
 
 const AddStatus = ({ twoStepCallback }) => {
@@ -76,6 +76,18 @@ const AddStatus = ({ twoStepCallback }) => {
                         {
                           label: "NHLS (National Health Laboratory Service)",
                           value: "NHLS"
+                        },
+                        {
+                          label: "Lancet Laboratories",
+                          value: "LancetLaboratories"
+                        },
+                        {
+                          label: "Pathcare",
+                          value: "Pathcare"
+                        },
+                        {
+                          label: "Other",
+                          value: "Other"
                         }
                       ]}
                     />
