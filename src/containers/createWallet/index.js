@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from "react";
-import { Formik } from "formik";
-import { object, string, bool } from "yup";
-import { toast} from 'react-toastify'
+import React, { useCallback, useState } from 'react'
+import { Formik } from 'formik'
+import { object, string, bool } from 'yup'
+import { toast } from 'react-toastify'
 
 import {
   Form,
@@ -21,6 +21,7 @@ import Select from 'components/select'
 import FormLabel from 'components/shared/formLabel'
 import api from 'api'
 import FormHeader from 'components/formHeader'
+import Recaptcha from 'components/recaptcha'
 
 const INITIAL_VALUES = {
   firstName: '',
@@ -73,6 +74,8 @@ const VALIDATION_SCHEMA = object().shape({
 
 const CreateWallet = ({ twoStepCallback }) => {
   const [loading, setLoading] = useState(false)
+  const [reCaptchaSuccess, setRecaptchaSuccess] = useState(false)
+
   const addDataToState = useCallback(
     async (values) => {
       await walletFormContainer.set({
@@ -114,107 +117,116 @@ const CreateWallet = ({ twoStepCallback }) => {
     [twoStepCallback]
   )
 
+  function handleReCAPTCHA() {
+    setRecaptchaSuccess(true)
+  }
+
   return (
     <>
       <FormHeader heading='Enter details' />
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={VALIDATION_SCHEMA}
-        onSubmit={addDataToState}>
+        onSubmit={(values) => reCaptchaSuccess && addDataToState(values)}>
         {({ handleSubmit, handleChange, values, errors }) => {
           return (
-            <Form onSubmit={handleSubmit}>
-              <BodyContainer>
-                <Left>
-                  <TextInput
-                    placeholder='Enter name'
-                    name='firstName'
-                    label='Name'
-                  />
-                  <TextInput
-                    name='lastName'
-                    placeholder='Enter last name'
-                    label='Last name'
-                  />
-                  <FormLabel
-                    name='mobileNumber'
-                    description='Mobile Number'
-                    error={errors['mobileNumber']}
-                  />
-                  <MobileNumberContainer>
+            <>
+              <Form onSubmit={handleSubmit}>
+                <BodyContainer>
+                  <Left>
                     <TextInput
-                      name='countryCode'
-                      containerStyle={{ width: '100px', marginRight: '10px' }}
+                      placeholder='Enter name'
+                      name='firstName'
+                      label='Name'
                     />
                     <TextInput
+                      name='lastName'
+                      placeholder='Enter last name'
+                      label='Last name'
+                    />
+                    <FormLabel
                       name='mobileNumber'
-                      placeholder='Enter mobile number'
+                      description='Mobile Number'
+                      error={errors['mobileNumber']}
                     />
-                  </MobileNumberContainer>
-                  <Select
-                    placeholder='Please select'
-                    label='Document Type'
-                    name='identificationType'
-                    displayProp='label'
-                    valueProp='value'
-                    items={[
-                      {
-                        label: 'SA ID Number',
-                        value: 'IdentificationDocument',
-                      },
-                      { label: 'Passport', value: 'Passport' },
-                    ]}
-                  />
-                </Left>
+                    <MobileNumberContainer>
+                      <TextInput
+                        name='countryCode'
+                        containerStyle={{ width: '100px', marginRight: '10px' }}
+                      />
+                      <TextInput
+                        name='mobileNumber'
+                        placeholder='Enter mobile number'
+                      />
+                    </MobileNumberContainer>
+                    <Select
+                      placeholder='Please select'
+                      label='Document Type'
+                      name='identificationType'
+                      displayProp='label'
+                      valueProp='value'
+                      items={[
+                        {
+                          label: 'SA ID Number',
+                          value: 'IdentificationDocument',
+                        },
+                        { label: 'Passport', value: 'Passport' },
+                      ]}
+                    />
+                  </Left>
 
-                <Right>
-                  <FileUpload
-                    name='photo'
-                    label='Upload picture'
-                    dropText='Drop files :)'
-                    placeholder='Drag and drop or click to add file here.'
-                  />
-                  <TextInput
-                    name='identificationValue'
-                    placeholder={
-                      values.identificationType === 'IdentificationDocument'
-                        ? 'Enter 13 digit ID'
-                        : 'Enter passport ID'
-                    }
+                  <Right>
+                    <FileUpload
+                      name='photo'
+                      label='Upload picture'
+                      dropText='Drop files :)'
+                      placeholder='Drag and drop or click to add file here.'
+                    />
+                    <TextInput
+                      name='identificationValue'
+                      placeholder={
+                        values.identificationType === 'IdentificationDocument'
+                          ? 'Enter 13 digit ID'
+                          : 'Enter passport ID'
+                      }
+                      label={
+                        values.identificationType === 'IdentificationDocument'
+                          ? 'SA ID Number'
+                          : 'Passport Number'
+                      }
+                    />
+                  </Right>
+                </BodyContainer>
+
+                <Footer>
+                  <Checkbox
+                    name='consent'
+                    onChange={handleChange}
+                    labelInlineInd={true}
+                    checked={!!values?.consent}
                     label={
-                      values.identificationType === 'IdentificationDocument'
-                        ? 'SA ID Number'
-                        : 'Passport Number'
+                      <>
+                        By proceeding, I consent to the{' '}
+                        <CheckboxLink
+                          href='https://docs.google.com/document/d/19u3WE-w5VfNNyxQrYmZxsRRHH-WY0VBfE1eMmxRf9rQ/edit?usp=sharing'
+                          target='_blank'
+                          rel='noopener noreferrer'>
+                          {' '}
+                          privacy policy
+                        </CheckboxLink>
+                      </>
                     }
                   />
-                </Right>
-              </BodyContainer>
-
-              <Footer>
-                <Checkbox
-                  name='consent'
-                  onChange={handleChange}
-                  labelInlineInd={true}
-                  checked={!!values?.consent}
-                  label={
-                    <>
-                      By proceeding, I consent to the{' '}
-                      <CheckboxLink
-                        href='https://docs.google.com/document/d/19u3WE-w5VfNNyxQrYmZxsRRHH-WY0VBfE1eMmxRf9rQ/edit?usp=sharing'
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                        {' '}
-                        privacy policy
-                      </CheckboxLink>
-                    </>
-                  }
-                />
-                <Recaptcha />
-                <Button disabled={loading} type='submit' onClick={handleSubmit}>
-                  Next
-                </Button>
-              </Footer>
-            </Form>
+                  <Recaptcha name='recaptcha' handleChange={handleReCAPTCHA} />
+                  <Button
+                    disabled={loading}
+                    type='submit'
+                    onClick={handleSubmit}>
+                    Next
+                  </Button>
+                </Footer>
+              </Form>
+            </>
           )
         }}
       </Formik>

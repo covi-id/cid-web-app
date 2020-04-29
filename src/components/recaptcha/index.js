@@ -1,16 +1,16 @@
 import React from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { RecaptchaWrapper } from './styles'
 
-const Recaptcha = () => {
+import { ENV } from 'utils/environment'
+
+const Recaptcha = ({ handleChange }) => {
   return (
     <RecaptchaWrapper>
-      <form action='?' method='POST'>
-        <div
-          class='g-recaptcha'
-          data-sitekey='6Lfw6u8UAAAAAPM_pXvNmxXIt4EZGzyJ3TzbjX67'></div>
-        <br />
-        <input type='submit' value='Submit' />
-      </form>
+      <ReCAPTCHA
+        sitekey={ENV.SITE_KEY}
+        onChange={handleChange}
+      />
     </RecaptchaWrapper>
   )
 }
