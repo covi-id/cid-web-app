@@ -3,6 +3,7 @@ import * as ButtonLink from "components/buttonLink/styles";
 import LogoPhone from "assets/icons/phone-icon.svg";
 import LogoQr from "assets/icons/qr-scan-logo.svg";
 import LogoCovid from "assets/icons/covid-logo.svg";
+import { InternalLinkContainer } from "components/buttonLink/styles";
 
 const StyledCard = styled.div`
   height: 350px;
@@ -19,12 +20,14 @@ const StyledCard = styled.div`
     margin: 0 auto;
     min-width: 100px;
     margin-top: 30px;
+    height: 50px;
   }
 
   ${ButtonLink.InternalLinkContainer} {
     width: 180px;
     margin: 0 auto;
     min-width: 100px;
+    height: 50px;
     margin-top: 30px;
   }
 

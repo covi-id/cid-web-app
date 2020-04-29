@@ -20,9 +20,8 @@ import {
 import { useState } from "react";
 import walletFormContainer from "stateContainers/walletFormContainer";
 import DownloadStep from "components/downloadStep";
-
 import SocialMediaLinks from "components/socialMediaLinks";
-import ButtonLink from "components/buttonLink";
+
 const IssueQRCode = () => {
   const [listItems] = useState([
     {
