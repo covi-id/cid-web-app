@@ -27,16 +27,14 @@ const IssueQRCode = () => {
     {
       text: "Download your Covi-ID",
       random: (
-        <OverrideButton
-          onClick={() => download()}
-        >
-          Download
-        </OverrideButton>
+        <OverrideButton onClick={() => download()}>Download</OverrideButton>
       )
     },
     {
       text: "Add your latest test results",
-      random: <ButtonLink>Add a test result</ButtonLink>
+      random: (
+        <ButtonLink to="/create-wallet/status">Add a test result</ButtonLink>
+      )
     },
     {
       text: "Share that you’ve just created your Covi-ID",

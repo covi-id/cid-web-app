@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { Formik } from "formik";
 import { object, string, bool } from "yup";
+import { toast} from 'react-toastify'
 
 import {
   Form,
@@ -110,7 +111,7 @@ const CreateWallet = ({ twoStepCallback }) => {
         });
         twoStepCallback(walletFormContainer.state);
       } catch (error) {
-        console.error(error);
+        toast.error(error)
       } finally {
         setLoading(false);
       }
