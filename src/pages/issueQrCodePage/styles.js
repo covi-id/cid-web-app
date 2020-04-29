@@ -8,6 +8,7 @@ import DownloadQrBackground from "assets/images/qr-download-background.svg";
 import DownloadQrLogo from "assets/images/qr-dowload-logo.svg";
 
 import * as ButtonLink from "components/buttonLink/styles";
+import LinkButton from "components/buttonLink";
 
 import * as SocialMediaLinks from "components/socialMediaLinks/styles";
 import { Button } from "components/button/styles";
@@ -172,6 +173,18 @@ export const Override = styled.div`
   }
 `;
 
+export const OverrideInternalLink = styled(ButtonLink.InternalLinkContainer)`
+    height: 30px;
+    width: 180px;
+    min-width: 120px;
+    font-size: 14px;
+
+    @media screen and (max-width: 768px) {
+      margin: 0px auto 26px auto;
+    }
+  }
+`;
+
 export const DownloadContainer = styled.div`
   background-image: url(${DownloadQrBackground});
   position: absolute;
@@ -199,6 +212,8 @@ export const DownloadLogo = styled.img.attrs({ src: DownloadQrLogo })`
 export const OverrideButton = styled(Button)`
   min-height: 30px;
   margin: unset;
+  font-size: 14px;
+
   @media screen and (max-width: 768px) {
     margin: 0px auto 26px;
   }

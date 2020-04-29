@@ -14,14 +14,15 @@ import {
   SocialsOverride,
   DownloadContainer,
   DownloadLogo,
-  OverrideButton
+  OverrideButton,
+  OverrideInternalLink
 } from "./styles";
 import { useState } from "react";
 import walletFormContainer from "stateContainers/walletFormContainer";
 import DownloadStep from "components/downloadStep";
-import ButtonLink from "components/buttonLink";
 
 import SocialMediaLinks from "components/socialMediaLinks";
+import ButtonLink from "components/buttonLink";
 const IssueQRCode = () => {
   const [listItems] = useState([
     {
@@ -33,7 +34,9 @@ const IssueQRCode = () => {
     {
       text: "Add your latest test results",
       random: (
-        <ButtonLink to="/create-wallet/status">Add a test result</ButtonLink>
+        <OverrideInternalLink to="/create-wallet/status">
+          Add a test result
+        </OverrideInternalLink>
       )
     },
     {
