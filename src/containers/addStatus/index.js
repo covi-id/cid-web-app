@@ -21,7 +21,7 @@ import FormHeader from "components/formHeader";
 const INITIAL_VALUES = {
   referenceNumber: "",
   dateTested: "",
-  covidStatus: "Untested",
+  covidStatus: "Negative",
   laboratory: "",
   receivedResult: false
 };
