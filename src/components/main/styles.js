@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import BackgroundDesktop from "assets/images/desktop-landing-background.svg";
 import BackgroundMobile from "assets/images/mobile-landing-background.svg";
 

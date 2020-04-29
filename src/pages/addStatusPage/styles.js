@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import BackgroundMobile from "assets/images/mobile-create-wallet-background.svg";
 
 export const Container = styled.div`
   min-height: 100%;
@@ -11,9 +10,6 @@ export const Container = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    /* background: url(${BackgroundMobile}) white no-repeat;
-    background-size: cover;
-    justify-content: unset; */
   }
 `;
 

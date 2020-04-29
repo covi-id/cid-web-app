@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Logo from "assets/images/logo-dark.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -18,7 +17,7 @@ const Header = styled.nav`
   }
 `;
 
-const MainLogo = styled.img.attrs({ src: Logo })`
+const MainLogo = styled.img`
   width: 161px;
   display: ${props => props.hide && "none"};
 

@@ -4,7 +4,7 @@ import { Wrapper } from "./styles";
 import Nav from "components/nav";
 import { useLocation } from "react-router-dom";
 
-function getBackgroundImages(value) {
+function getBackgroundImages(path) {
   const backgroundChangeList = {
     "/create-wallet/status/updated": {
       desktop: require("assets/images/desktop-purple-background.svg"),
@@ -18,13 +18,13 @@ function getBackgroundImages(value) {
     }
   };
 
-  return backgroundChangeList[value] || null;
+  return backgroundChangeList[path] || null;
 }
 
 const Main = ({ children }) => {
   const location = useLocation();
   const background = getBackgroundImages(location.pathname);
-  console.log(background);
+  
   return (
     <Wrapper background={background}>
       <Nav>{children}</Nav>

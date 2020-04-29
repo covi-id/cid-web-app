@@ -1,5 +1,4 @@
 export default function b64toBlob(b64Data, contentType = "", sliceSize = 512) {
-  console.log(b64Data);
   const byteCharacters = atob(b64Data.split(",")[1]);
   const byteArrays = [];
 

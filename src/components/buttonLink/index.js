@@ -1,7 +1,6 @@
 import React from "react";
 import { string } from "prop-types";
 import { Container, Icon, Text, InternalLinkContainer } from "./styles";
-import { useHistory } from "react-router-dom";
 
 const ButtonLink = ({ icon = null, children, to, href, target, rel }) => {
 

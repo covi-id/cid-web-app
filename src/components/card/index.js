@@ -4,16 +4,15 @@ import {
   Text,
   TextBox,
   ItemWrapper,
-  PhoneLogo,
   QrLogo,
   CovidLogo,
   FileInput,
   FileUpload
+  // PhoneLogo,
 } from "./styles";
 import ButtonLink from "components/buttonLink";
 import Button from "components/button";
 import { Formik } from "formik";
-import toBase64 from "utils/toBase64";
 import decodeQr from "utils/decodeQrB64";
 import getImageData from "utils/getImageData";
 import walletFormContainer from "stateContainers/walletFormContainer";

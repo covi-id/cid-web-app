@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import FirstIcon from "assets/icons/landing-icon.svg";
-import BackgroundMobile from "assets/images/mobile-landing-background.svg";
 import * as ButtonLink from "components/buttonLink/styles";
 
 export const Container = styled.div`
@@ -12,7 +11,6 @@ export const Container = styled.div`
   text-align: center;
 
   @media screen and (max-width: 768px) {
-    /* background: url(${BackgroundMobile}) white no-repeat center; */
     align-items: unset;
   }
 `;
