@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Input = styled.input`
   font-size: 1rem;
@@ -14,6 +14,13 @@ const Input = styled.input`
   transition: 0.2s ease-out;
   color: #ffffff;
 
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #c9c0fa inset !important;
+  }
+
   &:focus {
     outline: none;
     box-shadow: 4px 10px 40px rgba(201, 192, 250, 0.8);
@@ -24,6 +31,6 @@ const Input = styled.input`
     font-size: 1rem;
     color: #ffffff;
   }
-`
+`;
 
-export { Input }
+export { Input };
