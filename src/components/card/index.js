@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import { toast } from "react-toastify";
 import {
   StyledCard,
   Text,
@@ -17,6 +18,7 @@ import decodeQr from "utils/decodeQrB64";
 import getImageData from "utils/getImageData";
 import walletFormContainer from "stateContainers/walletFormContainer";
 import { useHistory } from "react-router-dom";
+import getWalletIdFromCovidStatusUrl from "utils/getWalletIdFromCovidStatusUrl";
 
 const cardsInfo = [
   // {
@@ -54,10 +56,19 @@ const Card = () => {
       image.src = imageUrl;
 
       image.onload = async () => {
-        const { width, height } = image;
-        const walletId = decodeQr(getImageData(image).data, width, height);
-        await walletFormContainer.set({ walletId });
-        history.push("/create-wallet/status");
+        try {
+          const { width, height } = image;
+          const covidStatusUrl = decodeQr(
+            getImageData(image).data,
+            width,
+            height
+          );
+          const walletId = getWalletIdFromCovidStatusUrl(covidStatusUrl);
+          await walletFormContainer.set({ walletId });
+          history.push("/create-wallet/status");
+        } catch (error) {
+          toast.error("Invalid Covi-ID QR");
+        }
       };
     },
     [history]

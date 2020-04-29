@@ -97,7 +97,7 @@ const IssueQRCode = () => {
                   height: "auto"
                 }}
                 fgColor="#513CC5"
-                value={walletFormContainer.state.walletId}
+                value={walletFormContainer.state.covidStatusUrl}
                 level="H"
                 includeMargin
                 // renderAs="svg"
@@ -130,7 +130,7 @@ const IssueQRCode = () => {
           renderAs="svg"
           level="H"
           includeMargin
-          value={walletFormContainer.state.walletId}
+          value={walletFormContainer.state.covidStatusUrl}
         />
         <DownloadLogo />
       </DownloadContainer>

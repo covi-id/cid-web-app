@@ -4,7 +4,7 @@ function decodeQr(imageData, width, height, options = {}) {
   try {
     return jsQR(imageData, width, height).data;
   } catch (error) {
-    console.error(error);
+    throw error
   }
 }
 
