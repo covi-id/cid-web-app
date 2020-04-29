@@ -58,7 +58,7 @@ const Root = () => (
           <Redirect to="/"></Redirect>
         </Route>
       </Switch>
-      <ToastContainer hideProgressBar  />
+      <ToastContainer hideProgressBar />
     </Main>
   </Router>
 );
