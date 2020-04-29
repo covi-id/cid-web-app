@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Button = styled.button`
   border-radius: 60px;
@@ -51,7 +51,7 @@ const Button = styled.button`
           color: #513cc5;
           background-color: #03f5a9;
         `;
-  }}}
+  }}
 `;
 
 export { Button };

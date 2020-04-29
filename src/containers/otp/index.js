@@ -44,7 +44,7 @@ const OtpContainer = ({ otpSubmitData }) => {
         setLoading(false);
       }
     },
-    [person, walletId]
+    [history, person, picture, walletId]
   );
 
   const resendOtp = useCallback(async () => {

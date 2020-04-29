@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import BackgroundMobile from 'assets/images/mobile-create-wallet-background.svg'
 import Back from 'assets/icons/back-icon.svg'
 
 export const BackTick = styled.img.attrs({ src: Back })`

@@ -5,62 +5,63 @@ import {
   Container,
   Title,
   Heading,
-  ProfilePic,
   Right,
   QRContainer,
-  DownloadButton,
-  MainLogo,
-  QR,
   Card,
   CardContent,
   CardBold,
   Override,
-  SocialsOverride
+  SocialsOverride,
+  DownloadContainer,
+  DownloadLogo
 } from "./styles";
 import { useState } from "react";
-import { useEffect } from "react";
 import walletFormContainer from "stateContainers/walletFormContainer";
-import Nav from "components/nav";
 import DownloadStep from "components/downloadStep";
 import ButtonLink from "components/buttonLink";
 
 import SocialMediaLinks from "components/socialMediaLinks";
-
-const listItems = [
-  { text: "Download your Covi-ID", random: <ButtonLink>Download</ButtonLink> },
-  {
-    text: "Add your latest test results",
-    random: <ButtonLink>Add a test result</ButtonLink>
-  },
-  {
-    text: "Share that you’ve just created your Covi-ID",
-    random: (
-      <SocialsOverride>
-        <SocialMediaLinks />
-      </SocialsOverride>
-    )
-  }
-];
+import Button from "components/button";
 
 const IssueQRCode = () => {
-  const [state, setState] = useState();
+  const [listItems] = useState([
+    {
+      text: "Download your Covi-ID",
+      random: (
+        <Button
+          style={{ minHeight: "30px", margin: "unset" }}
+          onClick={() => download()}
+        >
+          Download
+        </Button>
+      )
+    },
+    {
+      text: "Add your latest test results",
+      random: <ButtonLink>Add a test result</ButtonLink>
+    },
+    {
+      text: "Share that you’ve just created your Covi-ID",
+      random: (
+        <SocialsOverride>
+          <SocialMediaLinks />
+        </SocialsOverride>
+      )
+    }
+  ]);
 
-  const codeStyle = {
-    width: "100%",
-    height: "100%",
-    display: "flex"
-  };
-
-  useEffect(() => {
-    const walletState = { ...walletFormContainer.state };
-    setState(walletState);
-  }, []);
-
-  function download() {
-    html2canvas(document.body).then(function(canvas) {
-      saveAs(canvas.toDataURL(), "CoviID.png");
+  const download = async () => {
+    window.scrollTo(0, 0);
+    html2canvas(
+      document.querySelector(`#${walletFormContainer.state.walletId}`) ||
+        document.body
+    ).then(function(canvas) {
+      saveAs(
+        canvas.toDataURL("image/png", 1),
+        `${walletFormContainer.state.walletId}.png`
+      );
     });
-  }
+  };
 
   function saveAs(uri, filename) {
     var link = document.createElement("a");
@@ -92,7 +93,17 @@ const IssueQRCode = () => {
         <Card>
           <CardContent>
             <QRContainer>
-              <QR src={walletFormContainer.state.qrCode} alt="qr-code" />
+              <QRCode
+                style={{
+                  width: "190px",
+                  height: "auto"
+                }}
+                fgColor="#513CC5"
+                value={walletFormContainer.state.walletId}
+                level="H"
+                includeMargin
+                // renderAs="svg"
+              />
             </QRContainer>
             <Right>
               <CardBold>What do I do next?</CardBold>
@@ -110,6 +121,21 @@ const IssueQRCode = () => {
           </CardContent>
         </Card>
       </Container>
+
+      <DownloadContainer id={walletFormContainer.state.walletId}>
+        <QRCode
+          style={{
+            width: "90%",
+            height: "auto"
+          }}
+          fgColor="#513CC5"
+          renderAs="svg"
+          level="H"
+          includeMargin
+          value={walletFormContainer.state.walletId}
+        />
+        <DownloadLogo />
+      </DownloadContainer>
     </>
   );
 };

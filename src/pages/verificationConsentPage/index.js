@@ -4,7 +4,6 @@ import {
   Card,
   TextContainer,
   Text,
-  Bold,
   LargeText,
   ButtonWrapper
 } from "./styles.js";

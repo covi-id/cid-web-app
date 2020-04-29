@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Formik } from "formik";
-import { object, string, bool, ref, number, mixed, reach } from "yup";
+import { object, string, bool } from "yup";
 
 import {
   Form,
@@ -14,7 +14,6 @@ import TextInput from "components/textInput";
 import FileUpload from "components/fileUpload";
 import Button from "components/button";
 import walletFormContainer from "stateContainers/walletFormContainer";
-import { useHistory } from "react-router-dom";
 import Checkbox from "components/checkbox";
 import Select from "components/select";
 import FormLabel from "components/shared/formLabel";
@@ -92,7 +91,7 @@ const CreateWallet = ({ twoStepCallback }) => {
           person: { firstName, lastName, mobileNumber, photo }
         }
       } = walletFormContainer;
-      console.log(photo.split(",")[0]);
+
       const createWalletData = {
         firstName,
         lastName,
@@ -108,7 +107,7 @@ const CreateWallet = ({ twoStepCallback }) => {
         });
         twoStepCallback(walletFormContainer.state);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     },
     [twoStepCallback]

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { number, string, func } from "prop-types";
+import { number, string } from "prop-types";
 
 import SingleOtpInput from "./singleInput";
 import { Container } from "./styles";

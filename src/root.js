@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route,
   Redirect
@@ -11,7 +11,6 @@ import Step2 from "pages/addStatusPage";
 import Step3 from "pages/issueQrCodePage";
 import Main from "components/main";
 import ConnectCoviid from "pages/cardsPage";
-import VerificationConsent from "pages/verificationConsentPage";
 import CoviidUpdated from "pages/coviidUpdatedPage";
 import ReactGA from "react-ga";
 

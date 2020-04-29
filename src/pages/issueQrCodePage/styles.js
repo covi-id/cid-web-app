@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import BackgroundDesktop from "assets/images/desktop-coviid-background.svg";
-import BackgroundMobile from "assets/images/mobile-coviid-background.svg";
 
 import CenterPiece from "assets/images/desktop-coviid-download-card.svg";
 import MobileCenterPiece from "assets/images/mobile-coviid-download-card.svg";
 
-import QRCode from "assets/images/QRCode.svg";
+import DownloadQrBackground from "assets/images/qr-download-background.svg";
+import DownloadQrLogo from "assets/images/qr-dowload-logo.svg";
 
 import * as ButtonLink from "components/buttonLink/styles";
 
@@ -23,7 +23,6 @@ export const Container = styled.div`
   flex-direction: column;
 
   @media screen and (max-width: 768px) {
-    /* background: url(${BackgroundMobile}) white no-repeat center; */
     justify-content: unset;
     width: 100%;
   }
@@ -32,11 +31,12 @@ export const Container = styled.div`
 export const Card = styled.div`
   display: flex;
   width: 812.5px;
-  height: 462.5px;
+  /* height: 462.5px; */
   background: url(${CenterPiece}) no-repeat;
   background-size: cover;
   border-radius: 40px;
   margin-left: -40px;
+  background-color: #ffffff;
 
   @media screen and (max-width: 768px) {
     background: url(${MobileCenterPiece}) no-repeat;
@@ -45,6 +45,7 @@ export const Card = styled.div`
     width: 90%;
     height: 100%;
     margin-bottom: 80px;
+    background-color: #ffffff;
   }
 `;
 
@@ -86,11 +87,12 @@ export const QRContainer = styled.div`
   justify-content: center;
   display: flex;
   margin: 0 80px 0 0;
+  align-items: center;
 
   @media screen and (max-width: 768px) {
     width: 200px;
     height: 200px;
-    margin: 0 auto 60px auto;
+    margin: 0 auto 130px auto;
   }
 `;
 
@@ -167,4 +169,28 @@ export const Override = styled.div`
       margin: 0px auto 26px auto;
     }
   }
+`;
+
+export const DownloadContainer = styled.div`
+  background-image: url(${DownloadQrBackground});
+  position: absolute;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #654cf0;
+  background-position: top left;
+  padding: 40px;
+  border-radius: 60px;
+  justify-content: center;
+
+  background: "#654cf0";
+  width: 435px;
+  flex-direction: row;
+  z-index: -1;
+  text-align: center;
+`;
+
+export const DownloadLogo = styled.img.attrs({ src: DownloadQrLogo })`
+  margin-top: 30px;
+  width: 160px;
 `;

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import FirstIcon from 'assets/icons/coviidIcon.svg'
-import BackgroundMobileDark from 'assets/images/mobile-purple-background.svg'
 import * as SocialMediaLinks from 'components/socialMediaLinks/styles'
 
 export const Container = styled.div`

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Formik } from "formik";
-import { object, bool, date, string } from "yup";
+import { object, date, string } from "yup";
 
 import {
   Form,
@@ -16,8 +16,6 @@ import Button from "components/button";
 import walletFormContainer from "stateContainers/walletFormContainer";
 import RadioButton from "components/radioButton";
 import Select from "components/select";
-import api from "api";
-import { useHistory } from "react-router-dom";
 import FormHeader from "components/formHeader";
 
 const INITIAL_VALUES = {

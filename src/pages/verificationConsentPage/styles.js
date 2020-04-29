@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import FirstIcon from "assets/icons/landing-icon.svg";
-import BackgroundMobile from "assets/images/mobile-landing-background.svg";
 
 export const Container = styled.div`
   display: flex;
