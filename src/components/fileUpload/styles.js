@@ -38,11 +38,8 @@ const FileContainer = styled.div`
   ${({ backgroundImage }) =>
     backgroundImage &&
     css`
-      background-image: url(${backgroundImage});
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
       border: 2px solid #c9c0fa;
+      padding: 0;
     `}
 
   &:focus {
