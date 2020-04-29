@@ -69,6 +69,13 @@ const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
         </CloseButton>
 
         <FileContainer {...getRootProps()} backgroundImage={image}>
+          {image && (
+            <img
+              src={image}
+              style={{ width: "100%", borderRadius: "20px" }}
+              alt="profile upload"
+            />
+          )}
           <input name={name} {...getInputProps()} />
           {image ? null : isDragActive ? (
             <DropzoneLabel>{dropText}</DropzoneLabel>

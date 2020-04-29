@@ -21,7 +21,7 @@ import FormHeader from "components/formHeader";
 const INITIAL_VALUES = {
   referenceNumber: "",
   dateTested: "",
-  covidStatus: "Untested",
+  covidStatus: "Negative",
   laboratory: "",
   receivedResult: false
 };
@@ -115,21 +115,19 @@ const AddStatus = ({ twoStepCallback }) => {
                     />
                   </ItemContainer>
                   <ItemContainer>
-                    {/* {values.receivedResult && ( */}
-                    <Select
-                      label="Test status"
-                      placeholder="Please select"
-                      name="covidStatus"
-                      displayProp="label"
-                      valueProp="value"
-                      items={[
-                        { label: "Untested", value: "Untested" },
-                        { label: "Negative", value: "Negative" },
-                        { label: "Positive", value: "Positive" },
-                        { label: "Recovered", value: "Recovered" }
-                      ]}
-                    />
-                    {/* )} */}
+                    {values.receivedResult && (
+                      <Select
+                        label="Test status"
+                        placeholder="Please select"
+                        name="covidStatus"
+                        displayProp="label"
+                        valueProp="value"
+                        items={[
+                          { label: "Negative", value: "Negative" },
+                          { label: "Positive", value: "Positive" }
+                        ]}
+                      />
+                    )}
                   </ItemContainer>
                 </MakeInline>
               </>

@@ -106,6 +106,7 @@ const CreateWallet = ({ twoStepCallback }) => {
         await walletFormContainer.set({
           walletId: data.walletId,
           picture: data.picture,
+          covidStatusUrl: data.covidStatusUrl
         })
         twoStepCallback(walletFormContainer.state)
       } catch (error) {
