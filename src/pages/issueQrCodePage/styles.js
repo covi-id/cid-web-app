@@ -1,17 +1,16 @@
-import styled from "styled-components";
-import BackgroundDesktop from "assets/images/desktop-coviid-background.svg";
+import styled from 'styled-components'
+import BackgroundDesktop from 'assets/images/desktop-coviid-background.svg'
 
-import CenterPiece from "assets/images/desktop-coviid-download-card.svg";
-import MobileCenterPiece from "assets/images/mobile-coviid-download-card.svg";
+import CenterPiece from 'assets/images/desktop-coviid-download-card.svg'
+import MobileCenterPiece from 'assets/images/mobile-coviid-download-card.svg'
 
-import DownloadQrBackground from "assets/images/qr-download-background.svg";
-import DownloadQrLogo from "assets/images/qr-dowload-logo.svg";
+import DownloadQrBackground from 'assets/images/qr-download-background.svg'
+import DownloadQrLogo from 'assets/images/qr-dowload-logo.svg'
 
-import * as ButtonLink from "components/buttonLink/styles";
-import LinkButton from "components/buttonLink";
+import * as ButtonLink from 'components/buttonLink/styles'
 
-import * as SocialMediaLinks from "components/socialMediaLinks/styles";
-import { Button } from "components/button/styles";
+import * as SocialMediaLinks from 'components/socialMediaLinks/styles'
+import { Button } from 'components/button/styles'
 
 export const Container = styled.div`
   width: 100%;
@@ -28,7 +27,7 @@ export const Container = styled.div`
     justify-content: unset;
     width: 100%;
   }
-`;
+`
 
 export const Card = styled.div`
   display: flex;
@@ -49,7 +48,7 @@ export const Card = styled.div`
     margin-bottom: 80px;
     background-color: #ffffff;
   }
-`;
+`
 
 export const CardContent = styled.div`
   display: flex;
@@ -63,7 +62,7 @@ export const CardContent = styled.div`
     width: 100%;
     flex-direction: column;
   }
-`;
+`
 
 export const Right = styled.div`
   position: relative;
@@ -74,14 +73,14 @@ export const Right = styled.div`
     width: 100%;
     height: 100%;
   }
-`;
+`
 
-export const ProfilePic = styled.img.attrs(props => ({
-  src: props.src
+export const ProfilePic = styled.img.attrs((props) => ({
+  src: props.src,
 }))`
   height: auto;
   width: 100%;
-`;
+`
 
 export const QRContainer = styled.div`
   width: 250px;
@@ -96,12 +95,12 @@ export const QRContainer = styled.div`
     height: 200px;
     margin: 0 auto 130px auto;
   }
-`;
+`
 
 export const QR = styled.img`
   width: 100%;
   margin: 0 auto;
-`;
+`
 
 export const Title = styled.div`
   justify-content: center;
@@ -112,7 +111,7 @@ export const Title = styled.div`
     width: 100%;
     margin-top: unset;
   }
-`;
+`
 
 export const Heading = styled.div`
   font-weight: bold;
@@ -132,7 +131,7 @@ export const Heading = styled.div`
       display: none;
     }
   }
-`;
+`
 
 export const CardBold = styled.div`
   font-weight: bold;
@@ -146,7 +145,7 @@ export const CardBold = styled.div`
     width: 120px;
     margin: 20px auto;
   }
-`;
+`
 
 export const SocialsOverride = styled.div`
   ${SocialMediaLinks.SocialWrapper} {
@@ -157,7 +156,7 @@ export const SocialsOverride = styled.div`
       margin: 0px auto 0px 60px;
     }
   }
-`;
+`
 
 export const Override = styled.div`
   ${ButtonLink.Container} {
@@ -171,7 +170,7 @@ export const Override = styled.div`
       margin: 0px auto 26px auto;
     }
   }
-`;
+`
 
 export const OverrideInternalLink = styled(ButtonLink.InternalLinkContainer)`
     height: 30px;
@@ -183,7 +182,7 @@ export const OverrideInternalLink = styled(ButtonLink.InternalLinkContainer)`
       margin: 0px auto 26px auto;
     }
   }
-`;
+`
 
 export const DownloadContainer = styled.div`
   background-image: url(${DownloadQrBackground});
@@ -197,17 +196,17 @@ export const DownloadContainer = styled.div`
   border-radius: 60px;
   justify-content: center;
 
-  background: "#654cf0";
+  background: '#654cf0';
   width: 435px;
   flex-direction: row;
   z-index: -1;
   text-align: center;
-`;
+`
 
 export const DownloadLogo = styled.img.attrs({ src: DownloadQrLogo })`
   margin-top: 30px;
   width: 160px;
-`;
+`
 
 export const OverrideButton = styled(Button)`
   min-height: 30px;
@@ -217,4 +216,4 @@ export const OverrideButton = styled(Button)`
   @media screen and (max-width: 768px) {
     margin: 0px auto 26px;
   }
-`;
+`
