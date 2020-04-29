@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from "styled-components";
 
 const Wrapper = styled.div`
   position: relative;
@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   @media screen and (max-width: 768px) {
     width: 100%;
   }
-`
+`;
 
 const Header = styled.div`
   position: relative;
@@ -18,7 +18,8 @@ const Header = styled.div`
   transition: 0.2s ease-out;
   border-radius: 60px;
   min-height: 50px;
-  pointer-events: ${(props) => props.disabled && 'none'};
+  max-height: 50px;
+  pointer-events: ${props => props.disabled && "none"};
   background-color: #c9c0fa;
 
   ${({ active }) =>
@@ -27,14 +28,14 @@ const Header = styled.div`
       box-shadow: 4px 10px 40px rgba(201, 192, 250, 0.8);
       background-color: #b2a5f7;
     `}
-`
+`;
 
 const Title = styled.label`
   color: #ffffff;
   font-size: 1rem;
   margin-left: 19px;
   margin-bottom: 1px;
-`
+`;
 
 const Value = styled.label`
   color: white;
@@ -56,7 +57,7 @@ const Value = styled.label`
       line-height: 110%;
       align-items: center;
     `}
-`
+`;
 
 const List = styled.ul`
   position: absolute;
@@ -87,7 +88,7 @@ const List = styled.ul`
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(124, 113, 132, 1);
   }
-`
+`;
 
 const Item = styled.li`
   height: 50px;
@@ -112,18 +113,18 @@ const Item = styled.li`
       font-weight: 500;
       background-color: #a192f5;
     `}
-`
+`;
 
 const Icon = styled.img`
   transition: 0.2s ease-in;
   margin-right: 20px;
-  display: ${(props) => (props.show ? 'block' : 'none')};
+  display: ${props => (props.show ? "block" : "none")};
 
   ${({ open }) =>
     open &&
     css`
       transform: rotate(180deg);
     `}
-`
+`;
 
-export { Wrapper, Header, Title, List, Item, Icon, Value }
+export { Wrapper, Header, Title, List, Item, Icon, Value };

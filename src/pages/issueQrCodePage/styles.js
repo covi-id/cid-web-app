@@ -10,6 +10,7 @@ import DownloadQrLogo from "assets/images/qr-dowload-logo.svg";
 import * as ButtonLink from "components/buttonLink/styles";
 
 import * as SocialMediaLinks from "components/socialMediaLinks/styles";
+import { Button } from "components/button/styles";
 
 export const Container = styled.div`
   width: 100%;
@@ -193,4 +194,12 @@ export const DownloadContainer = styled.div`
 export const DownloadLogo = styled.img.attrs({ src: DownloadQrLogo })`
   margin-top: 30px;
   width: 160px;
+`;
+
+export const OverrideButton = styled(Button)`
+  min-height: 30px;
+  margin: unset;
+  @media screen and (max-width: 768px) {
+    margin: 0px auto 26px;
+  }
 `;
