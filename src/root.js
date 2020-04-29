@@ -1,10 +1,7 @@
 import React from "react";
-import {
-  Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+import { Router, Switch, Route, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import Landing from "pages/landing/index.js";
 import Step1 from "pages/createWalletPage";
 import Step2 from "pages/addStatusPage";
@@ -61,6 +58,7 @@ const Root = () => (
           <Redirect to="/"></Redirect>
         </Route>
       </Switch>
+      <ToastContainer hideProgressBar />
     </Main>
   </Router>
 );

@@ -1,4 +1,7 @@
 import React, { useCallback, useState } from "react";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
+
 import {
   Container,
   Card,
@@ -10,8 +13,7 @@ import {
 
 import SmallButton from "components/smallButton";
 import api from "api/index.js";
-import walletFormContainer from "stateContainers/walletFormContainer.js";
-import { useHistory } from "react-router-dom";
+import walletFormContainer from "stateContainers/walletFormContainer";
 
 const cardText = [
   {
@@ -45,6 +47,7 @@ const VerificationConsent = ({ cancel }) => {
         });
         history.push("/create-wallet/status/updated");
       } catch (error) {
+        toast.error(error);
       } finally {
         setLoading(false);
       }
@@ -58,8 +61,12 @@ const VerificationConsent = ({ cancel }) => {
           <TextContainer>
             <Text>{card.paraOne}</Text>
             <br />
-            <Text><b>{card.boldOne}</b></Text>
-            <Text><b>{card.boldTwo}</b></Text>
+            <Text>
+              <b>{card.boldOne}</b>
+            </Text>
+            <Text>
+              <b>{card.boldTwo}</b>
+            </Text>
             <br />
             <Text>{card.paraTwo}</Text>
             <br />

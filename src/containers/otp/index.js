@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { Formik } from "formik";
 import { string, object } from "yup";
+import { toast } from 'react-toastify'
 
 import OtpInput from "components/otpInput";
 import { Button } from "components/button/styles";
@@ -40,6 +41,7 @@ const OtpContainer = ({ otpSubmitData }) => {
 
         history.push("/create-wallet/created");
       } catch (error) {
+        toast(error)
       } finally {
         setLoading(false);
       }
@@ -52,6 +54,7 @@ const OtpContainer = ({ otpSubmitData }) => {
     try {
       await api.auth.resendOtp({ walletId, mobileNumber: person.mobileNumber });
     } catch (error) {
+      toast(error)
     } finally {
       setLoading(false);
     }

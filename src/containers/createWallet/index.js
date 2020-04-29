@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from 'react'
-import { Formik } from 'formik'
-import { object, string, bool } from 'yup'
+import React, { useCallback, useState } from "react";
+import { Formik } from "formik";
+import { object, string, bool } from "yup";
+import { toast} from 'react-toastify'
 
 import {
   Form,
@@ -9,6 +10,7 @@ import {
   Footer,
   BodyContainer,
   MobileNumberContainer,
+  CheckboxLink,
 } from './styles'
 import TextInput from 'components/textInput'
 import FileUpload from 'components/fileUpload'
@@ -19,8 +21,6 @@ import Select from 'components/select'
 import FormLabel from 'components/shared/formLabel'
 import api from 'api'
 import FormHeader from 'components/formHeader'
-
-import Recaptcha from 'components/recaptcha'
 
 const INITIAL_VALUES = {
   firstName: '',
@@ -106,7 +106,7 @@ const CreateWallet = ({ twoStepCallback }) => {
         })
         twoStepCallback(walletFormContainer.state)
       } catch (error) {
-        console.error(error)
+        toast.error(error)
       } finally {
         setLoading(false)
       }
@@ -199,13 +199,13 @@ const CreateWallet = ({ twoStepCallback }) => {
                   label={
                     <>
                       By proceeding, I consent to the{' '}
-                      <a
+                      <CheckboxLink
                         href='https://docs.google.com/document/d/19u3WE-w5VfNNyxQrYmZxsRRHH-WY0VBfE1eMmxRf9rQ/edit?usp=sharing'
                         target='_blank'
                         rel='noopener noreferrer'>
                         {' '}
                         privacy policy
-                      </a>
+                      </CheckboxLink>
                     </>
                   }
                 />

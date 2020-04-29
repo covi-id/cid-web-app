@@ -77,3 +77,7 @@ body {
   -ms-transform: rotate(3deg) translate(0px, -4px);
   transform: rotate(3deg) translate(0px, -4px);
 }
+
+.Toastify__toast--error{
+  background: #ff4870 !important;
+}

@@ -33,6 +33,7 @@ instance.interceptors.response.use(
     return response.data;
   },
   async ({ response }) => {
+    nprogress.done();
     return Promise.reject(response && response.data.meta.message);
   }
 );

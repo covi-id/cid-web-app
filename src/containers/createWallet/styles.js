@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { AttachmentIcon, DropzoneLabel } from "components/fileUpload/styles";
-import { Button } from "components/button/styles";
+import styled from 'styled-components'
+import { AttachmentIcon, DropzoneLabel } from 'components/fileUpload/styles'
+import { Button } from 'components/button/styles'
 
 const Form = styled.form`
   width: 100%;
@@ -11,7 +11,7 @@ const Form = styled.form`
     background: #e1fff6;
     color: #03ce8e;
   }
-`;
+`
 
 const BodyContainer = styled.div`
   display: flex;
@@ -20,14 +20,14 @@ const BodyContainer = styled.div`
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
-`;
+`
 
 const Left = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-`;
+`
 
 const Right = styled.div`
   flex: 1;
@@ -53,16 +53,18 @@ const Right = styled.div`
     margin: 0;
     flex-direction: column-reverse;
   }
-`;
+`
 
 const MobileNumberContainer = styled.div`
   display: flex;
   justify-content: space-between;
-`;
+`
 
 const Footer = styled.div`
   text-align: center;
   padding: 18px 0 50px 30px;
+  width: 270px;
+  margin: 0 auto;
 
   @media screen and (max-width: 768px) {
     padding: 30px 0 50px 30px;
@@ -71,6 +73,21 @@ const Footer = styled.div`
   @media screen and (max-width: 768px) {
     padding: 20px 0px 50px 10px;
   }
-`;
+`
 
-export { Form, Left, Right, Footer, BodyContainer, MobileNumberContainer };
+const CheckboxLink = styled.a`
+  color: #654cf0;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+`
+
+export {
+  Form,
+  Left,
+  Right,
+  Footer,
+  BodyContainer,
+  MobileNumberContainer,
+  CheckboxLink,
+}

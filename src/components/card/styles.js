@@ -19,12 +19,14 @@ const StyledCard = styled.div`
     margin: 0 auto;
     min-width: 100px;
     margin-top: 30px;
+    height: 50px;
   }
 
   ${ButtonLink.InternalLinkContainer} {
     width: 180px;
     margin: 0 auto;
     min-width: 100px;
+    height: 50px;
     margin-top: 30px;
   }
 
