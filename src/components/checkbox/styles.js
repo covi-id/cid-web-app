@@ -5,6 +5,10 @@ const Container = styled.div`
   flex-direction: row-reverse;
   margin-top: 15px;
   justify-content: flex-end;
+
+  @media screen and (max-width: 600px){
+    margin: -20px 0 0 10px;
+  }
 `
 export const Label = styled.div`
   color: #654cf0;

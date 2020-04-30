@@ -181,6 +181,7 @@ export const OverrideInternalLink = styled(ButtonLink.InternalLinkContainer)`
     @media screen and (max-width: 768px) {
       margin: 0px auto 26px auto;
     }
+    
   }
 `
 

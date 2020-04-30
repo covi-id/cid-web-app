@@ -16,9 +16,11 @@ const Form = styled.form`
 const BodyContainer = styled.div`
   display: flex;
   flex-direction: row;
+  min-width: 700px;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    min-width: unset;
   }
 `
 
@@ -70,8 +72,9 @@ const Footer = styled.div`
     padding: 30px 0 50px 30px;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 600px) {
     padding: 20px 0px 50px 10px;
+    margin-left: -30px;
   }
 `
 
