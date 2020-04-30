@@ -21,6 +21,7 @@ const Header = styled.div`
   max-height: 50px;
   pointer-events: ${props => props.disabled && "none"};
   background-color: #c9c0fa;
+  align-items: center;
 
   ${({ active }) =>
     active &&
@@ -39,7 +40,7 @@ const Title = styled.label`
 
 const Value = styled.label`
   color: white;
-  padding: 16px 0 16px 20px;
+  padding: 13px 0 16px 20px;
   width: 100%;
   font-size: 1rem;
   transition: 0.2s ease-out;
@@ -118,6 +119,7 @@ const Item = styled.li`
 const Icon = styled.img`
   transition: 0.2s ease-in;
   margin-right: 20px;
+  padding-left: 5px;
   display: ${props => (props.show ? "block" : "none")};
 
   ${({ open }) =>

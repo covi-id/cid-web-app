@@ -22,6 +22,7 @@ import FormLabel from "components/shared/formLabel";
 import api from "api";
 import FormHeader from "components/formHeader";
 import Recaptcha from "components/recaptcha";
+import countries from "constants/countries";
 
 const INITIAL_VALUES = {
   firstName: "",
@@ -158,9 +159,12 @@ const CreateWallet = ({ twoStepCallback }) => {
                       error={errors["mobileNumber"]}
                     />
                     <MobileNumberContainer>
-                      <TextInput
+                      <Select
+                        containerStyle={{ width: "110px", marginRight: "10px" }}
                         name="countryCode"
-                        containerStyle={{ width: "100px", marginRight: "10px" }}
+                        displayProp="dial_code"
+                        valueProp="dial_code"
+                        items={countries.sort()}
                       />
                       <TextInput
                         name="mobileNumber"
