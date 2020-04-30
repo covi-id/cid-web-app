@@ -5,6 +5,7 @@ const Container = styled.div`
   flex-direction: row;
   position: relative;
   padding-left: 35px;
+  padding-right: 33px;
   margin-bottom: 12px;
   margin-top: 10px;
   cursor: pointer;

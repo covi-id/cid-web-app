@@ -1,36 +1,17 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-
-import CreateWallet from 'containers/createWallet'
-import {
-  Container,
-  StepText,
-  StepIndicator,
-  HeadingContainer,
-  StepHeading,
-  BackTick,
-  InlineContainer,
-  BackButton,
-} from './styles.js'
+import React, { useState } from "react";
+import CreateWallet from "containers/createWallet";
+import { Container } from "./styles.js";
+import TwoFactorAuth from "components/twoFactorAuth/index.js";
 
 const CreateWalletPage = () => {
-  const history = useHistory()
+  const [otpData, setOtpData] = useState(null);
   return (
     <Container>
-      <HeadingContainer>
-        <StepIndicator>
-          <StepText>Step 1/2</StepText>
-        </StepIndicator>
-        <InlineContainer>
-          <BackButton onClick={() => history.push('/')}>
-            <BackTick />
-          </BackButton>
-          <StepHeading>Enter details</StepHeading>
-        </InlineContainer>
-      </HeadingContainer>
-      <CreateWallet />
+      <TwoFactorAuth otpData={otpData}>
+        <CreateWallet twoStepCallback={data => setOtpData(data)} />
+      </TwoFactorAuth>
     </Container>
-  )
-}
+  );
+};
 
-export default CreateWalletPage
+export default CreateWalletPage;

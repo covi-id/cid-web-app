@@ -1,137 +1,149 @@
 import React, { useCallback } from 'react'
-import { Formik } from 'formik'
-import { object, bool, date } from 'yup'
+import { Formik, yupToFormErrors } from 'formik'
+import { object, date, string } from 'yup'
 
-import { Form, Footer, BodyContainer, TestDateSection } from './styles'
+import {
+  Form,
+  Footer,
+  BodyContainer,
+  TestDateSection,
+  InputWrapper,
+  MakeInline,
+  ItemContainer,
+} from './styles'
 import TextInput from 'components/textInput'
 import Button from 'components/button'
 import walletFormContainer from 'stateContainers/walletFormContainer'
 import RadioButton from 'components/radioButton'
 import Select from 'components/select'
-import api from 'api'
-import { useHistory } from 'react-router-dom'
+import FormHeader from 'components/formHeader'
 
 const INITIAL_VALUES = {
-  tested: false,
-  testDate: '',
-  covidStatus: false,
-  testLab: '',
+  referenceNumber: '',
+  dateTested: '',
+  covidStatus: 'Negative',
+  laboratory: '',
   receivedResult: false,
 }
 
 const VALIDATION_SCHEMA = object().shape({
-  tested: bool().required(),
-  testDate: date(),
-  testStatus: bool(),
+  referenceNumber: string().max(30 | 'Max 30 characters.'),
+  dateTested: date()
+    .min(new Date(2020, 0, 1), 'Test date cannot be before 1st January, 2020.')
+    .max(new Date(), 'Test date cannot be in the future.')
+    .required('*Required'),
+  covidStatus: string().required('*Required'),
+  laboratory: string().required('*Required'),
 })
 
-const AddStatus = () => {
-  const history = useHistory()
-
+const AddStatus = ({ twoStepCallback }) => {
   const addDataToState = useCallback(
     async (values) => {
       await walletFormContainer.set({ covidTest: { ...values } })
-      const { name, surname, id, telNumber, picture, covidTest } = {
+      const { covidTest } = {
         ...walletFormContainer.state,
       }
-      await api.wallet
-        .createWallet({
-          name,
-          surname,
-          id,
-          telNumber,
-          picture: picture.split(',')[1],
-          covidTest: {
-            testDate: covidTest.testDate || new Date(),
-            expiryDate: covidTest.testDate || new Date(),
-            covidStatus: covidTest.covidStatus,
-          },
-        })
-        .then(async (response) => {
-          await walletFormContainer.set({
-            covidStatusUrl: response.data?.covidStatusUrl,
-          })
-          history.push('/create-wallet/issue')
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+      twoStepCallback(covidTest)
     },
-    [history]
+    [twoStepCallback]
   )
 
   return (
-    <Formik
-      initialValues={INITIAL_VALUES}
-      validationSchema={VALIDATION_SCHEMA}
-      onSubmit={addDataToState}>
-      {({ handleSubmit, values }) => (
-        <Form onSubmit={handleSubmit}>
-          <BodyContainer>
-            <RadioButton
-              name='tested'
-              options={[
-                { label: 'Yes', value: true },
-                { label: 'No', value: false },
-              ]}
-              label='Have you done a Covid-19 test?'
-            />
-            {values.tested && (
+    <>
+      <FormHeader heading='New test result' showBack={false} />
+      <Formik
+        initialValues={INITIAL_VALUES}
+        validationSchema={VALIDATION_SCHEMA}
+        onSubmit={addDataToState}>
+        {({ handleSubmit, values }) => (
+          <Form onSubmit={handleSubmit}>
+            <BodyContainer>
               <>
                 <TestDateSection>
-                  <TextInput
-                    name='testDate'
-                    type='date'
-                    placeholder='Enter date'
-                    label='Test date'
-                  />
-                  <Select
-                    label='Laboratory'
-                    placeholder='Please select'
-                    name='testLab'
-                    displayProp='label'
-                    valueProp='value'
-                    items={[
-                      { label: 'Pathcare', value: 'lab_1' },
-                      { label: 'Lancet Laboratories', value: 'lab_2' },
-                      { label: 'NHLS', value: 'lab_3' },
-                      { label: "I don't know", value: 'lab_4' },
-                    ]}
-                  />
+                  <ItemContainer>
+                    <TextInput
+                      label='Test reference number'
+                      placeholder='Enter reference number'
+                      name='referenceNumber'
+                    />
+                  </ItemContainer>
+                  <ItemContainer>
+                    <Select
+                      label='Laboratory'
+                      placeholder='Please select'
+                      name='laboratory'
+                      displayProp='label'
+                      valueProp='value'
+                      items={[
+                        {
+                          label: 'NHLS (National Health Laboratory Service)',
+                          value: 'NHLS',
+                        },
+                        {
+                          label: 'Lancet Laboratories',
+                          value: 'LancetLaboratories',
+                        },
+                        {
+                          label: 'Pathcare',
+                          value: 'Pathcare',
+                        },
+                        {
+                          label: 'Other',
+                          value: 'Other',
+                        },
+                      ]}
+                    />
+                  </ItemContainer>
                 </TestDateSection>
-                <RadioButton
-                  name='receivedResult'
-                  options={[
-                    { label: 'Yes', value: true },
-                    { label: 'No', value: false },
-                  ]}
-                  label='Have you received your results yet?'
-                />
-                {values.receivedResult && (
-                  <Select
-                    label='Test status'
-                    placeholder='Please select'
-                    name='covidStatus'
-                    displayProp='label'
-                    valueProp='value'
-                    items={[
-                      { label: 'Positive', value: true },
-                      { label: 'Negative', value: false },
-                    ]}
-                  />
-                )}
+                <InputWrapper>
+                  <ItemContainer>
+                    <TextInput
+                      name='dateTested'
+                      type='date'
+                      placeholder='Enter date'
+                      label='Test date'
+                    />
+                  </ItemContainer>
+                </InputWrapper>
+                <MakeInline>
+                  <ItemContainer>
+                    <RadioButton
+                      name='receivedResult'
+                      options={[
+                        { label: 'Yes', value: true },
+                        { label: 'No', value: false },
+                      ]}
+                      label='Did you get your results?'
+                    />
+                  </ItemContainer>
+                  <ItemContainer>
+                    {values.receivedResult && (
+                      <Select
+                        label='Test status'
+                        placeholder='Please select'
+                        name='covidStatus'
+                        displayProp='label'
+                        valueProp='value'
+                        items={[
+                          { label: 'Negative', value: 'Negative' },
+                          { label: 'Positive', value: 'Positive' },
+                        ]}
+                      />
+                    )}
+                  </ItemContainer>
+                </MakeInline>
               </>
-            )}
-          </BodyContainer>
+            </BodyContainer>
 
-          <Footer>
-            <Button type='submit' onClick={handleSubmit}>
-              Generate QR
-            </Button>
-          </Footer>
-        </Form>
-      )}
-    </Formik>
+            <Footer>
+              <Button type='submit' onClick={handleSubmit}>
+                Next
+              </Button>
+            </Footer>
+          </Form>
+        )}
+      </Formik>
+    </>
   )
 }
 

@@ -1,12 +1,16 @@
 import styled from 'styled-components'
-import BackgroundDesktop from 'assets/images/desktop-purple-background.svg'
-import Logo from 'assets/images/logo-light.svg'
-import CenterPiece from 'assets/images/desktop-profile-background.svg'
-import GreenTick from 'assets/icons/tickIcon.svg'
-import QRCode from 'assets/images/QRCode.svg'
-import { Button } from 'components/button/styles'
+import BackgroundDesktop from 'assets/images/desktop-coviid-background.svg'
 
-import BackgroundMobile from 'assets/images/mobile-purple-background.svg'
+import CenterPiece from 'assets/images/desktop-coviid-download-card.svg'
+import MobileCenterPiece from 'assets/images/mobile-coviid-download-card.svg'
+
+import DownloadQrBackground from 'assets/images/qr-download-background.svg'
+import DownloadQrLogo from 'assets/images/qr-dowload-logo.svg'
+
+import * as ButtonLink from 'components/buttonLink/styles'
+
+import * as SocialMediaLinks from 'components/socialMediaLinks/styles'
+import { Button } from 'components/button/styles'
 
 export const Container = styled.div`
   width: 100%;
@@ -14,70 +18,60 @@ export const Container = styled.div`
   text-align: center;
   align-items: center;
   display: flex;
-  background: url(${BackgroundDesktop}) white no-repeat center;
+  /* background: url(${BackgroundDesktop}) white no-repeat center; */
   background-size: cover;
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 600px) {
-    background: url(${BackgroundMobile}) white no-repeat center;
-    background-size: cover;
+  @media screen and (max-width: 768px) {
     justify-content: unset;
+    width: 100%;
   }
 `
 
 export const Card = styled.div`
   display: flex;
-  width: 39.31%;
+  width: 812.5px;
+  /* height: 462.5px; */
   background: url(${CenterPiece}) no-repeat;
   background-size: cover;
   border-radius: 40px;
+  margin-left: -40px;
+  background-color: #ffffff;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
+    background: url(${MobileCenterPiece}) no-repeat;
     width: unset;
-    background: none;
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    margin-bottom: 80px;
+    background-color: #ffffff;
   }
 `
 
 export const CardContent = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
-  max-width: 170px;
-  margin: 8.84% auto;
+  flex-direction: row;
+
+  margin: 20px auto;
   position: relative;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
+    flex-direction: column;
   }
 `
 
-export const Tick = styled.img.attrs({ src: GreenTick })`
-  width: 22.35%;
-  position: absolute;
-  top: 0%;
-  right: 6%;
-
-  @media screen and (max-width: 600px) {
-    width: 22.5%;
-    right: 0;
-    top: 5%;
-    left: unset;
-  }
-`
-
-export const PicContainer = styled.div`
+export const Right = styled.div`
   position: relative;
-  max-width: 170px;
-  max-height: 170px;
-  min-height: 170px;
-  overflow: hidden;
-  border-radius: 50%;
+  width: 400px;
+  height: 390px;
 
-  @media screen and (max-width: 600px) {
-    width: unset;
-    margin-bottom: 12.35%;
-    position: unset;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
   }
 `
 
@@ -88,81 +82,49 @@ export const ProfilePic = styled.img.attrs((props) => ({
   width: 100%;
 `
 
-export const MainLogo = styled.img.attrs({ src: Logo })`
-  width: 100%;
-  height: 200px;
-  display: none;
-
-  @media screen and (max-width: 600px) {
-    width: 60.14%;
-    height: auto;
-    margin: 12.08% auto 9.91% auto;
-    display: block;
-  }
-`
 export const QRContainer = styled.div`
-  width: 88%;
+  width: 250px;
+  height: 250px;
   justify-content: center;
   display: flex;
-  margin: 12.5% auto;
+  margin: 0 80px 0 0;
+  align-items: center;
 
-  @media screen and (max-width: 600px) {
-    margin-top: 5.07%;
-    margin-bottom: 24.7%;
-    width: 88.24%;
-    height: 88.24%;
+  @media screen and (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 130px auto;
   }
 `
 
-export const QR = styled.img.attrs({ src: QRCode })`
+export const QR = styled.img`
   width: 100%;
-  height: 220px;
   margin: 0 auto;
-`
-
-export const Center = styled.div`
-  width: 40.2%;
-  height: 64.8%;
-  position: relative;
-  border-radius: 2em;
-  margin-left: 0.82%;
-  margin-top: 2%;
-  min-width: 600px;
-  min-height: 580px;
-  max-height: 800px;
-
-  @media screen and (max-width: 600px) {
-    min-width: unset;
-    min-height: unset;
-    max-height: unset;
-    margin-top: 7.97%;
-    width: 41.06%;
-    margin-left: 0%;
-  }
 `
 
 export const Title = styled.div`
   justify-content: center;
   text-align: center;
-  margin: 8% auto 2.5% auto;
+  margin: 120px auto 30px auto;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     margin-top: unset;
   }
 `
 
 export const Heading = styled.div`
-  font-size: 3rem;
   font-weight: bold;
-  color: #ffffff;
+  font-size: 52px;
+  line-height: 110%;
+  color: #513cc5;
 
   & span {
     font-size: inherit;
     font-weight: inherit;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     text-transform: capitalize;
     font-size: 2.5rem;
     & span {
@@ -171,18 +133,88 @@ export const Heading = styled.div`
   }
 `
 
-export const Header = styled.div`
-  position: absolute;
-  top: -2%;
-  left: 5%;
+export const CardBold = styled.div`
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 110%;
+  color: #110a37;
+  margin-top: 30px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+    width: 120px;
+    margin: 20px auto;
+  }
 `
 
-export const DownloadButton = styled(Button)`
-  background: #ffffff;
-  color: #513cc5;
-  margin: 0 auto;
+export const SocialsOverride = styled.div`
+  ${SocialMediaLinks.SocialWrapper} {
+    width: 10px;
+    margin: 0px auto 10px 70px;
 
-  @media screen and (max-width: 600px) {
-    margin-top: 10%;
+    @media screen and (max-width: 768px) {
+      margin: 0px auto 0px 60px;
+    }
+  }
+`
+
+export const Override = styled.div`
+  ${ButtonLink.Container} {
+    height: 30px;
+    width: 100%;
+    max-width: 180px;
+    min-width: 120px;
+    font-size: 14px;
+
+    @media screen and (max-width: 768px) {
+      margin: 0px auto 26px auto;
+    }
+  }
+`
+
+export const OverrideInternalLink = styled(ButtonLink.InternalLinkContainer)`
+    height: 30px;
+    width: 180px;
+    min-width: 120px;
+    font-size: 14px;
+
+    @media screen and (max-width: 768px) {
+      margin: 0px auto 26px auto;
+    }
+    
+  }
+`
+
+export const DownloadContainer = styled.div`
+  background-image: url(${DownloadQrBackground});
+  position: absolute;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #654cf0;
+  background-position: top left;
+  padding: 40px;
+  border-radius: 60px;
+  justify-content: center;
+
+  background: '#654cf0';
+  width: 435px;
+  flex-direction: row;
+  z-index: -1;
+  text-align: center;
+`
+
+export const DownloadLogo = styled.img.attrs({ src: DownloadQrLogo })`
+  margin-top: 30px;
+  width: 160px;
+`
+
+export const OverrideButton = styled(Button)`
+  min-height: 30px;
+  margin: unset;
+  font-size: 14px;
+
+  @media screen and (max-width: 768px) {
+    margin: 0px auto 26px;
   }
 `

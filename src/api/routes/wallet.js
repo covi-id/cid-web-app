@@ -1,23 +1,33 @@
-export default function (instance) {
+export default function wallet(instance) {
   return {
     /**
      * @param {{
         {
-          "name": "string",
-          "surname": "string",
-          "id": "string",
-          "telNumber": "string",
-          "picture": "string",
-          "covidTest": {
-            "testDate": "2020-04-17T22:00:40.492Z",
-            "expiryDate": "2020-04-17T22:00:40.492Z",
-            "covidStatus": 0
-          }
+          "firstName": "string",
+          "lastName": "string",
+          "mobileNumber": "string",
+          "photo": "string"
         }
     * @param {*} config 
     */
     createWallet(body = {}, config = {}) {
-      return instance.post(`/Wallet/CoviID`, body, config)
+      return instance.post(`/wallet/CoviID`, body, config);
     },
-  }
+
+    /**
+     *
+     * @param {string} walletId
+     * @param {{
+     *  dateTested: Date
+     *  covidStatus: "string",
+     *  laboratory: string,
+     *  referenceNumber: string,
+     *  hasConsent: boolean
+     * }} body
+     * @param {*} config
+     */
+    updateTest(walletId = "", body = {}, config = {}) {
+      return instance.put(`/wallet/${walletId}/coviid`, body, config);
+    }
+  };
 }

@@ -9,7 +9,7 @@
 }
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   src: url(./assets/fonts/Montserrat-Bold.ttf);
   font-weight: bold;
   font-style: normal;
@@ -17,7 +17,7 @@
 }
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   src: url(./assets/fonts/Montserrat-SemiBold.ttf);
   font-weight: 500;
   font-style: normal;
@@ -25,7 +25,7 @@
 }
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   src: url(./assets/fonts/Montserrat-ExtraLight.ttf);
   font-weight: 300;
   font-style: normal;
@@ -34,28 +34,23 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat';
-  font-size: 1.11vw;
+  font-family: "Montserrat";
+  font-size: 16px;
   letter-spacing: 0.02em;
-}
-
-@media screen and (max-width: 600px) {
-  * {
-    font-size: 3.865vw;
-  }
+  line-height: 150%;
 }
 
 html,
 body {
   margin: 0;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
 }
 
 #root {
-  height: 100%;
+  min-height: 100vh;
 }
 
 #nprogress {
@@ -81,4 +76,8 @@ body {
   -webkit-transform: rotate(3deg) translate(0px, -4px);
   -ms-transform: rotate(3deg) translate(0px, -4px);
   transform: rotate(3deg) translate(0px, -4px);
+}
+
+.Toastify__toast--error{
+  background: #ff4870 !important;
 }

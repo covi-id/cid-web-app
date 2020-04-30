@@ -1,5 +1,5 @@
 import React from 'react'
-import { string, func, bool } from 'prop-types'
+import { string, func, bool, oneOfType, object } from 'prop-types'
 import {
   Container,
   CheckboxContainer,
@@ -10,7 +10,7 @@ import {
 } from './styles'
 const Checkbox = ({
   label,
-  handleChange,
+  onChange,
   name,
   checked,
   disabled,
@@ -25,9 +25,7 @@ const Checkbox = ({
             disabled={disabled}
             name={name}
             checked={checked}
-            onChange={(e) =>
-              handleChange({ target: { value: !checked, name } })
-            }
+            onChange={(e) => onChange({ target: { value: !checked, name } })}
           />
           <StyledCheckbox checked={checked}>
             <Icon viewBox='0 0 24 24'>
@@ -40,7 +38,7 @@ const Checkbox = ({
   )
 }
 Checkbox.propTypes = {
-  label: string,
+  label: oneOfType([string, object]),
   name: string,
   handleClick: func,
   disabled: bool,

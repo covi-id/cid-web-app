@@ -9,27 +9,26 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (min-width: 600px) {
+  @media screen and (max-width: 768px) {
     ${FormLabel.Label} {
       text-align: center;
       & label {
         margin-left: 0px;
       }
     }
-
-    margin-top: 9.27%;
   }
 `
 
 const FileContainer = styled.div`
-  height: 100%;
+  height: 240px;
   border: 2px dashed #c9c0fa;
-  width: 100%;
-  background-color: #f1f0f8;
+  width: 240px;
+  background-color: #d2f2ff;
   border-radius: 20px;
   display: flex;
   padding: 0 50px;
-  margin-top: 8px;
+  margin-bottom: 14px;
+  margin-top: 14px;
   text-align: center;
   flex-direction: column;
   align-items: center;
@@ -39,15 +38,8 @@ const FileContainer = styled.div`
   ${({ backgroundImage }) =>
     backgroundImage &&
     css`
-      background-image: url(${backgroundImage});
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
       border: 2px solid #c9c0fa;
-
-      @media screen and (max-width: 600px) {
-        padding: 65% 0%;
-      }
+      padding: 0;
     `}
 
   &:focus {
@@ -68,11 +60,17 @@ const Label = styled.label`
 const DropzoneLabel = styled.label`
   font-size: 1rem;
   font-weight: bold;
-  color: #b2a5f7;
+  color: #646464;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const CloseButton = styled.button`
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
   border: none;
   width: 35px;
   height: 35px;

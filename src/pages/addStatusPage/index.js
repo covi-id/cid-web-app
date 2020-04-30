@@ -1,24 +1,18 @@
-import React from 'react'
+import React, { useState } from "react";
 
-import AddStatus from 'containers/addStatus'
-import {
-  Container,
-  StepText,
-  StepIndicator,
-  HeadingContainer,
-  StepHeading,
-} from './styles.js'
+import AddStatus from "containers/addStatus";
+import { Container } from "./styles.js";
+import ConsentAuth from "components/consentAuth/index.js";
 
-const AddStatusPage = () => (
-  <Container>
-    <HeadingContainer>
-      <StepIndicator>
-        <StepText> Step 2/2</StepText>
-      </StepIndicator>
-      <StepHeading>COVI-ID status</StepHeading>
-    </HeadingContainer>
-    <AddStatus />
-  </Container>
-)
+const AddStatusPage = () => {
+  const [testData, setTestData] = useState(null);
+  return (
+    <Container>
+      <ConsentAuth cancel={() => setTestData(null)} testData={testData}>
+        <AddStatus twoStepCallback={data => setTestData(data)} />
+      </ConsentAuth>
+    </Container>
+  );
+};
 
-export default AddStatusPage
+export default AddStatusPage;
