@@ -169,7 +169,7 @@ const CreateWallet = ({ twoStepCallback }) => {
         validationSchema={VALIDATION_SCHEMA}
         onSubmit={values => reCaptchaSuccess && addDataToState(values)}
       >
-        {({ handleSubmit, handleChange, values, errors }) => {
+        {({ handleSubmit, handleChange, values, errors, touched }) => {
           return (
             <>
               <Form
