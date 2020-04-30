@@ -20,26 +20,26 @@ const Header = styled.div`
   min-height: 50px;
   max-height: 50px;
   pointer-events: ${props => props.disabled && "none"};
-  background-color: #c9c0fa;
+  background-color: #d2f2ff;
   align-items: center;
 
   ${({ active }) =>
     active &&
     css`
       box-shadow: 4px 10px 40px rgba(201, 192, 250, 0.8);
-      background-color: #b2a5f7;
+      background-color: #d2f2ff;
     `}
 `;
 
 const Title = styled.label`
-  color: #ffffff;
+  color: #000000;
   font-size: 1rem;
   margin-left: 19px;
   margin-bottom: 1px;
 `;
 
 const Value = styled.label`
-  color: white;
+  color: #4d4d4d;
   padding: 13px 0 16px 20px;
   width: 100%;
   font-size: 1rem;
@@ -62,7 +62,7 @@ const Value = styled.label`
 
 const List = styled.ul`
   position: absolute;
-  background-color: #b2a5f7;
+  background-color: #d2f2ff;
   max-height: 110px;
   box-shadow: 4px 10px 40px rgba(201, 192, 250, 0.8);
   border-radius: 28px;
@@ -94,7 +94,7 @@ const List = styled.ul`
 const Item = styled.li`
   height: 50px;
   padding: 10px 40px;
-  color: #ffffff;
+  color: #000000;
   font-weight: normal;
   font-size: 1rem;
   line-height: 110%;
@@ -104,15 +104,15 @@ const Item = styled.li`
   cursor: pointer;
 
   &:hover {
-    color: #ffffff;
-    background-color: #a192f5;
+    color: #000000;
+    background-color: #d2f2ff;
   }
 
   ${({ selected }) =>
     selected &&
     css`
       font-weight: 500;
-      background-color: #a192f5;
+      background-color: #d2f2ff;
     `}
 `;
 

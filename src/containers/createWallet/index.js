@@ -35,19 +35,51 @@ const INITIAL_VALUES = {
   identificationValue: ""
 };
 
+const containsNumbers = value => {
+  return /[0-9]/gm.test(value);
+};
+
+const containsLetters = value => {
+  return /[a-zA-Z]/gm.test(value);
+};
+
+const containsSpecialCharacters = value => {
+  return /[$!%*#?&]/gm.test(value);
+};
+
 const VALIDATION_SCHEMA = object().shape({
   firstName: string()
     .label("First Name")
-    .required("*Required"),
+    .required("*Required")
+    .test(
+      "Special characters",
+      "Must not contain numbers",
+      value => !containsNumbers(value)
+    ),
 
   lastName: string()
     .label("Last Name")
-    .required("*Required"),
+    .required("*Required")
+    .test(
+      "Special characters",
+      "Must not contain numbers",
+      value => !containsNumbers(value)
+    ),
 
   mobileNumber: string()
     .label("Mobile Number")
     .length(9, "Invalid number")
-    .required("*Required"),
+    .required("*Required")
+    .test(
+      "Special characters",
+      "Invalid number",
+      value => !containsLetters(value)
+    )
+    .test(
+      "Special characters",
+      "Invalid number",
+      value => !containsSpecialCharacters(value)
+    ),
 
   countryCode: string().required(),
 
@@ -58,7 +90,7 @@ const VALIDATION_SCHEMA = object().shape({
   identificationValue: string()
     .when("identificationType", {
       is: "IdentificationDocument",
-      then: string("*Required").matches(/^[0-9]{13}$/, "*Required"),
+      then: string("*Required").matches(/^[0-9]{13}$/, "Must be 13 characters"),
       otherwise: string("*Required").min(6, "*Required")
     })
     .label("Identity Number"),
