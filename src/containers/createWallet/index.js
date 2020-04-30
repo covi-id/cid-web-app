@@ -165,10 +165,15 @@ const CreateWallet = ({ twoStepCallback }) => {
         initialValues={INITIAL_VALUES}
         validationSchema={VALIDATION_SCHEMA}
         onSubmit={(values) => reCaptchaSuccess && addDataToState(values)}>
-        {({ handleSubmit, handleChange, values, errors }) => {
+        {({ handleSubmit, handleChange, values, errors, touched }) => {
           return (
             <>
-              <Form onSubmit={handleSubmit}>
+              <Form
+                hasErrors={
+                  Object.keys(errors).length > 0 ||
+                  Object.keys(touched).length === 0
+                }
+                onSubmit={handleSubmit}>
                 <BodyContainer>
                   <Left>
                     <TextInput
@@ -234,7 +239,6 @@ const CreateWallet = ({ twoStepCallback }) => {
                     />
                   </Right>
                 </BodyContainer>
-
                 <Footer>
                   <Checkbox
                     name='consent'
