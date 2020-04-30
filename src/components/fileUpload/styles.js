@@ -23,7 +23,7 @@ const FileContainer = styled.div`
   height: 240px;
   border: 2px dashed #c9c0fa;
   width: 240px;
-  background-color: #d2f2ff;
+  background-color: #e9e4ff;
   border-radius: 20px;
   display: flex;
   padding: 0 50px;
