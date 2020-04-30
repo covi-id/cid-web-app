@@ -5,7 +5,7 @@ const Input = styled.input`
   height: 50px;
   border-radius: 60px;
   border: none;
-  background-color: #d2f2ff;
+  background-color: #e9e4ff;
   padding: 0 20px;
   width: 100%;
   margin-top: 10px;
@@ -18,13 +18,13 @@ const Input = styled.input`
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #d2f2ff inset !important;
+    -webkit-box-shadow: 0 0 0 30px #e9e4ff inset !important;
   }
 
   &:focus {
     outline: none;
     box-shadow: 4px 10px 40px rgba(201, 192, 250, 0.8);
-    background-color: #d2f2ff;
+    background-color: #e9e4ff;
   }
 
   &::placeholder {
