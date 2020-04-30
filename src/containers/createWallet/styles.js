@@ -78,7 +78,7 @@ const Footer = styled.div`
 
   @media screen and (max-width: 600px) {
     padding: 20px 0px 50px 10px;
-    margin-left: -30px;
+    /* margin-left: -30px; I removed this Matt because it was displaying wrong, please readd if neccessary */
   }
 `
 
