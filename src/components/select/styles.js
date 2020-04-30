@@ -74,6 +74,7 @@ const List = styled.ul`
   text-align: left;
   z-index: 10;
   padding-inline-start: 0;
+  overflow-x: hidden;
 
   ::-webkit-scrollbar {
     width: 5px;

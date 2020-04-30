@@ -9,7 +9,6 @@ const instance = axios.create({
   baseURL: ENV.BASE_URL,
   headers: {
     "Content-Type": "application/json; charset=utf-8",
-    "X-AgentId": ENV.X_AGENT_ID,
     "x-api-key": ENV.X_API_KEY
   }
 });

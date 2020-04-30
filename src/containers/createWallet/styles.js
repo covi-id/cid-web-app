@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { AttachmentIcon, DropzoneLabel } from 'components/fileUpload/styles'
 import { Button } from 'components/button/styles'
 
@@ -7,10 +7,14 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
 
-  ${Button} {
-    background: #e1fff6;
-    color: #03ce8e;
-  }
+  ${({ hasErrors }) =>
+    hasErrors &&
+    css`
+      ${Button} {
+        background: #e1fff6;
+        color: #03ce8e;
+      }
+    `}
 `
 
 const BodyContainer = styled.div`
