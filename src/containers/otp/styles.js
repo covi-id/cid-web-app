@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-const Container = styled.div``;
+const Container = styled.div`
+  width: 100%;
+  text-align: center;
+`;
 
 const Form = styled.form`
   width: 100%;
