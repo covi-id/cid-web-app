@@ -45,7 +45,8 @@ const VerificationConsent = ({ cancel }) => {
           ...covidTest,
           hasConsent: value
         });
-        history.push("/create-wallet/status/updated");
+        consentParam = value ? "/consent-true" : "/consent-false"
+        history.push("/create-wallet/status/updated" + consentParam);
       } catch (error) {
         toast.error(error);
       } finally {

@@ -10,6 +10,7 @@ import Main from 'components/main'
 import ConnectCoviid from 'pages/cardsPage'
 import CoviidUpdated from 'pages/coviidUpdatedPage'
 import ReactGA from 'react-ga'
+import VerificationConsent from 'pages/verificationConsentPage'
 
 import { createBrowserHistory } from 'history'
 import PrivateRoute from 'components/privateRoute'
@@ -50,7 +51,13 @@ const Root = () => (
 
         <PrivateRoute
           exact
-          path='/create-wallet/status/updated'
+          path='/create-wallet/status/updated/consent-true'
+          component={CoviidUpdated}
+        />
+
+        <PrivateRoute
+          exact
+          path='/create-wallet/status/updated/consent-false'
           component={CoviidUpdated}
         />
 
