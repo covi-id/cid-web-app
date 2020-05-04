@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import FirstIcon from 'assets/icons/coviidIcon.svg'
 import * as SocialMediaLinks from 'components/socialMediaLinks/styles'
+import * as ButtonLink from 'components/buttonLink/styles'
 
 export const Container = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
 
-  @media screen and {
+  @media screen and (max-width: 600px) {
     align-items: unset;
     background-size: cover;
     flex-direction: column;
@@ -93,13 +94,17 @@ export const Card = styled.div`
 
 export const SocialMediaOverride = styled.div`
   ${SocialMediaLinks.SocialWrapper} {
-    width: 280px;
     margin: 10px auto 20px auto;
   }
 `
+//if the link below is changed to an href,
+// the selector needs to be changed to .Container instead of InternalLinkContainer
 
 export const ButtonLinkOverride = styled.div`
-    margin-bottom: 16px;
+  margin-bottom: 16px;
+  ${ButtonLink.InternalLinkContainer} {
+    min-width: 145px;
+    max-width: 145px;
 
     @media screen and (max-width: 600px) {
       margin-top: 18px;
