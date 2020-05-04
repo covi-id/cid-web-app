@@ -9,7 +9,7 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
 
-  @media screen and (max-width: 768px) {
+  @media screen and {
     align-items: unset;
     background-size: cover;
     flex-direction: column;
@@ -95,5 +95,14 @@ export const SocialMediaOverride = styled.div`
   ${SocialMediaLinks.SocialWrapper} {
     width: 280px;
     margin: 10px auto 20px auto;
+  }
+`
+
+export const ButtonLinkOverride = styled.div`
+    margin-bottom: 16px;
+
+    @media screen and (max-width: 600px) {
+      margin-top: 18px;
+    }
   }
 `

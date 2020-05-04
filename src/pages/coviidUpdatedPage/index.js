@@ -6,10 +6,12 @@ import {
   SmallText,
   CoviidIcon,
   Heading,
-  SocialText
+  SocialText,
+  ButtonLinkOverride,
 } from './styles'
 
 import SocialMediaLinks from 'components/socialMediaLinks'
+import ButtonLink from 'components/buttonLink'
 
 const cardsText = [
   {
@@ -35,7 +37,12 @@ const CoviidUpdated = () => {
           </TextContainer>
         </Card>
       ))}
+
+      <ButtonLinkOverride>
+        <ButtonLink to='/'>Home</ButtonLink>
+      </ButtonLinkOverride>
       <SocialText>Share</SocialText>
+
       <SocialMediaLinks />
     </Container>
   )
