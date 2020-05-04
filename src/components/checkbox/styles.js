@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Container = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  margin-top: 15px;
+  margin-top: 15.1px;
   justify-content: flex-end;
 
   @media screen and (max-width: 600px){
