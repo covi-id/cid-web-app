@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
-import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
+import React, { useCallback, useState } from 'react'
+import { toast } from 'react-toastify'
+import { useHistory } from 'react-router-dom'
 
 import {
   Container,
@@ -8,53 +8,53 @@ import {
   TextContainer,
   Text,
   LargeText,
-  ButtonWrapper
-} from "./styles.js";
+  ButtonWrapper,
+} from './styles.js'
 
-import SmallButton from "components/smallButton";
-import api from "api/index.js";
-import walletFormContainer from "stateContainers/walletFormContainer";
+import SmallButton from 'components/smallButton'
+import api from 'api/index.js'
+import walletFormContainer from 'stateContainers/walletFormContainer'
 
 const cardText = [
   {
     paraOne:
-      "In order to verify do you consent to us sharing the following data with the laboratory you indicated that completed this test.",
-    boldOne: "Your verified mobile number",
-    boldTwo: "Your test reference number",
+      'In order to verify do you consent to us sharing the following data with the laboratory you indicated that completed this test.',
+    boldOne: 'Your verified mobile number',
+    boldTwo: 'Your test reference number',
     paraTwo:
-      "On successful verification, your COVI-ID status will be updated to verified.",
-    largeText: "Do you consent to this verification?"
-  }
-];
+      'On successful verification, your COVI-ID status will be updated to verified.',
+    largeText: 'Do you consent to this verification?',
+  },
+]
 
 const VerificationConsent = ({ cancel }) => {
-  const [loading, setLoading] = useState(false);
-  const history = useHistory();
-  const { covidTest, walletId } = walletFormContainer.state;
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
+  const { covidTest, walletId } = walletFormContainer.state
 
   const submitNewTest = useCallback(
-    async value => {
+    async (value) => {
       if (!value) {
-        cancel();
-        return;
+        cancel()
+        return
       }
 
-      setLoading(true);
+      setLoading(true)
       try {
         await api.wallet.updateTest(walletId, {
           ...covidTest,
-          hasConsent: value
-        });
-        consentParam = value ? "/consent-true" : "/consent-false"
-        history.push("/create-wallet/status/updated" + consentParam);
+          hasConsent: value,
+        })
+        const consentParam = value ? '/:consentGiven' : '/:consentNotGiven'
+        history.push('/create-wallet/status/updated/' + consentParam)
       } catch (error) {
-        toast.error(error);
+        toast.error(error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     },
     [cancel, covidTest, history, walletId]
-  );
+  )
   return (
     <Container>
       {cardText.map((card, index) => (
@@ -78,8 +78,7 @@ const VerificationConsent = ({ cancel }) => {
             <SmallButton
               disabled={loading}
               onClick={() => submitNewTest(false)}
-              buttonStyles={{ background: "#D3FDF0", color: "#03CE8E" }}
-            >
+              buttonStyles={{ background: '#D3FDF0', color: '#03CE8E' }}>
               No
             </SmallButton>
             <SmallButton disabled={loading} onClick={() => submitNewTest(true)}>
@@ -89,6 +88,6 @@ const VerificationConsent = ({ cancel }) => {
         </Card>
       ))}
     </Container>
-  );
-};
-export default VerificationConsent;
+  )
+}
+export default VerificationConsent

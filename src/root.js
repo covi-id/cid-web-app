@@ -51,13 +51,13 @@ const Root = () => (
 
         <PrivateRoute
           exact
-          path='/create-wallet/status/updated/consent-true'
+          path='/create-wallet/status/updated/:consentGiven'
           component={CoviidUpdated}
         />
 
         <PrivateRoute
           exact
-          path='/create-wallet/status/updated/consent-false'
+          path='/create-wallet/status/updated/:consentNotGiven'
           component={CoviidUpdated}
         />
 
