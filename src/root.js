@@ -48,7 +48,7 @@ const Root = () => (
 
         <PrivateRoute exact path="/create-wallet/status" component={Step2} />
 
-        <PrivateRoute exact path="/create-wallet/created" component={Step3} />
+        <Route exact path="/create-wallet/created" component={Step3} />
 
         <PrivateRoute
           exact
