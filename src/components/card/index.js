@@ -8,7 +8,7 @@ import {
   QrLogo,
   CovidLogo,
   FileInput,
-  FileUpload
+  FileUpload,
   // PhoneLogo,
 } from "./styles";
 import ButtonLink from "components/buttonLink";
@@ -18,7 +18,7 @@ import decodeQr from "utils/decodeQrB64";
 import getImageData from "utils/getImageData";
 import walletFormContainer from "stateContainers/walletFormContainer";
 import { useHistory } from "react-router-dom";
-import getWalletIdFromCovidStatusUrl from "utils/getWalletIdFromCovidStatusUrl";
+// import getWalletIdFromCovidStatusUrl from "utils/getWalletIdFromCovidStatusUrl";
 
 const cardsInfo = [
   // {
@@ -32,7 +32,7 @@ const cardsInfo = [
     icon: <QrLogo />,
     text: "I have my QR image download",
     buttonText: "Upload QR code",
-    onClick: () => {}
+    onClick: () => {},
   },
 
   {
@@ -40,8 +40,8 @@ const cardsInfo = [
     icon: <CovidLogo />,
     text: "I don't have a Covi-ID yet",
     buttonText: "Generate ",
-    link: "/create-wallet/details"
-  }
+    link: "/create-wallet/details",
+  },
 ];
 
 const Card = () => {
@@ -63,8 +63,13 @@ const Card = () => {
             width,
             height
           );
-          const walletId = getWalletIdFromCovidStatusUrl(covidStatusUrl);
-          await walletFormContainer.set({ walletId });
+
+          const qrData = JSON.parse(covidStatusUrl);
+          await walletFormContainer.set({
+            walletId: qrData.walletId,
+            key: qrData.key,
+          });
+
           history.push("/create-wallet/status");
         } catch (error) {
           toast.error("Invalid Covi-ID QR");

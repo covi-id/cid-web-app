@@ -36,8 +36,9 @@ const VerificationConsent = ({ cancel }) => {
     async (value) => {
       setLoading(true);
       try {
-        await api.wallet.updateTest(walletId, {
+        await api.testResults.addTestResult({
           ...covidTest,
+          walletId,
           hasConsent: value,
         });
         history.push("/create-wallet/status/updated/" + value);

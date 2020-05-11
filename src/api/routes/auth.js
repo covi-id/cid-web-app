@@ -22,7 +22,6 @@ export default function auth(instance) {
 
     /**
      * @param {{
-     *  walletId: string,
      *  mobileNumber: string
      * }} body
      * @param {*} config
