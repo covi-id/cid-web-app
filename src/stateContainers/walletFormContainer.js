@@ -3,25 +3,27 @@ import { Container } from "unstated";
 const DEFAULT_STATE = {
   walletId: "",
   otp: "",
-  person: {
+  walletDetails: {
     firstName: "",
     lastName: "",
     mobileNumber: "",
     consent: "",
     photo: "",
-    identificationType: "",
-    identificationValue: "",
-    countryCode: ""
+    idType: "",
+    IdValue: "",
+    countryCode: "",
   },
   covidTest: {
-    dateTested: "",
+    testedAt: "",
     covidStatus: 0,
     laboratory: 0,
     referenceNumber: "",
-    hasConsent: false
+    hasConsent: false,
   },
   covidStatusUrl: "",
-  picture: ""
+  picture: "",
+  token: "",
+  key: "",
 };
 
 class WalletFormContainer extends Container {
@@ -33,7 +35,7 @@ class WalletFormContainer extends Container {
   set = async (data = {}) => {
     const newState = {
       ...this.state,
-      ...data
+      ...data,
     };
     this.setState(newState);
     return Promise.resolve();

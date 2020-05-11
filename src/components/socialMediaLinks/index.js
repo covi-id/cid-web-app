@@ -5,14 +5,12 @@ import {
   Facebook,
   Twitter,
   Whatsapp,
-
   ExternalLink,
 } from './styles'
 
 const SocialMediaLinks = () => {
   return (
     <SocialWrapper>
-     
       <SocialLinks>
         <ExternalLink
           target='_blank'
@@ -30,7 +28,7 @@ const SocialMediaLinks = () => {
         <ExternalLink
           target='_blank'
           rel='noopener noreferrer'
-          href='whatsapp://send?text=www.coviid.me" data-action="share/whatsapp/share"'>
+          href='https://wa.me/?text=Join+us+in+stopping+the+spread+of+Covid-19.+Register+for+your+Covi-ID.'>
           <Whatsapp />
         </ExternalLink>
       </SocialLinks>

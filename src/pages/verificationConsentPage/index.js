@@ -8,7 +8,7 @@ import {
   TextContainer,
   Text,
   LargeText,
-  ButtonWrapper
+  ButtonWrapper,
 } from "./styles.js";
 
 import SmallButton from "components/smallButton";
@@ -23,8 +23,8 @@ const cardText = [
     boldTwo: "Your test reference number",
     paraTwo:
       "On successful verification, your COVI-ID status will be updated to verified.",
-    largeText: "Do you consent to this verification?"
-  }
+    largeText: "Do you consent to this verification?",
+  },
 ];
 
 const VerificationConsent = ({ cancel }) => {
@@ -33,26 +33,22 @@ const VerificationConsent = ({ cancel }) => {
   const { covidTest, walletId } = walletFormContainer.state;
 
   const submitNewTest = useCallback(
-    async value => {
-      if (!value) {
-        cancel();
-        return;
-      }
-
+    async (value) => {
       setLoading(true);
       try {
-        await api.wallet.updateTest(walletId, {
+        await api.testResults.addTestResult({
           ...covidTest,
-          hasConsent: value
+          walletId,
+          hasConsent: value,
         });
-        history.push("/create-wallet/status/updated");
+        history.push("/create-wallet/status/updated/" + value);
       } catch (error) {
         toast.error(error);
       } finally {
         setLoading(false);
       }
     },
-    [cancel, covidTest, history, walletId]
+    [covidTest, history, walletId]
   );
   return (
     <Container>

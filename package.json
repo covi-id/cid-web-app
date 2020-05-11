@@ -12,6 +12,7 @@
     "html2canvas": "^1.0.0-rc.5",
     "jsqr": "^1.2.0",
     "jsqrcode": "0.0.7",
+    "libphonenumber-js": "^1.7.51",
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "qrcode": "^1.4.4",

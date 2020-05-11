@@ -15,7 +15,7 @@ import {
   DownloadContainer,
   DownloadLogo,
   OverrideButton,
-  OverrideInternalLink
+  OverrideInternalLink,
 } from "./styles";
 import { useState } from "react";
 import walletFormContainer from "stateContainers/walletFormContainer";
@@ -28,7 +28,7 @@ const IssueQRCode = () => {
       text: "Download your Covi-ID",
       random: (
         <OverrideButton onClick={() => download()}>Download</OverrideButton>
-      )
+      ),
     },
     {
       text: "Add your latest test results",
@@ -36,7 +36,7 @@ const IssueQRCode = () => {
         <OverrideInternalLink to="/create-wallet/status">
           Add a test result
         </OverrideInternalLink>
-      )
+      ),
     },
     {
       text: "Share that you’ve just created your Covi-ID",
@@ -44,8 +44,8 @@ const IssueQRCode = () => {
         <SocialsOverride>
           <SocialMediaLinks />
         </SocialsOverride>
-      )
-    }
+      ),
+    },
   ]);
 
   const download = async () => {
@@ -53,7 +53,7 @@ const IssueQRCode = () => {
     html2canvas(
       document.querySelector(`#${walletFormContainer.state.walletId}`) ||
         document.body
-    ).then(function(canvas) {
+    ).then(function (canvas) {
       saveAs(
         canvas.toDataURL("image/png", 1),
         `${walletFormContainer.state.walletId}.png`
@@ -80,6 +80,11 @@ const IssueQRCode = () => {
     }
   }
 
+  const qrValue = JSON.stringify({
+    walletId: walletFormContainer.state.walletId,
+    key: walletFormContainer.state.key,
+  });
+
   return (
     <>
       <Container>
@@ -94,10 +99,10 @@ const IssueQRCode = () => {
               <QRCode
                 style={{
                   width: "190px",
-                  height: "auto"
+                  height: "auto",
                 }}
                 fgColor="#513CC5"
-                value={walletFormContainer.state.covidStatusUrl}
+                value={qrValue}
                 level="H"
                 includeMargin
                 // renderAs="svg"
@@ -124,13 +129,13 @@ const IssueQRCode = () => {
         <QRCode
           style={{
             width: "90%",
-            height: "auto"
+            height: "auto",
           }}
           fgColor="#513CC5"
           renderAs="svg"
           level="H"
           includeMargin
-          value={walletFormContainer.state.covidStatusUrl}
+          value={qrValue}
         />
         <DownloadLogo />
       </DownloadContainer>
