@@ -22,13 +22,12 @@ export default function auth(instance) {
 
     /**
      * @param {{
-     *  walletId: string,
      *  mobileNumber: string
      * }} body
      * @param {*} config
      */
     resendOtp(body = {}, config = {}) {
       return instance.post(`/auth/otp/resend`, body, config);
-    }
+    },
   };
 }

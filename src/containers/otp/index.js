@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { Formik } from "formik";
 import { string, object } from "yup";
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
 
 import OtpInput from "components/otpInput";
 import { Button } from "components/button/styles";
@@ -10,62 +10,71 @@ import Heading1 from "components/shared/h1";
 import { Form, LeadText, Container } from "./styles";
 import api from "api";
 import { useHistory } from "react-router-dom";
+import walletFormContainer from "stateContainers/walletFormContainer";
 
 const INITIAL_VALUES = {
-  otp: ""
+  otp: "",
 };
 
 const VALIDATION_SCHEMA = object().shape({
-  otp: string()
-    .length(4)
-    .required()
-    .label("Code")
+  otp: string().length(4).required().label("Code"),
 });
 
 const OtpContainer = ({ otpSubmitData }) => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const { person, walletId, picture } = otpSubmitData;
+  const { walletDetails } = otpSubmitData;
   const onSubmitHandler = useCallback(
     async ({ otp }) => {
       setLoading(true);
       try {
-        await api.auth.confirmOtp({
-          walletId,
+        const { data } = await api.auth.confirmOtp({
           otp,
-          person: {
-            ...person,
-            photo: picture
-          }
+          walletDetails: {
+            ...walletDetails,
+          },
+        });
+
+        await walletFormContainer.set({
+          key: data.key,
+          walletId: data.walletId,
         });
 
         history.push("/create-wallet/created");
       } catch (error) {
-        toast(error)
+        toast(error);
       } finally {
         setLoading(false);
       }
     },
-    [history, person, picture, walletId]
+    [history, walletDetails]
   );
 
   const resendOtp = useCallback(async () => {
     setLoading(true);
     try {
-      await api.auth.resendOtp({ walletId, mobileNumber: person.mobileNumber });
+      const { token } = walletFormContainer.state;
+      const { data } = await api.auth.resendOtp(
+        { mobileNumber: walletDetails.mobileNumber },
+        { Authorization: token }
+      );
+
+      await walletFormContainer.set({
+        token: data.token,
+      });
     } catch (error) {
-      toast(error)
+      toast(error);
     } finally {
       setLoading(false);
     }
-  }, [person.mobileNumber, walletId]);
+  }, [walletDetails.mobileNumber]);
 
   return (
     <Container>
       <Heading1>Verification code</Heading1>
       <LeadText>
         Please enter the verification
-        <br /> code sent to <strong>{person.mobileNumber}</strong>
+        <br /> code sent to <strong>{walletDetails.mobileNumber}</strong>
       </LeadText>
       <Formik
         validationSchema={VALIDATION_SCHEMA}

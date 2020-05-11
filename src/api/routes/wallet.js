@@ -1,17 +1,15 @@
 export default function wallet(instance) {
   return {
     /**
-     * @param {{
+     * @param {
         {
-          "firstName": "string",
-          "lastName": "string",
-          "mobileNumber": "string",
-          "photo": "string"
-        }
+          mobileNumber: string,
+          mobileNumberReference: string
+        }}
     * @param {*} config 
     */
     createWallet(body = {}, config = {}) {
-      return instance.post(`/wallet/CoviID`, body, config);
+      return instance.post(`/wallets`, body, config);
     },
 
     /**
