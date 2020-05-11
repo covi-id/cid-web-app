@@ -202,7 +202,10 @@ const CreateWallet = ({ twoStepCallback }) => {
                         name='countryCode'
                         displayProp='dial_code'
                         valueProp='dial_code'
-                        items={countries.sort()}
+                        items={countries.sort(
+                          (a, b) =>
+                            a.dial_code.substring(1) - b.dial_code.substring(1)
+                        )}
                       />
                       <TextInput
                         name='mobileNumber'

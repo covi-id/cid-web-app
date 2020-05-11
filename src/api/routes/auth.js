@@ -17,7 +17,7 @@ export default function auth(instance) {
       * @param {*} config 
       */
     confirmOtp(body = {}, config = {}) {
-      return instance.post(`/auth/otp`, body, config);
+      return instance.post(`/auth/otp`, body, config)
     },
 
     /**
@@ -28,7 +28,7 @@ export default function auth(instance) {
      * @param {*} config
      */
     resendOtp(body = {}, config = {}) {
-      return instance.post(`/auth/otp/resend`, body, config);
-    }
-  };
+      return instance.post(`/auth/otp/resend`, body, config)
+    },
+  }
 }

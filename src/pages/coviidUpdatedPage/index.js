@@ -35,7 +35,6 @@ const cardsTextConsentTrue = [
 
 const CoviidUpdated = () => {
   const location = useLocation()
-  console.log(location)
 
   const consented = location.pathname.includes(
     '/create-wallet/status/updated/:consentNotGiven'
