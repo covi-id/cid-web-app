@@ -20,12 +20,12 @@ ReactGA.initialize("UA-159574842-2", {
   debug: false,
   titleCase: false,
   gaOptions: {
-    cookieDomain: "www.coviid.me"
-  }
+    cookieDomain: "www.coviid.me",
+  },
 });
 ReactGA.pageview(window.location.pathname + window.location.search);
 
-history.listen(location => {
+history.listen((location) => {
   ReactGA.set({ page: location.pathname });
   ReactGA.pageview(location.pathname);
 });
@@ -37,9 +37,11 @@ const Root = () => (
         <Route exact path="/">
           <Landing />
         </Route>
+
         <Route path="/connect-coviid">
           <ConnectCoviid />
         </Route>
+
         <Route path="/create-wallet/details">
           <Step1 />
         </Route>
@@ -50,7 +52,7 @@ const Root = () => (
 
         <PrivateRoute
           exact
-          path="/create-wallet/status/updated"
+          path="/create-wallet/status/updated/:consent"
           component={CoviidUpdated}
         />
 
