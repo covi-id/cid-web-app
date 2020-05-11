@@ -138,7 +138,7 @@ const CreateWallet = ({ twoStepCallback }) => {
 
   const addDataToState = useCallback(
     async (values) => {
-      console.log({ values })
+      console.log({ values });
       const mobileNumberFormatted = getNumberFormat(
         values.mobileNumber,
         values.countryCode
@@ -147,7 +147,7 @@ const CreateWallet = ({ twoStepCallback }) => {
         walletDetails: {
           ...values,
           mobileNumber: mobileNumberFormatted.international,
-          photo: values.photo.split(",")[1]
+          photo: values.photo.split(",")[1],
         },
       });
 
@@ -219,7 +219,10 @@ const CreateWallet = ({ twoStepCallback }) => {
                         name="countryCode"
                         displayProp="dial_code"
                         valueProp="code"
-                        items={countries.sort()}
+                        items={countries.sort(
+                          (a, b) =>
+                            a.dial_code.substring(1) - b.dial_code.substring(1)
+                        )}
                       />
                       <TextInput
                         name="mobileNumber"
