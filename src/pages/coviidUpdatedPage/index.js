@@ -6,12 +6,22 @@ import {
   SmallText,
   CoviidIcon,
   Heading,
-  SocialText
+  SocialText,
+  ButtonLinkOverride,
 } from './styles'
 
 import SocialMediaLinks from 'components/socialMediaLinks'
+import ButtonLink from 'components/buttonLink'
+import { useLocation } from 'react-router-dom'
 
-const cardsText = [
+const cardsTextConsentFalse = [
+  {
+    text:
+      'Your test details have been added to your Covi-ID as unverified data.',
+  },
+]
+
+const cardsTextConsentTrue = [
   {
     text:
       'Your test details have been added to you Covi-ID as unverified data.',
@@ -24,18 +34,31 @@ const cardsText = [
 ]
 
 const CoviidUpdated = () => {
+  const location = useLocation()
+
+  const consented = location.pathname.includes(
+    '/create-wallet/status/updated/:consentNotGiven'
+  )
+
+  const textToShow = consented ? cardsTextConsentFalse : cardsTextConsentTrue
+
   return (
     <Container>
       <CoviidIcon />
       <Heading>Covi-ID Updated</Heading>
-      {cardsText.map((card, index) => (
+      {textToShow.map((card, index) => (
         <Card key={index}>
           <TextContainer>
             <SmallText>{card.text}</SmallText>
           </TextContainer>
         </Card>
       ))}
+
+      <ButtonLinkOverride>
+        <ButtonLink to='/'>Home</ButtonLink>
+      </ButtonLinkOverride>
       <SocialText>Share</SocialText>
+
       <SocialMediaLinks />
     </Container>
   )

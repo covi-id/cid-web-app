@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import { Formik } from "formik";
 import { object, string, bool } from "yup";
 import { toast } from "react-toastify";
+import * as international from "libphonenumber-js";
 
 import {
   Form,
@@ -10,7 +11,7 @@ import {
   Footer,
   BodyContainer,
   MobileNumberContainer,
-  CheckboxLink
+  CheckboxLink,
 } from "./styles";
 import TextInput from "components/textInput";
 import FileUpload from "components/fileUpload";
@@ -30,20 +31,21 @@ const INITIAL_VALUES = {
   mobileNumber: "",
   consent: false,
   photo: "",
-  countryCode: "+27",
-  identificationType: "",
-  identificationValue: ""
+  countryCode: "ZA",
+  email: "cheslynsergiofielding@gmail.com",
+  idType: "",
+  idValue: "",
 };
 
-const containsNumbers = value => {
+const containsNumbers = (value) => {
   return /[0-9]/gm.test(value);
 };
 
-const containsLetters = value => {
+const containsLetters = (value) => {
   return /[a-zA-Z]/gm.test(value);
 };
 
-const containsSpecialCharacters = value => {
+const containsSpecialCharacters = (value) => {
   return /[$!%*#?&]/gm.test(value);
 };
 
@@ -51,51 +53,53 @@ const VALIDATION_SCHEMA = object().shape({
   firstName: string()
     .label("First Name")
     .required("*Required")
+    .max(32)
     .test(
       "Special characters",
       "Must not contain numbers",
-      value => !containsNumbers(value)
+      (value) => !containsNumbers(value)
     ),
 
   lastName: string()
     .label("Last Name")
     .required("*Required")
+
+    .max(32, "Must be less than 32 characters")
     .test(
       "Special characters",
       "Must not contain numbers",
-      value => !containsNumbers(value)
+      (value) => !containsNumbers(value)
     ),
 
   mobileNumber: string()
     .label("Mobile Number")
-    .length(9, "Invalid number")
+    .min(9, "Invalid number")
+    .max(16, "Invalid number")
     .required("*Required")
     .test(
       "Special characters",
       "Invalid number",
-      value => !containsLetters(value)
+      (value) => !containsLetters(value)
     )
     .test(
       "Special characters",
       "Invalid number",
-      value => !containsSpecialCharacters(value)
+      (value) => !containsSpecialCharacters(value)
     ),
 
   countryCode: string().required(),
 
-  identificationType: string()
-    .label("Document Type")
-    .required("*Required"),
+  idType: string().label("Document Type").required("*Required"),
 
-  identificationValue: string()
-    .when("identificationType", {
+  idValue: string()
+    .when("idType", {
       is: "IdentificationDocument",
       then: string("*Required").matches(/^[0-9]{13}$/, "Must be 13 characters"),
-      otherwise: string("*Required").min(6, "*Required")
+      otherwise: string("*Required").min(6, "*Required"),
     })
     .label("Identity Number"),
 
-  photo: string("*Required").test("picture", "*Required", value =>
+  photo: string("*Required").test("picture", "*Required", (value) =>
     /^data:image\/(?:gif|png|jpeg|bmp|webp)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g.test(
       value
     )
@@ -107,35 +111,49 @@ const VALIDATION_SCHEMA = object().shape({
     .test(
       "Test for true",
       "You must agree to the privacy policy before proceeding",
-      value => value === true
-    )
+      (value) => value === true
+    ),
 });
+
+function getNumberFormat(mobileNumber, countryCode) {
+  const pn = international.parsePhoneNumberFromString(
+    mobileNumber,
+    countryCode
+  );
+
+  if (pn) {
+    const returbObj = {
+      international: pn.format("E.164").replace("+", ""),
+      national: pn.format("NATIONAL").replace(/[\D]/g, ""),
+    };
+    return returbObj;
+  }
+
+  return null;
+}
 
 const CreateWallet = ({ twoStepCallback }) => {
   const [loading, setLoading] = useState(false);
   const [reCaptchaSuccess, setRecaptchaSuccess] = useState(false);
 
   const addDataToState = useCallback(
-    async values => {
+    async (values) => {
+      console.log({ values });
+      const mobileNumberFormatted = getNumberFormat(
+        values.mobileNumber,
+        values.countryCode
+      );
       await walletFormContainer.set({
-        person: {
+        walletDetails: {
           ...values,
-          mobileNumber: `${values.countryCode.replace("+", "")}${
-            values.mobileNumber
-          }`
-        }
+          mobileNumber: mobileNumberFormatted.international,
+          photo: values.photo.split(",")[1],
+        },
       });
-      const {
-        state: {
-          person: { firstName, lastName, mobileNumber, photo }
-        }
-      } = walletFormContainer;
 
       const createWalletData = {
-        firstName,
-        lastName,
-        photo: photo.split(",")[1],
-        mobileNumber: mobileNumber
+        mobileNumber: mobileNumberFormatted.international,
+        mobileNumberReference: mobileNumberFormatted.national,
       };
 
       setLoading(true);
@@ -143,9 +161,7 @@ const CreateWallet = ({ twoStepCallback }) => {
       try {
         const { data } = await api.wallet.createWallet(createWalletData);
         await walletFormContainer.set({
-          walletId: data.walletId,
-          picture: data.picture,
-          covidStatusUrl: data.covidStatusUrl
+          token: data.token,
         });
         twoStepCallback(walletFormContainer.state);
       } catch (error) {
@@ -167,9 +183,10 @@ const CreateWallet = ({ twoStepCallback }) => {
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={VALIDATION_SCHEMA}
-        onSubmit={values => reCaptchaSuccess && addDataToState(values)}
+        onSubmit={(values) => reCaptchaSuccess && addDataToState(values)}
       >
         {({ handleSubmit, handleChange, values, errors, touched }) => {
+          console.log(getNumberFormat(values.mobileNumber, values.countryCode));
           return (
             <>
               <Form
@@ -177,7 +194,8 @@ const CreateWallet = ({ twoStepCallback }) => {
                   Object.keys(errors).length > 0 ||
                   Object.keys(touched).length === 0
                 }
-                onSubmit={handleSubmit}>
+                onSubmit={handleSubmit}
+              >
                 <BodyContainer>
                   <Left>
                     <TextInput
@@ -200,26 +218,30 @@ const CreateWallet = ({ twoStepCallback }) => {
                         containerStyle={{ width: "110px", marginRight: "10px" }}
                         name="countryCode"
                         displayProp="dial_code"
-                        valueProp="dial_code"
-                        items={countries.sort()}
+                        valueProp="code"
+                        items={countries.sort(
+                          (a, b) =>
+                            a.dial_code.substring(1) - b.dial_code.substring(1)
+                        )}
                       />
                       <TextInput
                         name="mobileNumber"
+                        type="number"
                         placeholder="Enter mobile number"
                       />
                     </MobileNumberContainer>
                     <Select
                       placeholder="Please select"
                       label="Document Type"
-                      name="identificationType"
+                      name="idType"
                       displayProp="label"
                       valueProp="value"
                       items={[
                         {
                           label: "SA ID Number",
-                          value: "IdentificationDocument"
+                          value: "IdentificationDocument",
                         },
-                        { label: "Passport", value: "Passport" }
+                        { label: "Passport", value: "Passport" },
                       ]}
                     />
                   </Left>
@@ -232,14 +254,14 @@ const CreateWallet = ({ twoStepCallback }) => {
                       placeholder="Drag and drop or click to add file here."
                     />
                     <TextInput
-                      name="identificationValue"
+                      name="idValue"
                       placeholder={
-                        values.identificationType === "IdentificationDocument"
+                        values.idType === "IdentificationDocument"
                           ? "Enter 13 digit ID"
                           : "Enter passport ID"
                       }
                       label={
-                        values.identificationType === "IdentificationDocument"
+                        values.idType === "IdentificationDocument"
                           ? "SA ID Number"
                           : "Passport Number"
                       }

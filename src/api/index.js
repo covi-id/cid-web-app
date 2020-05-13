@@ -4,30 +4,33 @@ import nprogress from "nprogress";
 import wallet from "./routes/wallet";
 import { ENV } from "utils/environment";
 import auth from "./routes/auth";
+import walletFormContainer from "stateContainers/walletFormContainer";
+import testResults from "./routes/testResult";
 
 const instance = axios.create({
   baseURL: ENV.BASE_URL,
   headers: {
     "Content-Type": "application/json; charset=utf-8",
-    "x-api-key": ENV.X_API_KEY
-  }
+    "x-api-key": ENV.X_API_KEY,
+  },
 });
 instance.interceptors.request.use(
-  request => {
+  (request) => {
     nprogress.start();
     request.headers = {
-      ...request.headers
+      ...request.headers,
+      Authorization: walletFormContainer.state.token,
     };
     return request;
   },
-  error => {
+  (error) => {
     nprogress.done();
     return error;
   }
 );
 
 instance.interceptors.response.use(
-  response => {
+  (response) => {
     nprogress.done();
     return response.data;
   },
@@ -39,5 +42,6 @@ instance.interceptors.response.use(
 
 export default {
   wallet: wallet(instance),
-  auth: auth(instance)
+  auth: auth(instance),
+  testResults: testResults(instance),
 };
