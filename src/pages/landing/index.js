@@ -19,7 +19,7 @@ const Landing = () => {
           Add a test result
         </ButtonLink>
         <ButtonLink
-          href='https://thedeltastudio.typeform.com/to/FYMesV'
+          href='https://thedeltastudio.typeform.com/to/H534iJ'
           icon={require('assets/icons/plus-icon.svg')}>
           Register organisation
         </ButtonLink>
