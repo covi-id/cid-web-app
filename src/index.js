@@ -3,7 +3,13 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import Root from './root.js'
 
-import './index.css'
+import TagManager from 'react-gtm-module'
+
+const tagManagerArgs = {
+  gtmId: 'GTM-WBLDSB8',
+}
+
+TagManager.initialize(tagManagerArgs)
 
 ReactDOM.render(
   <Root />,
