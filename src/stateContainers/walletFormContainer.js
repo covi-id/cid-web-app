@@ -21,9 +21,9 @@ const DEFAULT_STATE = {
     hasConsent: false,
   },
   covidStatusUrl: "",
-  picture: "",
   token: "",
   key: "",
+  sessionId: ""
 };
 
 class WalletFormContainer extends Container {
