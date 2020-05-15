@@ -13,6 +13,19 @@ export default function wallet(instance) {
     },
 
     /**
+     * @param {string} sessionId 
+     * @param {
+      {
+        mobileNumber: string,
+        mobileNumberReference: string
+      }}
+  * @param {*} config 
+  */
+    createWalletWithSessionId(sessionId, body = {}, config = {}) {
+      return instance.post(`/wallets/${sessionId}`, body, config);
+    },
+
+    /**
      *
      * @param {string} walletId
      * @param {{
@@ -26,6 +39,6 @@ export default function wallet(instance) {
      */
     updateTest(walletId = "", body = {}, config = {}) {
       return instance.put(`/wallet/${walletId}/coviid`, body, config);
-    }
+    },
   };
 }

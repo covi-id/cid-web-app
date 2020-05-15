@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { Formik } from "formik";
 import { object, string, bool } from "yup";
 import { toast } from "react-toastify";
@@ -24,6 +24,7 @@ import api from "api";
 import FormHeader from "components/formHeader";
 import Recaptcha from "components/recaptcha";
 import countries from "constants/countries";
+import useQuery from "hooks/useQuery";
 
 const INITIAL_VALUES = {
   firstName: "",
@@ -135,10 +136,18 @@ function getNumberFormat(mobileNumber, countryCode) {
 const CreateWallet = ({ twoStepCallback }) => {
   const [loading, setLoading] = useState(false);
   const [reCaptchaSuccess, setRecaptchaSuccess] = useState(false);
+  const { sessionId } = useQuery();
+
+  useEffect(() => {
+    async function updateFormWalletWithSessionId() {
+      await walletFormContainer.set({ sessionId });
+    }
+
+    updateFormWalletWithSessionId(sessionId);
+  }, [sessionId]);
 
   const addDataToState = useCallback(
     async (values) => {
-      console.log({ values });
       const mobileNumberFormatted = getNumberFormat(
         values.mobileNumber,
         values.countryCode
@@ -159,7 +168,13 @@ const CreateWallet = ({ twoStepCallback }) => {
       setLoading(true);
 
       try {
-        const { data } = await api.wallet.createWallet(createWalletData);
+        const { data } = sessionId
+          ? await api.wallet.createWalletWithSessionId(
+              sessionId,
+              createWalletData
+            )
+          : await api.wallet.createWallet(createWalletData);
+
         await walletFormContainer.set({
           token: data.token,
         });
@@ -170,7 +185,7 @@ const CreateWallet = ({ twoStepCallback }) => {
         setLoading(false);
       }
     },
-    [twoStepCallback]
+    [twoStepCallback, sessionId]
   );
 
   function handleReCAPTCHA() {
@@ -186,7 +201,6 @@ const CreateWallet = ({ twoStepCallback }) => {
         onSubmit={(values) => reCaptchaSuccess && addDataToState(values)}
       >
         {({ handleSubmit, handleChange, values, errors, touched }) => {
-          console.log(getNumberFormat(values.mobileNumber, values.countryCode));
           return (
             <>
               <Form
