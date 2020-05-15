@@ -4,8 +4,6 @@ import './index.css'
 import Root from './root.js'
 import TagManager from 'react-gtm-module'
 
-import TagManager from 'react-gtm-module'
-
 const tagManagerArgs = {
   gtmId: 'GTM-WBLDSB8',
 }
