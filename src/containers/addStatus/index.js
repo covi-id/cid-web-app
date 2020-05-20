@@ -21,7 +21,7 @@ import FormHeader from "components/formHeader";
 const INITIAL_VALUES = {
   referenceNumber: "",
   testedAt: "",
-  covidStatus: "Untested",
+  resultStatus: "Untested",
   laboratory: "",
   receivedResult: false,
 };
@@ -32,7 +32,7 @@ const VALIDATION_SCHEMA = object().shape({
     .min(new Date(2020, 0, 1), "Test date cannot be before 1st January, 2020.")
     .max(new Date(), "Test date cannot be in the future.")
     .required("*Required"),
-  covidStatus: string().required("*Required"),
+    resultStatus: string().required("*Required"),
   laboratory: string().required("*Required"),
 });
 
@@ -118,7 +118,7 @@ const AddStatus = ({ twoStepCallback }) => {
                       <Select
                         label="Test status"
                         placeholder="Please select"
-                        name="covidStatus"
+                        name="resultStatus"
                         displayProp="label"
                         valueProp="value"
                         items={[
