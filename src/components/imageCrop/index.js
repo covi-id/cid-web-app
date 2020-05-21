@@ -7,10 +7,11 @@ import {
   CropArea,
   InnerContainer,
   CloseContainer,
-  CloseImg
+  CloseImg,
+  Title,
+  Header,
 } from "./styles";
 import Button from "components/button";
-import Heading1 from "components/shared/h1";
 import getCroppedImg from "utils/cropImage";
 
 const ImageCrop = ({ imageB64, open, closeHandler, cropHandler }) => {
@@ -19,10 +20,10 @@ const ImageCrop = ({ imageB64, open, closeHandler, cropHandler }) => {
     crop: { x: 0, y: 0 },
     zoom: 1,
     aspect: 4 / 4,
-    croppedAreaPixels: null
+    croppedAreaPixels: null,
   });
 
-  const onCropChange = crop => {
+  const onCropChange = (crop) => {
     setState({ ...state, crop });
   };
 
@@ -30,7 +31,7 @@ const ImageCrop = ({ imageB64, open, closeHandler, cropHandler }) => {
     setState({ ...state, croppedAreaPixels });
   };
 
-  const onZoomChange = zoom => {
+  const onZoomChange = (zoom) => {
     setState({ ...state, zoom });
   };
 
@@ -51,10 +52,13 @@ const ImageCrop = ({ imageB64, open, closeHandler, cropHandler }) => {
     open && (
       <Container>
         <InnerContainer>
-          <CloseContainer>
-            <CloseImg onClick={closeHandler} />
-          </CloseContainer>
-          <Heading1>Crop Image</Heading1>
+          <Header>
+            <Title>Crop Image</Title>
+            <CloseContainer>
+              <CloseImg onClick={closeHandler} />
+            </CloseContainer>
+          </Header>
+
           <CropArea>
             <Cropper
               containerStyle={{ width: "400px", height: "400px" }}
