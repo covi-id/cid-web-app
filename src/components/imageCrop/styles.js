@@ -9,6 +9,8 @@ const Container = styled.div`
   left: 0;
   width: 100%;
   z-index: 10;
+  max-height: 100%;
+  overflow: scroll;
 
   @media screen and (max-width: 768px) {
     height: 100%;
