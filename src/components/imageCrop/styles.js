@@ -9,6 +9,8 @@ const Container = styled.div`
   left: 0;
   width: 100%;
   z-index: 10;
+  max-height: 100%;
+  overflow: scroll;
 
   @media screen and (max-width: 768px) {
     height: 100%;
@@ -19,8 +21,9 @@ const Container = styled.div`
 const CloseContainer = styled.div`
   width: 100%;
   text-align: right;
-  padding-right: 40px;
-  padding-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 const CloseImg = styled.img.attrs({ src: CloseIcon })`
@@ -32,14 +35,38 @@ const InnerContainer = styled.div`
   background: #ffffff;
   border-radius: 60px;
   width: 640px;
-  height: 708px;
+  height: auto;
   margin: 70px auto;
+  overflow: auto;
+  box-shadow: 0px 5px 40px rgba(108, 109, 133, 0.15);
+  padding: 20px 0px;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 0px;
+  }
+
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px #bfbfbf;
+    border-radius: 10px;
+    margin: 42px 0px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 35px #e9e4ff;
+  }
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     border-radius: 0;
     margin: 0 auto;
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 0px;
+    }
   }
 `;
 
@@ -47,15 +74,55 @@ const CropArea = styled.div`
   position: relative;
   width: 400px;
   height: 400px;
-  margin: auto 120px;
+  margin: 15px 120px;
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    margin: 0 auto;
+    margin: 15px auto;
   }
 `;
 
-const ButtonContainer = styled.div``;
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 15px;
+  }
+
+  button {
+    margin: 25px 5px;
+
+    @media screen and (max-width: 768px) {
+      margin: 15px 5px;
+    }
+  }
+`;
+
+const Title = styled.div`
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #654cf0;
+  white-space: nowrap;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+`;
+
+const Header = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 15px 40px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
 
 export {
   Container,
@@ -63,5 +130,7 @@ export {
   ButtonContainer,
   InnerContainer,
   CloseContainer,
-  CloseImg
+  CloseImg,
+  Title,
+  Header,
 };
