@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import CloseIcon from "assets/images/modal-close.svg";
-import Row from "components/shared/row";
 
 const Container = styled.div`
   position: fixed;
