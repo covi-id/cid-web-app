@@ -34,12 +34,36 @@ const InnerContainer = styled.div`
   width: 640px;
   height: 708px;
   margin: 70px auto;
+  padding-bottom: 45px;
+  overflow: auto;
+  box-shadow: 0px 5px 40px rgba(108, 109, 133, 0.15);
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 0px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px #bfbfbf;
+    border-radius: 10px;
+    margin: 42px 0px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 35px #e9e4ff;
+  }
 
   @media screen and (max-width: 768px) {
     width: 100%;
     height: 100vh;
     border-radius: 0;
     margin: 0 auto;
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 0px;
+    }
   }
 `;
 
@@ -63,5 +87,5 @@ export {
   ButtonContainer,
   InnerContainer,
   CloseContainer,
-  CloseImg
+  CloseImg,
 };
