@@ -8,6 +8,7 @@ import {
   Heading,
   SocialText,
   ButtonLinkOverride,
+  DisplayInline,
 } from './styles'
 
 import SocialMediaLinks from 'components/socialMediaLinks'
@@ -33,6 +34,10 @@ const cardsTextConsentTrue = [
   },
 ]
 
+const navToFeedBack = window.open(
+  'https://thedeltastudio.typeform.com/to/yU2WAB'
+)
+
 const CoviidUpdated = () => {
   const location = useLocation()
 
@@ -53,12 +58,16 @@ const CoviidUpdated = () => {
           </TextContainer>
         </Card>
       ))}
-
-      <ButtonLinkOverride>
-        <ButtonLink to='/'>Home</ButtonLink>
-      </ButtonLinkOverride>
+      <DisplayInline>
+        <ButtonLinkOverride>
+          <ButtonLink onClick={() => navToFeedBack()}>Give Feedback</ButtonLink>
+        </ButtonLinkOverride>
+        
+        <ButtonLinkOverride>
+          <ButtonLink to='/'>Home</ButtonLink>
+        </ButtonLinkOverride>
+      </DisplayInline>
       <SocialText>Share</SocialText>
-
       <SocialMediaLinks />
     </Container>
   )
