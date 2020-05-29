@@ -4,7 +4,6 @@ import { Wrapper, Header, List, Item, Icon, Value } from "./styles";
 import FormItemWrapper from "components/shared/formItemWrapper";
 import FormLabel from "components/shared/formLabel";
 import { connect } from "formik";
-import enhanceWithClickOutside from "react-click-outside";
 
 const Select = ({
   placeholder,

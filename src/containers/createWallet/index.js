@@ -88,7 +88,7 @@ const VALIDATION_SCHEMA = object().shape({
 
   countryCode: string().required(),
 
-  photo: string("*Required").test("picture", "*Required", (value) =>
+  photo: string("*Required").test("photo", "Unsupported format", (value) =>
     /^data:image\/(?:gif|png|jpeg|bmp|webp)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g.test(
       value
     )
