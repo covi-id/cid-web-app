@@ -31,7 +31,7 @@ const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
   const cropHandler = useCallback(
     image => {
       setFieldValue(name, image);
-      const file = b64toBlob(image, "image/png");
+      const file = b64toBlob(image, "image/jpg");
       setImage(URL.createObjectURL(file));
       setUncroppedImage(null);
     },
