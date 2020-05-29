@@ -105,9 +105,22 @@ export const ButtonLinkOverride = styled.div`
   ${ButtonLink.InternalLinkContainer} {
     min-width: 145px;
     max-width: 145px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
 
     @media screen and (max-width: 600px) {
       margin-top: 18px;
+    }
+  }
+`
+export const DisplayInline = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media screen and (max-width: 600px) {
+    display: flex;
+  flex-direction: column;
     }
   }
 `

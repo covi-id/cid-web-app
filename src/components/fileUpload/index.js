@@ -8,13 +8,14 @@ import {
   FileContainer,
   DropzoneLabel,
   AttachmentIcon,
-  CloseButton
+  CloseButton,
 } from "./styles";
 import toBase64 from "utils/toBase64";
 import FormLabel from "components/shared/formLabel";
 import FormItemWrapper from "components/shared/formItemWrapper";
 import ImageCrop from "components/imageCrop";
 import b64toBlob from "utils/b64toBlob";
+import compressImage from "utils/compressImage";
 
 const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
   const [uncroppedImage, setUncroppedImage] = useState(null);
@@ -22,16 +23,17 @@ const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
   const error = formik.touched[name] && formik.errors[name];
   const [image, setImage] = useState(null);
 
-  const onDrop = useCallback(async acceptedFiles => {
+  const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles[0];
     const base64Image = await toBase64(file);
     setUncroppedImage(base64Image);
   }, []);
 
   const cropHandler = useCallback(
-    image => {
-      setFieldValue(name, image);
-      const file = b64toBlob(image, "image/png");
+    async (image) => {
+      const compressedImage = await compressImage(image);
+      const file = b64toBlob(compressedImage, "image/png");
+      setFieldValue(name, compressedImage);
       setImage(URL.createObjectURL(file));
       setUncroppedImage(null);
     },
@@ -46,7 +48,7 @@ const FileUpload = ({ placeholder, dropText, label, name, formik }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: "image/*",
     multiple: false,
-    onDrop
+    onDrop,
   });
 
   const closeHandler = useCallback(() => {
@@ -95,7 +97,7 @@ FileUpload.propTypes = {
   placeholder: string.isRequired,
   dropText: string.isRequired,
   label: string.isRequired,
-  name: string.isRequired
+  name: string.isRequired,
 };
 
 export default connect(FileUpload);

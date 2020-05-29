@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { string, array, bool, func } from 'prop-types'
-import { Wrapper, Header, List, Item, Icon, Value } from './styles'
-import FormItemWrapper from 'components/shared/formItemWrapper'
-import FormLabel from 'components/shared/formLabel'
-import { connect } from 'formik'
+import React, { useState, useEffect, useRef } from "react";
+import { string, array, bool, func } from "prop-types";
+import { Wrapper, Header, List, Item, Icon, Value } from "./styles";
+import FormItemWrapper from "components/shared/formItemWrapper";
+import FormLabel from "components/shared/formLabel";
+import { connect } from "formik";
 
 const Select = ({
   placeholder,
@@ -18,28 +18,43 @@ const Select = ({
   valueProp,
   containerStyle,
 }) => {
-  const { setFieldValue } = formik
-  const [open, setOpen] = useState(defaultOpen)
+  const { setFieldValue } = formik;
+  const [open, setOpen] = useState(defaultOpen);
+  const node = useRef();
   const [selected, setSelected] = useState(
     items.find((item) => item[valueProp] === formik.initialValues[name])
-  )
+  );
   const hasError =
-    !!formik.touched[name] && !!formik.errors[name] && items.length > 0
-  const showError = hasError && !open
+    !!formik.touched[name] && !!formik.errors[name] && items.length > 0;
+  const showError = hasError && !open;
 
   useEffect(() => {
-    setSelected(items.find((item) => item[valueProp] === formik.values[name]))
+    // add when mounted
+    document.addEventListener("mousedown", handleClick); // return function to be called when unmounted
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, []);
+
+  const handleClick = (e) => {
+    if (node.current.contains(e.target)) return;
+    // outside click
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    setSelected(items.find((item) => item[valueProp] === formik.values[name]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formik.values[name]])
+  }, [formik.values[name]]);
 
   function toggle(value) {
-    setOpen(value)
-    !formik.touched[name] && !value && formik.setFieldTouched(name, true)
+    setOpen(value);
+    !formik.touched[name] && !value && formik.setFieldTouched(name, true);
   }
 
   async function handleSelect(selected) {
-    setOpen(false)
-    setFieldValue(name, selected[valueProp])
+    setOpen(false);
+    setFieldValue(name, selected[valueProp]);
   }
 
   return (
@@ -51,18 +66,19 @@ const Select = ({
           name={name}
         />
       )}
-      <Wrapper>
+      <Wrapper ref={node}>
         <Header
           active={open}
           error={showError}
           onClick={() => toggle(!open)}
-          disabled={disabled}>
+          disabled={disabled}
+        >
           <Value showPlaceholder={!selected}>
             {(selected && selected[displayProp]) || placeholder}
           </Value>
           <Icon
-            src={require('assets/images/chevron.svg')}
-            alt='chevron'
+            src={require("assets/images/chevron.svg")}
+            alt="chevron"
             open={open}
             show={!disabled}
           />
@@ -73,7 +89,8 @@ const Select = ({
               <Item
                 key={key}
                 onClick={() => handleSelect(item)}
-                selected={selected === item}>
+                selected={selected === item}
+              >
                 {item[displayProp]}
               </Item>
             ))}
@@ -81,8 +98,8 @@ const Select = ({
         )}
       </Wrapper>
     </FormItemWrapper>
-  )
-}
+  );
+};
 
 Select.propTypes = {
   items: array.isRequired,
@@ -94,17 +111,17 @@ Select.propTypes = {
   disabled: bool,
   displayProp: string,
   valueProp: string,
-}
+};
 
 Select.defaultProps = {
   items: [],
-  placeholder: 'Select',
+  placeholder: "Select",
   defaultOpen: false,
   func: () => {},
-  label: '',
+  label: "",
   disabled: false,
-  displayProp: 'name',
-  valueProp: 'id',
-}
+  displayProp: "name",
+  valueProp: "id",
+};
 
-export default connect(Select)
+export default connect(Select);
