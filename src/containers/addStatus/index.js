@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Formik } from "formik";
-import { object, date, string } from "yup";
+import { object, date, string, bool } from "yup";
 
 import {
   Form,
@@ -23,7 +23,7 @@ const INITIAL_VALUES = {
   testedAt: "",
   resultStatus: "Untested",
   laboratory: "",
-  receivedResult: false,
+  hasReceivedResults: false,
 };
 
 const VALIDATION_SCHEMA = object().shape({
@@ -34,6 +34,7 @@ const VALIDATION_SCHEMA = object().shape({
     .required("*Required"),
     resultStatus: string().required("*Required"),
   laboratory: string().required("*Required"),
+  hasReceivedResults: bool().required("*Required")
 });
 
 const AddStatus = ({ twoStepCallback }) => {
@@ -105,7 +106,7 @@ const AddStatus = ({ twoStepCallback }) => {
                 <MakeInline>
                   <ItemContainer>
                     <RadioButton
-                      name="receivedResult"
+                      name="hasReceivedResults"
                       options={[
                         { label: "Yes", value: true },
                         { label: "No", value: false },
@@ -114,7 +115,7 @@ const AddStatus = ({ twoStepCallback }) => {
                     />
                   </ItemContainer>
                   <ItemContainer>
-                    {values.receivedResult && (
+                    {values.hasReceivedResults && (
                       <Select
                         label="Test status"
                         placeholder="Please select"

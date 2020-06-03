@@ -30,7 +30,7 @@ const cardText = [
 const VerificationConsent = ({ cancel }) => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const { covidTest, walletId } = walletFormContainer.state;
+  const { covidTest, walletId, key } = walletFormContainer.state;
 
   const submitNewTest = useCallback(
     async (value) => {
@@ -40,6 +40,7 @@ const VerificationConsent = ({ cancel }) => {
           ...covidTest,
           walletId,
           hasConsent: value,
+          key
         });
         history.push("/create-wallet/status/updated/" + value);
       } catch (error) {
@@ -48,7 +49,7 @@ const VerificationConsent = ({ cancel }) => {
         setLoading(false);
       }
     },
-    [covidTest, history, walletId]
+    [covidTest, history, walletId, key]
   );
   return (
     <Container>
