@@ -9,9 +9,11 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 55px;
 
   @media screen and (max-width: 768px) {
     align-items: unset;
+    margin-top: 30px;
   }
 `;
 
@@ -32,6 +34,8 @@ export const Heading = styled.h2`
   color: #654cf0;
 `;
 export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   ${ButtonLink.Container} {
     margin-bottom: 24px;
   }
@@ -43,4 +47,12 @@ export const ButtonsContainer = styled.div`
 export const ExternalLink = styled.a`
   text-decoration: none;
   cursor: pointer;
+`;
+
+export const DeleteContainer = styled.div`
+  margin-top: 100px;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 40px;
+  }
 `;
