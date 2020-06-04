@@ -33,9 +33,7 @@ const INITIAL_VALUES = {
   consent: false,
   photo: "",
   countryCode: "ZA",
-  email: "cheslynsergiofielding@gmail.com",
-  idType: "",
-  idValue: "",
+  email: "email@email.com",
 };
 
 const containsNumbers = (value) => {
@@ -90,17 +88,7 @@ const VALIDATION_SCHEMA = object().shape({
 
   countryCode: string().required(),
 
-  idType: string().label("Document Type").required("*Required"),
-
-  idValue: string()
-    .when("idType", {
-      is: "IdentificationDocument",
-      then: string("*Required").matches(/^[0-9]{13}$/, "Must be 13 characters"),
-      otherwise: string("*Required").min(6, "*Required"),
-    })
-    .label("Identity Number"),
-
-  photo: string("*Required").test("picture", "*Required", (value) =>
+  photo: string("*Required").test("photo", "Unsupported format", (value) =>
     /^data:image\/(?:gif|png|jpeg|bmp|webp)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g.test(
       value
     )
@@ -244,20 +232,6 @@ const CreateWallet = ({ twoStepCallback }) => {
                         placeholder="Enter mobile number"
                       />
                     </MobileNumberContainer>
-                    <Select
-                      placeholder="Please select"
-                      label="Document Type"
-                      name="idType"
-                      displayProp="label"
-                      valueProp="value"
-                      items={[
-                        {
-                          label: "SA ID Number",
-                          value: "IdentificationDocument",
-                        },
-                        { label: "Passport", value: "Passport" },
-                      ]}
-                    />
                   </Left>
 
                   <Right>
@@ -266,19 +240,6 @@ const CreateWallet = ({ twoStepCallback }) => {
                       label="Upload picture"
                       dropText="Drop files :)"
                       placeholder="Drag and drop or click to add file here."
-                    />
-                    <TextInput
-                      name="idValue"
-                      placeholder={
-                        values.idType === "IdentificationDocument"
-                          ? "Enter 13 digit ID"
-                          : "Enter passport ID"
-                      }
-                      label={
-                        values.idType === "IdentificationDocument"
-                          ? "SA ID Number"
-                          : "Passport Number"
-                      }
                     />
                   </Right>
                 </BodyContainer>

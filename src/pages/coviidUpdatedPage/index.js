@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Container,
   Card,
@@ -8,39 +8,40 @@ import {
   Heading,
   SocialText,
   ButtonLinkOverride,
-} from './styles'
+  DisplayInline,
+} from "./styles";
 
-import SocialMediaLinks from 'components/socialMediaLinks'
-import ButtonLink from 'components/buttonLink'
-import { useLocation } from 'react-router-dom'
+import SocialMediaLinks from "components/socialMediaLinks";
+import ButtonLink from "components/buttonLink";
+import { useLocation } from "react-router-dom";
 
 const cardsTextConsentFalse = [
   {
     text:
-      'Your test details have been added to your Covi-ID as unverified data.',
+      "Your test details have been added to your Covi-ID as unverified data.",
   },
-]
+];
 
 const cardsTextConsentTrue = [
   {
     text:
-      'Your test details have been added to you Covi-ID as unverified data.',
+      "Your test details have been added to you Covi-ID as unverified data.",
   },
-  { text: 'You will be notified via SMS once we have verified your results.' },
+  { text: "You will be notified via SMS once we have verified your results." },
   {
     text:
-      'Your COVID-19 status will be updated to verified on successful verification.',
+      "Your COVID-19 status will be updated to verified on successful verification.",
   },
-]
+];
 
 const CoviidUpdated = () => {
-  const location = useLocation()
+  const location = useLocation();
 
   const consented = location.pathname.includes(
-    '/create-wallet/status/updated/:consentNotGiven'
-  )
+    "/create-wallet/status/updated/:consentNotGiven"
+  );
 
-  const textToShow = consented ? cardsTextConsentFalse : cardsTextConsentTrue
+  const textToShow = consented ? cardsTextConsentFalse : cardsTextConsentTrue;
 
   return (
     <Container>
@@ -53,14 +54,23 @@ const CoviidUpdated = () => {
           </TextContainer>
         </Card>
       ))}
+      <DisplayInline>
+        <ButtonLinkOverride>
+          <ButtonLink
+            href="https://thedeltastudio.typeform.com/to/yU2WAB"
+            target="_blank"
+          >
+            Give Feedback
+          </ButtonLink>
+        </ButtonLinkOverride>
 
-      <ButtonLinkOverride>
-        <ButtonLink to='/'>Home</ButtonLink>
-      </ButtonLinkOverride>
+        <ButtonLinkOverride>
+          <ButtonLink to="/">Home</ButtonLink>
+        </ButtonLinkOverride>
+      </DisplayInline>
       <SocialText>Share</SocialText>
-
       <SocialMediaLinks />
     </Container>
-  )
-}
-export default CoviidUpdated
+  );
+};
+export default CoviidUpdated;
