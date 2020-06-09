@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import FirstIcon from 'assets/icons/landing-icon.svg'
+import FirstIcon from "assets/icons/landing-icon.svg";
 
 export const Container = styled.div`
   display: flex;
@@ -8,26 +8,28 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 60px;
 
   @media screen and (max-width: 768px) {
     align-items: unset;
+    margin-top: 0;
   }
-`
+`;
 
 export const Icon = styled.img`
   width: 30.77%;
   margin: 0 auto 8.91% auto;
-`
+`;
 
-export const LandingIcon = styled(Icon).attrs({ src: FirstIcon })``
+export const LandingIcon = styled(Icon).attrs({ src: FirstIcon })``;
 
 export const Heading = styled.h2`
-  width: 310px;
+  /* width: 310px; */
 
   font-size: 48px;
   font-weight: bold;
   color: #654cf0;
-`
+`;
 export const HeadingContainer = styled.div`
   margin-bottom: 60px;
   margin-top: -50px;
@@ -36,7 +38,7 @@ export const HeadingContainer = styled.div`
   @media screen and (max-width: 768px) {
     margin-top: 40px;
   }
-`
+`;
 
 export const CardsContainer = styled.div`
   display: flex;
@@ -47,4 +49,4 @@ export const CardsContainer = styled.div`
     flex-direction: column;
     margin-top: -140px;
   }
-`
+`;

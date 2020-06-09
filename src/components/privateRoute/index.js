@@ -1,20 +1,37 @@
 import React from "react";
 import walletFormContainer from "stateContainers/walletFormContainer";
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { oneOf } from "prop-types";
+import ConnectCoviID from "pages/connectCoviID";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+/**
+ *
+ * @param {{
+ * purpose: "addTest" | "deleteWallet"
+ * }} param0
+ */
+
+const PrivateRoute = ({ component: Component, purpose, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props =>
+      render={(props) =>
         walletFormContainer.state.walletId === "" ? (
-          <Redirect to="/connect-coviid" />
+          <ConnectCoviID purpose={purpose} />
         ) : (
           <Component {...props} />
         )
       }
     />
   );
+};
+
+PrivateRoute.defaultProps = {
+  purpose: "addTest",
+};
+
+PrivateRoute.propTypes = {
+  purpose: oneOf(["addTest", "deleteWallet"]),
 };
 
 export default PrivateRoute;

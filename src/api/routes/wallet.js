@@ -40,5 +40,9 @@ export default function wallet(instance) {
     updateTest(walletId = "", body = {}, config = {}) {
       return instance.put(`/wallet/${walletId}/coviid`, body, config);
     },
+
+    deleteWallet(walletId, config = {}) {
+      return instance.delete(`/wallets/${walletId}`, config);
+    },
   };
 }
