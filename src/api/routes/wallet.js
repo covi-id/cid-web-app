@@ -1,15 +1,16 @@
+import createJsonRpc from "api/utils/createJsonRpc";
+import { CreateWallet } from "api/utils/jsonRpcMethods";
+import { ENV } from "utils/environment";
+
+/**
+ *
+ * @param {import('axios').AxiosInstance} instance
+ */
 export default function wallet(instance) {
   return {
-    /**
-     * @param {
-        {
-          mobileNumber: string,
-          mobileNumberReference: string
-        }}
-    * @param {*} config 
-    */
     createWallet(body = {}, config = {}) {
-      return instance.post(`/wallets`, body, config);
+      const jsonRpcBody = createJsonRpc(CreateWallet, body);
+      return instance.post(ENV.BASE_URL, jsonRpcBody, config);
     },
 
     /**
@@ -42,7 +43,7 @@ export default function wallet(instance) {
     },
 
     deleteWallet(walletId, config = {}) {
-      return instance.delete(`/wallets/${walletId}`, config);
+      return instance.delete(`/wallets/${walletId}`, {}, config);
     },
   };
 }

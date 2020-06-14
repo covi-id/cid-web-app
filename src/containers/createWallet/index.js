@@ -25,15 +25,19 @@ import FormHeader from "components/formHeader";
 import Recaptcha from "components/recaptcha";
 import countries from "constants/countries";
 import useQuery from "hooks/useQuery";
+import getNewTaskPubKey from "utils/getNewTaskPubKey";
+import keyPairContainer from "stateContainers/keyPairContainer";
+import { encrypt, decrypt } from "utils/cryptography";
+import Sha256 from "utils/sha256";
 
 const INITIAL_VALUES = {
-  firstName: "",
-  lastName: "",
-  mobileNumber: "",
-  consent: false,
-  photo: "",
-  countryCode: "ZA",
-  email: "email@email.com",
+  first_name: "",
+  last_name: "",
+  mobile_number: "",
+  has_consent: false,
+  photo_reference: "",
+  country_code: "ZA",
+  is_my_mobile_number: false,
 };
 
 const containsNumbers = (value) => {
@@ -49,7 +53,7 @@ const containsSpecialCharacters = (value) => {
 };
 
 const VALIDATION_SCHEMA = object().shape({
-  firstName: string()
+  first_name: string()
     .label("First Name")
     .required("*Required")
     .max(32)
@@ -59,7 +63,7 @@ const VALIDATION_SCHEMA = object().shape({
       (value) => !containsNumbers(value)
     ),
 
-  lastName: string()
+  last_name: string()
     .label("Last Name")
     .required("*Required")
 
@@ -70,7 +74,9 @@ const VALIDATION_SCHEMA = object().shape({
       (value) => !containsNumbers(value)
     ),
 
-  mobileNumber: string()
+  is_my_mobile_number: bool().required(),
+
+  mobile_number: string()
     .label("Mobile Number")
     .min(9, "Invalid number")
     .max(16, "Invalid number")
@@ -86,14 +92,17 @@ const VALIDATION_SCHEMA = object().shape({
       (value) => !containsSpecialCharacters(value)
     ),
 
-  countryCode: string().required(),
+  country_code: string().required(),
 
-  photo: string("*Required").test("photo", "Unsupported format", (value) =>
-    /^data:image\/(?:gif|png|jpeg|bmp|webp)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g.test(
-      value
-    )
+  photo_reference: string("*Required").test(
+    "photo",
+    "Unsupported format",
+    (value) =>
+      /^data:image\/(?:gif|png|jpeg|bmp|webp)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g.test(
+        value
+      )
   ),
-  consent: bool()
+  has_consent: bool()
     .label("Consent")
     .required("*Required")
 
@@ -137,43 +146,62 @@ const CreateWallet = ({ twoStepCallback }) => {
   const addDataToState = useCallback(
     async (values) => {
       const mobileNumberFormatted = getNumberFormat(
-        values.mobileNumber,
-        values.countryCode
+        values.mobile_number,
+        values.country_code
       );
       await walletFormContainer.set({
         walletDetails: {
           ...values,
-          mobileNumber: mobileNumberFormatted.international,
-          photo: values.photo.split(",")[1],
+          mobile_number: mobileNumberFormatted.international,
+          photo_reference: "image_thingy_mah_bobby",
         },
       });
 
+      const hashed_mobile_number = Sha256.hash(mobileNumberFormatted);
+
       const createWalletData = {
-        mobileNumber: mobileNumberFormatted.international,
-        mobileNumberReference: mobileNumberFormatted.national,
+        // mobile_number: mobileNumberFormatted.international,
+        // mobileNumberReference: mobileNumberFormatted.national,
+        ...walletFormContainer.state.walletDetails,
+        hashed_mobile_number,
+        photo_reference: "image_thingy_mah_bobby",
+        created_at: new Date().toISOString(),
+        mobile_number_verified: false,
       };
+
+      delete createWalletData.country_code;
+
+      console.log(JSON.stringify(createWalletData));
 
       setLoading(true);
 
       try {
-        const { data } = sessionId
-          ? await api.wallet.createWalletWithSessionId(
-              sessionId,
-              createWalletData
-            )
-          : await api.wallet.createWallet(createWalletData);
+        const { taskPubKey } = await getNewTaskPubKey();
+        console.log({ ServerKey: taskPubKey });
+        const encryptedData = encrypt(
+          taskPubKey,
+          keyPairContainer.state.privateKey,
+          JSON.stringify(createWalletData)
+        );
+        console.log({ Encrypted: encryptedData });
 
-        await walletFormContainer.set({
-          token: data.token,
+        const { result } = await api.wallet.createWallet({
+          userPubKey: keyPairContainer.state.publicKey,
+          encryptedData,
+          mobileNumber: walletFormContainer.state.walletDetails.mobile_number,
         });
-        twoStepCallback(walletFormContainer.state);
+
+        // await walletFormContainer.set({
+        //   token: data.token,
+        // });
+        // twoStepCallback(walletFormContainer.state);
       } catch (error) {
         toast.error(error);
       } finally {
         setLoading(false);
       }
     },
-    [twoStepCallback, sessionId]
+    []
   );
 
   function handleReCAPTCHA() {
@@ -202,23 +230,23 @@ const CreateWallet = ({ twoStepCallback }) => {
                   <Left>
                     <TextInput
                       placeholder="Enter name"
-                      name="firstName"
+                      name="first_name"
                       label="Name"
                     />
                     <TextInput
-                      name="lastName"
+                      name="last_name"
                       placeholder="Enter last name"
                       label="Last name"
                     />
                     <FormLabel
-                      name="mobileNumber"
+                      name="mobile_number"
                       description="Mobile Number"
                       error={errors["mobileNumber"]}
                     />
                     <MobileNumberContainer>
                       <Select
                         containerStyle={{ width: "110px", marginRight: "10px" }}
-                        name="countryCode"
+                        name="country_code"
                         displayProp="dial_code"
                         valueProp="code"
                         items={countries.sort(
@@ -227,7 +255,7 @@ const CreateWallet = ({ twoStepCallback }) => {
                         )}
                       />
                       <TextInput
-                        name="mobileNumber"
+                        name="mobile_number"
                         type="number"
                         placeholder="Enter mobile number"
                       />
@@ -236,7 +264,7 @@ const CreateWallet = ({ twoStepCallback }) => {
 
                   <Right>
                     <FileUpload
-                      name="photo"
+                      name="photo_reference"
                       label="Upload picture"
                       dropText="Drop files :)"
                       placeholder="Drag and drop or click to add file here."
@@ -245,10 +273,10 @@ const CreateWallet = ({ twoStepCallback }) => {
                 </BodyContainer>
                 <Footer>
                   <Checkbox
-                    name="consent"
+                    name="has_consent"
                     onChange={handleChange}
                     labelInlineInd={true}
-                    checked={!!values?.consent}
+                    checked={!!values?.has_consent}
                     label={
                       <>
                         By proceeding, I consent to the{" "}

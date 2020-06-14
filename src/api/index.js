@@ -6,11 +6,12 @@ import { ENV } from "utils/environment";
 import auth from "./routes/auth";
 import walletFormContainer from "stateContainers/walletFormContainer";
 import testResults from "./routes/testResult";
+import encryption from './routes/encryption';
 
 const instance = axios.create({
   baseURL: ENV.BASE_URL,
   headers: {
-    "Content-Type": "application/json; charset=utf-8",
+    "Content-Type": "application/json",
     "x-api-key": ENV.X_API_KEY,
   },
 });
@@ -44,4 +45,5 @@ export default {
   wallet: wallet(instance),
   auth: auth(instance),
   testResults: testResults(instance),
+  encryption: encryption(instance),
 };
