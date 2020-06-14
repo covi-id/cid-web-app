@@ -14,7 +14,7 @@ import CoviidUpdated from "pages/coviidUpdatedPage";
 import { createBrowserHistory } from "history";
 import PrivateRoute from "components/privateRoute";
 import DeleteWallet from "pages/consentScreens/DeleteWallet";
-import { getClientKeys, randomNumber } from "utils/cryptography";
+import { getClientKeys } from "utils/cryptography";
 import keyPairContainer from "stateContainers/keyPairContainer";
 
 const history = createBrowserHistory();
@@ -36,12 +36,12 @@ history.listen((location) => {
 const Root = () => {
   useEffect(() => {
     async function generateKeyPair() {
-      console.log(await randomNumber(1, Number.MAX_SAFE_INTEGER));
       const keyPair = getClientKeys();
       await keyPairContainer.set({
         privateKey: keyPair.privateKey,
         publicKey: keyPair.publicKey,
       });
+      console.log('CREATED KEYS', keyPairContainer.state.privateKey)
     }
 
     generateKeyPair();

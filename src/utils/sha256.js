@@ -213,7 +213,7 @@ class Sha256 {
       H[h] = ("00000000" + H[h].toString(16)).slice(-8);
 
     // concatenate H0..H7, with separator if required
-    const separator = opt.outFormat == "hex-w" ? " " : "";
+    const separator = opt.outFormat === "hex-w" ? " " : "";
 
     return H.join(separator);
 
@@ -233,7 +233,7 @@ class Sha256 {
     function hexBytesToString(hexStr) {
       // convert string of hex numbers to a string of chars (eg '616263' -> 'abc').
       const str = hexStr.replace(" ", ""); // allow space-separated groups
-      return str == ""
+      return str === ""
         ? ""
         : str
             .match(/.{2}/g)
