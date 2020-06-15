@@ -12,16 +12,15 @@ const DEFAULT_STATE = {
     country_code: "",
   },
   covidTest: {
-    testedAt: "",
-    covidStatus: 0,
-    laboratory: 0,
-    referenceNumber: "",
-    hasConsent: false,
+    has_received_results: false,
+    result_status: "",
+    laboratory: "",
+    reference_number: "",
   },
   covidStatusUrl: "",
   token: "",
   key: "",
-  sessionId: ""
+  sessionId: "",
 };
 
 class WalletFormContainer extends Container {

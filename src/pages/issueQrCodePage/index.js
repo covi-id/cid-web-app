@@ -77,8 +77,7 @@ const IssueQRCode = () => {
   }
 
   const qrValue = JSON.stringify({
-    walletId: walletFormContainer.state.walletId,
-    key: walletFormContainer.state.key,
+    walletId: walletFormContainer.state.wallet_id,
   })
 
   return (

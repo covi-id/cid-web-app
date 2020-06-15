@@ -52,11 +52,12 @@ const Card = ({ type, icon, link, text, buttonText, onClick, purpose }) => {
 
           const qrData = JSON.parse(covidStatusUrl);
           await walletFormContainer.set({
-            walletId: qrData.walletId,
+            wallet_id: qrData.walletId,
             key: qrData.key,
           });
 
-          history.push(getUrl(purpose));
+          const nextPage = getUrl(purpose);
+          history.push(nextPage);
         } catch (error) {
           toast.error("Invalid Covi-ID QR");
         }

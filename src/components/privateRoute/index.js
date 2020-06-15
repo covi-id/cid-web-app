@@ -1,9 +1,7 @@
 import React from "react";
 import walletFormContainer from "stateContainers/walletFormContainer";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { oneOf } from "prop-types";
-import ConnectCoviID from "pages/connectCoviID";
-
 /**
  *
  * @param {{
@@ -17,7 +15,7 @@ const PrivateRoute = ({ component: Component, purpose, ...rest }) => {
       {...rest}
       render={(props) =>
         walletFormContainer.state.wallet_id === "" ? (
-          <ConnectCoviID purpose={purpose} />
+          <Redirect to={`/connect-coviid/${purpose}`} />
         ) : (
           <Component {...props} />
         )

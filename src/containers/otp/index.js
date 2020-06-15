@@ -11,7 +11,7 @@ import { Form, LeadText, Container } from "./styles";
 import api from "api";
 import { useHistory } from "react-router-dom";
 import walletFormContainer from "stateContainers/walletFormContainer";
-import { encrypt, decrypt } from "utils/cryptography";
+import { encrypt } from "utils/cryptography";
 import getNewTaskPubKey from "utils/getNewTaskPubKey";
 import keyPairContainer from "stateContainers/keyPairContainer";
 

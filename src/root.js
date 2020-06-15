@@ -16,6 +16,7 @@ import PrivateRoute from "components/privateRoute";
 import DeleteWallet from "pages/consentScreens/DeleteWallet";
 import { getClientKeys } from "utils/cryptography";
 import keyPairContainer from "stateContainers/keyPairContainer";
+import ConnectCoviID from "pages/connectCoviID";
 
 const history = createBrowserHistory();
 
@@ -55,6 +56,12 @@ const Root = () => {
           </Route>
 
           <Route path="/create-wallet/details" component={Step1} />
+          <Route
+            path="/connect-coviid/:action"
+            render={({ match }) => {
+              return <ConnectCoviID purpose={match.params.action} />;
+            }}
+          />
           <PrivateRoute exact path="/create-wallet/status" component={Step2} />
           <PrivateRoute exact path="/create-wallet/created" component={Step3} />
           <PrivateRoute

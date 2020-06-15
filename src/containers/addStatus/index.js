@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Formik } from "formik";
-import { object, date, string, bool } from "yup";
+import { object, date, string, boolean } from "yup";
 
 import {
   Form,
@@ -19,28 +19,29 @@ import Select from "components/select";
 import FormHeader from "components/formHeader";
 
 const INITIAL_VALUES = {
-  referenceNumber: "",
-  testedAt: "",
-  resultStatus: "Untested",
+  has_received_results: false,
+  result_status: "Untested",
   laboratory: "",
-  hasReceivedResults: false,
+  reference_number: "",
+  tested_at: new Date().toISOString(),
 };
 
 const VALIDATION_SCHEMA = object().shape({
-  referenceNumber: string().max(30 | "Max 30 characters."),
-  testedAt: date()
+  has_received_results: boolean().required("*Required"),
+  result_status: string().required("*Required"),
+  laboratory: string().required("*Required"),
+  reference_number: string().required("*Required"),
+  tested_at: date()
     .min(new Date(2020, 0, 1), "Test date cannot be before 1st January, 2020.")
     .max(new Date(), "Test date cannot be in the future.")
     .required("*Required"),
-    resultStatus: string().required("*Required"),
-  laboratory: string().required("*Required"),
-  hasReceivedResults: bool().required("*Required")
 });
 
 const AddStatus = ({ twoStepCallback }) => {
   const addDataToState = useCallback(
     async (values) => {
       await walletFormContainer.set({ covidTest: { ...values } });
+
       const { covidTest } = {
         ...walletFormContainer.state,
       };
@@ -66,7 +67,7 @@ const AddStatus = ({ twoStepCallback }) => {
                     <TextInput
                       label="Test reference number"
                       placeholder="Enter reference number"
-                      name="referenceNumber"
+                      name="reference_number"
                     />
                   </ItemContainer>
                   <ItemContainer>
@@ -88,7 +89,7 @@ const AddStatus = ({ twoStepCallback }) => {
                         {
                           label: "Pathcare",
                           value: "Pathcare",
-                        }
+                        },
                       ]}
                     />
                   </ItemContainer>
@@ -96,7 +97,7 @@ const AddStatus = ({ twoStepCallback }) => {
                 <InputWrapper>
                   <ItemContainer>
                     <TextInput
-                      name="testedAt"
+                      name="tested_at"
                       type="date"
                       placeholder="Enter date"
                       label="Test date"
@@ -106,7 +107,7 @@ const AddStatus = ({ twoStepCallback }) => {
                 <MakeInline>
                   <ItemContainer>
                     <RadioButton
-                      name="hasReceivedResults"
+                      name="has_received_results"
                       options={[
                         { label: "Yes", value: true },
                         { label: "No", value: false },
@@ -115,11 +116,11 @@ const AddStatus = ({ twoStepCallback }) => {
                     />
                   </ItemContainer>
                   <ItemContainer>
-                    {values.hasReceivedResults && (
+                    {values.has_received_results && (
                       <Select
                         label="Test status"
                         placeholder="Please select"
-                        name="resultStatus"
+                        name="result_status"
                         displayProp="label"
                         valueProp="value"
                         items={[
