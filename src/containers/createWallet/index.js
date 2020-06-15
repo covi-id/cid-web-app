@@ -22,7 +22,6 @@ import Select from "components/select";
 import FormLabel from "components/shared/formLabel";
 import api from "api";
 import FormHeader from "components/formHeader";
-import Recaptcha from "components/recaptcha";
 import countries from "constants/countries";
 import useQuery from "hooks/useQuery";
 import getNewTaskPubKey from "utils/getNewTaskPubKey";
@@ -132,7 +131,6 @@ function getNumberFormat(mobileNumber, countryCode) {
 
 const CreateWallet = ({ twoStepCallback }) => {
   const [loading, setLoading] = useState(false);
-  const [reCaptchaSuccess, setRecaptchaSuccess] = useState(false);
   const { sessionId } = useQuery();
 
   useEffect(() => {
@@ -143,74 +141,73 @@ const CreateWallet = ({ twoStepCallback }) => {
     updateFormWalletWithSessionId(sessionId);
   }, [sessionId]);
 
-  const addDataToState = useCallback(async (values) => {
-    const mobileNumberFormatted = getNumberFormat(
-      values.mobile_number,
-      values.country_code
-    );
-    await walletFormContainer.set({
-      walletDetails: {
-        ...values,
-        mobile_number: mobileNumberFormatted.international,
-        photo_reference: "image_thingy_mah_bobby",
-      },
-    });
-
-    const hashed_mobile_number = Sha256.hash(mobileNumberFormatted);
-
-    const createWalletData = {
-      ...walletFormContainer.state.walletDetails,
-      hashed_mobile_number,
-      //TODO: Add in image once api is ready
-      photo_reference: "image_thingy_mah_bobby",
-      created_at: new Date().toISOString(),
-      mobile_number_verified: false,
-    };
-
-    setLoading(true);
-
-    try {
-      const { taskPubKey } = await getNewTaskPubKey(
-        keyPairContainer.state.publicKey
+  const addDataToState = useCallback(
+    async (values) => {
+      const mobileNumberFormatted = getNumberFormat(
+        values.mobile_number,
+        values.country_code
       );
-      
-      // ENCRYPT DATA WITH NEW SERVER PUB KEY
-      const encryptedData = encrypt(
-        taskPubKey,
-        keyPairContainer.state.privateKey,
-        JSON.stringify(createWalletData)
-      );
-
-      // CREATE WALLET
-      const { result } = await api.wallet.createWallet({
-        userPubKey: keyPairContainer.state.publicKey,
-        encryptedData,
-        mobileNumber: walletFormContainer.state.walletDetails.mobile_number,
-      });
-
-      // GET WALLETID FROM DECRYPTED PAYLOAD
-      const { walletId } = decrypt(
-        taskPubKey,
-        keyPairContainer.state.privateKey,
-        result.createWallet.encryptedOutput
-      );
-
-      // SET WALLET ID
       await walletFormContainer.set({
-        walletId,
+        walletDetails: {
+          ...values,
+          mobile_number: mobileNumberFormatted.international,
+          photo_reference: "image_thingy_mah_bobby",
+        },
       });
 
-      twoStepCallback(walletFormContainer.state);
-    } catch (error) {
-      toast.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [twoStepCallback]);
+      const hashed_mobile_number = Sha256.hash(mobileNumberFormatted);
 
-  function handleReCAPTCHA() {
-    setRecaptchaSuccess(true);
-  }
+      const createWalletData = {
+        ...walletFormContainer.state.walletDetails,
+        hashed_mobile_number,
+        //TODO: Add in image once api is ready
+        photo_reference: "image_thingy_mah_bobby",
+        created_at: new Date().toISOString(),
+        mobile_number_verified: false,
+      };
+
+      setLoading(true);
+
+      try {
+        const { taskPubKey } = await getNewTaskPubKey(
+          keyPairContainer.state.publicKey
+        );
+
+        // ENCRYPT DATA WITH NEW SERVER PUB KEY
+        const encryptedData = encrypt(
+          taskPubKey,
+          keyPairContainer.state.privateKey,
+          JSON.stringify(createWalletData)
+        );
+
+        // CREATE WALLET
+        const { result } = await api.wallet.createWallet({
+          userPubKey: keyPairContainer.state.publicKey,
+          encryptedData,
+          mobileNumber: walletFormContainer.state.walletDetails.mobile_number,
+        });
+
+        // GET WALLETID FROM DECRYPTED PAYLOAD
+        const { wallet_id } = decrypt(
+          taskPubKey,
+          keyPairContainer.state.privateKey,
+          result.createWallet.encryptedOutput
+        );
+
+        // SET WALLET ID
+        await walletFormContainer.set({
+          wallet_id,
+        });
+
+        twoStepCallback(walletFormContainer.state);
+      } catch (error) {
+        toast.error(error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [twoStepCallback]
+  );
 
   return (
     <>
@@ -218,7 +215,7 @@ const CreateWallet = ({ twoStepCallback }) => {
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={VALIDATION_SCHEMA}
-        onSubmit={(values) => reCaptchaSuccess && addDataToState(values)}
+        onSubmit={addDataToState}
       >
         {({ handleSubmit, handleChange, values, errors, touched }) => {
           return (
@@ -295,7 +292,6 @@ const CreateWallet = ({ twoStepCallback }) => {
                       </>
                     }
                   />
-                  <Recaptcha name="recaptcha" handleChange={handleReCAPTCHA} />
                   <Button
                     disabled={loading}
                     type="submit"

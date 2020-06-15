@@ -6,7 +6,8 @@ import { ENV } from "utils/environment";
 import auth from "./routes/auth";
 import walletFormContainer from "stateContainers/walletFormContainer";
 import testResults from "./routes/testResult";
-import encryption from './routes/encryption';
+import encryption from "./routes/encryption";
+import mobileVerification from "./routes/mobileVerification";
 
 const instance = axios.create({
   baseURL: ENV.BASE_URL,
@@ -46,4 +47,5 @@ export default {
   auth: auth(instance),
   testResults: testResults(instance),
   encryption: encryption(instance),
+  mobileVerification: mobileVerification(instance),
 };

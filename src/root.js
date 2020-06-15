@@ -41,7 +41,6 @@ const Root = () => {
         privateKey: keyPair.privateKey,
         publicKey: keyPair.publicKey,
       });
-      console.log('CREATED KEYS', keyPairContainer.state.privateKey)
     }
 
     generateKeyPair();

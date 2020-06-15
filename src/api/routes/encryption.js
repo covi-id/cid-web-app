@@ -17,7 +17,6 @@ export default function encryption(instance) {
       */
     getNewEncryptionKey(body = {}, config = {}) {
       const jsonRpcBody = createJsonRpc(NewTaskEncryptionKey, body);
-      console.log({ jsonRpcBody })
       return instance.post(ENV.BASE_URL, jsonRpcBody, config);
     },
   };

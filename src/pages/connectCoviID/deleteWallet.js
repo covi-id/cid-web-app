@@ -19,7 +19,6 @@ const cards = [
 ];
 
 const ConnectDeleteWallet = ({ purpose }) => {
-  console.log({ purpose });
   return (
     <Container>
       <HeadingContainer>

@@ -33,7 +33,6 @@ function decrypt(taskPubKey, privateKey, enc_variable) {
   const derivedKey = enigma.utils.getDerivedKey(taskPubKey, privateKey);
   // Decrypt function and ABI-encoded args
   let outputHex = enigma.utils.decryptMessage(derivedKey, enc_variable);
-  console.log({ outputHex });
   let outputStr = enigma.utils.hexToAscii(outputHex);
   return JSON.parse(outputStr);
 }
