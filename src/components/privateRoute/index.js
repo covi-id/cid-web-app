@@ -16,7 +16,7 @@ const PrivateRoute = ({ component: Component, purpose, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        walletFormContainer.state.walletId === "" ? (
+        walletFormContainer.state.wallet_id === "" ? (
           <ConnectCoviID purpose={purpose} />
         ) : (
           <Component {...props} />

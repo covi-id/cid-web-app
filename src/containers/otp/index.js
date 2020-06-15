@@ -26,7 +26,10 @@ const VALIDATION_SCHEMA = object().shape({
 const OtpContainer = ({ otpSubmitData }) => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const { wallet_id } = otpSubmitData;
+  const {
+    wallet_id,
+    walletDetails: { mobile_number },
+  } = otpSubmitData;
   const { privateKey, publicKey } = keyPairContainer.state;
 
   const onSubmitHandler = useCallback(
@@ -61,8 +64,9 @@ const OtpContainer = ({ otpSubmitData }) => {
           result: { mobileConfirm },
         } = await api.mobileVerification.confirm(body);
 
-        if (!mobileConfirm || mobileConfirm.status !== 0)
+        if (mobileConfirm && mobileConfirm.status !== 0) {
           throw new Error("Failed to confirm otp");
+        }
 
         history.push("/create-wallet/created");
       } catch (error) {
@@ -77,20 +81,29 @@ const OtpContainer = ({ otpSubmitData }) => {
   const resendOtp = useCallback(async () => {
     setLoading(true);
     try {
-      // const { token } = walletFormContainer.state;
-      // const { data } = await api.auth.resendOtp(
-      //   { mobileNumber: walletDetails.mobileNumber },
-      //   { Authorization: token }
-      // );
-      // await walletFormContainer.set({
-      //   token: data.token,
-      // });
+      // GET NEW KEY
+      const { taskPubKey } = await getNewTaskPubKey(publicKey);
+
+      // ENCRYPT DATA
+      const encryptedUserId = encrypt(taskPubKey, privateKey, wallet_id);
+
+      const {
+        result: { mobileVerify },
+      } = api.mobileVerification.resend({
+        userPubKey: publicKey,
+        encryptedUserId,
+        mobileNumber: mobile_number,
+      });
+
+      if (mobileVerify.status !== 0) {
+        throw new Error("Unable to resend otp");
+      }
     } catch (error) {
       toast(error);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [mobile_number, privateKey, publicKey, wallet_id]);
 
   return (
     <Container>
