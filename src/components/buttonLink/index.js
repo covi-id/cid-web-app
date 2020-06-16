@@ -11,10 +11,16 @@ const ButtonLink = ({
   rel,
   style,
   variant,
+  disabled,
 }) => {
   if (to) {
     return (
-      <InternalLinkContainer variant={variant} style={style} to={to}>
+      <InternalLinkContainer
+        disabled={disabled}
+        variant={variant}
+        style={style}
+        to={to}
+      >
         <Text>{children}</Text>
         {icon && <Icon src={icon} alt={`${children} icon`} />}
       </InternalLinkContainer>
@@ -28,6 +34,7 @@ const ButtonLink = ({
       href={href}
       rel={rel}
       style={style}
+      disabled={disabled}
     >
       <Text>{children}</Text>
       {icon && <Icon src={icon} alt={`${children} icon`} />}

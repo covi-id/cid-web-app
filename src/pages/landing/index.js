@@ -30,11 +30,11 @@ const Landing = () => {
           </ButtonLink>
         </>
 
-        <DeleteContainer>
-          <ButtonLink to="/delete-wallet" variant="secondary">
+        {/* <DeleteContainer>
+          <ButtonLink disabled={true} to="/delete-wallet" variant="secondary">
             Delete my data
           </ButtonLink>
-        </DeleteContainer>
+        </DeleteContainer> */}
       </ButtonsContainer>
     </Container>
   );
