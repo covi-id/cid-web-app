@@ -1,6 +1,6 @@
-import React from 'react'
-import QRCode from 'qrcode.react'
-import html2canvas from 'html2canvas'
+import React from "react";
+import QRCode from "qrcode.react";
+import html2canvas from "html2canvas";
 import {
   Container,
   Title,
@@ -16,69 +16,72 @@ import {
   DownloadLogo,
   OverrideButton,
   OverrideInternalLink,
-} from './styles'
-import { useState } from 'react'
-import walletFormContainer from 'stateContainers/walletFormContainer'
-import DownloadStep from 'components/downloadStep'
-import SocialMediaLinks from 'components/socialMediaLinks'
+} from "./styles";
+import { useState } from "react";
+import walletFormContainer from "stateContainers/walletFormContainer";
+import DownloadStep from "components/downloadStep";
+import SocialMediaLinks from "components/socialMediaLinks";
 
 const IssueQRCode = () => {
   const [listItems] = useState([
     {
-      text: 'Download your Covi-ID',
+      text: "Download your Covi-ID",
       random: (
         <OverrideButton onClick={() => download()}>Download</OverrideButton>
       ),
     },
     {
-      text: 'Add your latest test results',
+      text: "Add your latest test results",
       random: (
-        <OverrideInternalLink to='/create-wallet/status'>
+        <OverrideInternalLink to="/create-wallet/status">
           Add a test result
         </OverrideInternalLink>
       ),
     },
     {
-      text: 'Share that you’ve just created your Covi-ID',
+      text: "Share that you’ve just created your Covi-ID",
       random: (
         <SocialsOverride>
           <SocialMediaLinks />
         </SocialsOverride>
       ),
     },
-  ])
+  ]);
 
   const download = async () => {
-    window.scrollTo(0, 0)
-    html2canvas(document.querySelector('#downloadQR') || document.body).then(
+    window.scrollTo(0, 0);
+    html2canvas(document.querySelector("#downloadQR") || document.body).then(
       function (canvas) {
-        saveAs(canvas.toDataURL('image/png', 1), `CoviID.png`)
+        saveAs(
+          canvas.toDataURL("image/png", 1),
+          `${walletFormContainer.state.wallet_id || `Covi-ID`}.png`
+        );
       }
-    )
-  }
+    );
+  };
 
   function saveAs(uri, filename) {
-    var link = document.createElement('a')
-    if (typeof link.download === 'string') {
-      link.href = uri
-      link.download = filename
+    var link = document.createElement("a");
+    if (typeof link.download === "string") {
+      link.href = uri;
+      link.download = filename;
 
       //Firefox requires the link to be in the body
-      document.body.appendChild(link)
+      document.body.appendChild(link);
 
       //simulate click
-      link.click()
+      link.click();
 
       //remove the link when done
-      document.body.removeChild(link)
+      document.body.removeChild(link);
     } else {
-      window.open(uri)
+      window.open(uri);
     }
   }
 
   const qrValue = JSON.stringify({
     walletId: walletFormContainer.state.wallet_id,
-  })
+  });
 
   return (
     <>
@@ -93,12 +96,12 @@ const IssueQRCode = () => {
             <QRContainer>
               <QRCode
                 style={{
-                  width: '190px',
-                  height: 'auto',
+                  width: "190px",
+                  height: "auto",
                 }}
-                fgColor='#513CC5'
+                fgColor="#513CC5"
                 value={qrValue}
-                level='H'
+                level="H"
                 includeMargin
                 // renderAs="svg"
               />
@@ -120,22 +123,22 @@ const IssueQRCode = () => {
         </Card>
       </Container>
 
-      <DownloadContainer id='downloadQR'>
+      <DownloadContainer id="downloadQR">
         <QRCode
           style={{
-            width: '90%',
-            height: 'auto',
+            width: "90%",
+            height: "auto",
           }}
-          fgColor='#513CC5'
-          renderAs='svg'
-          level='H'
+          fgColor="#513CC5"
+          renderAs="svg"
+          level="H"
           includeMargin
           value={qrValue}
         />
         <DownloadLogo />
       </DownloadContainer>
     </>
-  )
-}
+  );
+};
 
-export default IssueQRCode
+export default IssueQRCode;

@@ -1,5 +1,9 @@
 import createJsonRpc from "api/utils/createJsonRpc";
-import { CreateWallet } from "api/utils/jsonRpcMethods";
+import {
+  CreateWallet,
+  GetWallet,
+  DeleteWalllet,
+} from "api/utils/jsonRpcMethods";
 import { ENV } from "utils/environment";
 
 /**
@@ -8,29 +12,43 @@ import { ENV } from "utils/environment";
  */
 export default function wallet(instance) {
   return {
+    /**
+     *
+     * @param {{
+     *  encryptedData: string,
+     *  userPubKey: string
+     * }} body
+     * @param {*} config
+     */
     createWallet(body = {}, config = {}) {
       const jsonRpcBody = createJsonRpc(CreateWallet, body);
       return instance.post(ENV.BASE_URL, jsonRpcBody, config);
     },
 
     /**
-     *
-     * @param {string} walletId
      * @param {{
-     *  dateTested: Date
-     *  covidStatus: "string",
-     *  laboratory: string,
-     *  referenceNumber: string,
-     *  hasConsent: boolean
+     *  encryptedData: string,
+     *  userPubKey: string,
+     *  encryptedUserId: string
+     * }} body
+     */
+    deleteWallet(body, config = {}) {
+      const jsonRpcBody = createJsonRpc(DeleteWalllet, body);
+      return instance.delete(ENV.BASE_URL, jsonRpcBody, config);
+    },
+
+    /**
+     *
+     * @param {{
+     *  encryptedData: string,
+     *  userPubKey: string,
+     *  encryptedUserId: string
      * }} body
      * @param {*} config
      */
-    updateTest(walletId = "", body = {}, config = {}) {
-      return instance.put(`/wallet/${walletId}/coviid`, body, config);
-    },
-
-    deleteWallet(walletId, config = {}) {
-      return instance.delete(`/wallets/${walletId}`, {}, config);
+    getWallet(body = {}, config = {}) {
+      const jsonRpcBody = createJsonRpc(GetWallet, body);
+      return instance.post(ENV.BASE_URL, jsonRpcBody, config);
     },
   };
 }

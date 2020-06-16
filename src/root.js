@@ -9,7 +9,7 @@ import Step1 from "pages/createWalletPage";
 import Step2 from "pages/addStatusPage";
 import Step3 from "pages/issueQrCodePage";
 import Main from "components/main";
-import CoviidUpdated from "pages/coviidUpdatedPage";
+import CoviidUpdated from "pages/coviidUpdatedScreens";
 
 import { createBrowserHistory } from "history";
 import PrivateRoute from "components/privateRoute";
@@ -17,6 +17,9 @@ import DeleteWallet from "pages/consentScreens/DeleteWallet";
 import { getClientKeys } from "utils/cryptography";
 import keyPairContainer from "stateContainers/keyPairContainer";
 import ConnectCoviID from "pages/connectCoviID";
+import SharedWithCT from "pages/coviidUpdatedScreens/sharedWithCT";
+import ContactTracerSharing from "pages/consentScreens/ContactTracerSharing";
+import WalletDeleted from "pages/consentScreens/WalletDeleted";
 
 const history = createBrowserHistory();
 
@@ -66,6 +69,16 @@ const Root = () => {
           <PrivateRoute exact path="/create-wallet/created" component={Step3} />
           <PrivateRoute
             exact
+            path="/create-wallet/shared/contact-tracer"
+            component={SharedWithCT}
+          />
+          <PrivateRoute
+            exact
+            path="/create-wallet/status/updated/ct-sharing"
+            component={ContactTracerSharing}
+          />
+          <PrivateRoute
+            exact
             path="/create-wallet/status/updated/:consent"
             component={CoviidUpdated}
           />
@@ -74,6 +87,11 @@ const Root = () => {
             exact
             path="/delete-wallet"
             component={DeleteWallet}
+          />
+          <PrivateRoute
+            exact
+            path="/delete-wallet/complete"
+            component={WalletDeleted}
           />
           <Route path="*">
             <Redirect to="/"></Redirect>

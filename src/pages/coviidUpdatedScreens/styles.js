@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import FirstIcon from 'assets/icons/coviidIcon.svg'
-import * as SocialMediaLinks from 'components/socialMediaLinks/styles'
-import * as ButtonLink from 'components/buttonLink/styles'
+import styled from "styled-components";
+import FirstIcon from "assets/icons/coviidIcon.svg";
+import * as SocialMediaLinks from "components/socialMediaLinks/styles";
+import * as ButtonLink from "components/buttonLink/styles";
 
 export const Container = styled.div`
   display: flex;
@@ -15,13 +15,13 @@ export const Container = styled.div`
     background-size: cover;
     flex-direction: column;
   }
-`
+`;
 export const SocialText = styled.div`
   font-weight: bold;
   font-size: 16px;
   line-height: 150%;
   color: #ffffff;
-`
+`;
 
 export const Icon = styled.img`
   width: 68px;
@@ -31,9 +31,32 @@ export const Icon = styled.img`
     width: 48px;
     margin: 80px auto 10px auto;
   }
-`
+`;
 
-export const CoviidIcon = styled(Icon).attrs({ src: FirstIcon })``
+export const OtpContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 50px 0;
+`;
+
+export const OtpCharacter = styled.span`
+  background-color: #ffffff;
+  width: 50px;
+  height: 60px;
+  max-width: 50px;
+  max-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-radius: 60px;
+  box-shadow: 4px 10px 40px rgba(201, 192, 250, 0.4);
+  margin: 5px;
+`;
+
+export const CoviidIcon = styled(Icon).attrs({ src: FirstIcon })``;
 
 export const TextContainer = styled.div`
   justify-content: center;
@@ -48,7 +71,7 @@ export const TextContainer = styled.div`
   @media screen and (max-width: 768px) {
     width: 200px;
   }
-`
+`;
 export const Heading = styled.div`
   font-size: 48px;
   line-height: 110%;
@@ -56,7 +79,7 @@ export const Heading = styled.div`
   color: #ffffff;
   font-weight: bold;
   margin-bottom: 20px;
-`
+`;
 
 export const SmallText = styled.div`
   font-size: 16px;
@@ -64,7 +87,7 @@ export const SmallText = styled.div`
   letter-spacing: 0.01em;
   color: #ffffff;
   margin: auto;
-`
+`;
 
 export const Card = styled.div`
   display: flex;
@@ -90,13 +113,13 @@ export const Card = styled.div`
     height: 138px;
     margin: 10px auto;
   }
-`
+`;
 
 export const SocialMediaOverride = styled.div`
   ${SocialMediaLinks.SocialWrapper} {
     margin: 10px auto 20px auto;
   }
-`
+`;
 //if the link below is changed to an href,
 // the selector needs to be changed to .Container instead of InternalLinkContainer
 
@@ -113,7 +136,7 @@ export const ButtonLinkOverride = styled.div`
       margin-top: 18px;
     }
   }
-`
+`;
 export const DisplayInline = styled.div`
   display: flex;
   flex-direction: row;
@@ -123,4 +146,4 @@ export const DisplayInline = styled.div`
   flex-direction: column;
     }
   }
-`
+`;

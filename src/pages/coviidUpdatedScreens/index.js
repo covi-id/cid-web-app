@@ -56,20 +56,11 @@ const CoviidUpdated = () => {
       ))}
       <DisplayInline>
         <ButtonLinkOverride>
-          <ButtonLink
-            href="https://thedeltastudio.typeform.com/to/yU2WAB"
-            target="_blank"
-          >
-            Give Feedback
+          <ButtonLink to="/create-wallet/status/updated/ct-sharing">
+            Next
           </ButtonLink>
         </ButtonLinkOverride>
-
-        <ButtonLinkOverride>
-          <ButtonLink to="/">Home</ButtonLink>
-        </ButtonLinkOverride>
       </DisplayInline>
-      <SocialText>Share</SocialText>
-      <SocialMediaLinks />
     </Container>
   );
 };

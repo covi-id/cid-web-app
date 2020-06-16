@@ -1,6 +1,6 @@
 import { ENV } from "utils/environment";
 import createJsonRpc from "api/utils/createJsonRpc";
-import { AddWalletTestResult } from "api/utils/jsonRpcMethods";
+import { AddWalletTestResult, SubmitConsent } from "api/utils/jsonRpcMethods";
 
 /**
  * @typedef {'Covid19'} TestType
@@ -35,6 +35,19 @@ export default function testResults(instance) {
       */
     addTestResult(body = {}, config = {}) {
       const jsonRpcBody = createJsonRpc(AddWalletTestResult, body);
+      return instance.post(ENV.BASE_URL, jsonRpcBody, config);
+    },
+
+    /**
+     * 
+     * @param {{
+     *  userPubKey: string,
+     *  encryptedUserId: string
+     * }} body
+     * @param {*} config 
+     */
+    submitConsent(body = {}, config = {}) {
+      const jsonRpcBody = createJsonRpc(SubmitConsent, body);
       return instance.post(ENV.BASE_URL, jsonRpcBody, config);
     },
   };

@@ -28,12 +28,6 @@ const Landing = () => {
           >
             Add a test result
           </ButtonLink>
-          <ButtonLink
-            href={ENV.TYPEFORM}
-            icon={require("assets/icons/plus-icon.svg")}
-          >
-            Register organisation
-          </ButtonLink>
         </>
 
         <DeleteContainer>

@@ -16,6 +16,11 @@ function getBackgroundImages(path) {
       mobile: require("assets/images/mobile-purple-background.svg"),
       backgroundColor: "#503dc5",
     },
+    "/create-wallet/shared/contact-tracer": {
+      desktop: require("assets/images/desktop-purple-background.svg"),
+      mobile: require("assets/images/mobile-purple-background.svg"),
+      backgroundColor: "#503dc5",
+    },
     "/create-wallet/created": {
       desktop: require("assets/images/desktop-coviid-background.svg"),
       mobile: require("assets/images/mobile-coviid-background.svg"),

@@ -163,7 +163,7 @@ const CreateWallet = ({ twoStepCallback }) => {
         //TODO: Add in image once api is ready
         photo_reference: "image_thingy_mah_bobby",
         created_at: new Date().toISOString(),
-        mobile_number_verified: false,
+        mobile_number_verified: false
       };
 
       setLoading(true);
