@@ -1,29 +1,26 @@
 import { Container } from "unstated";
 
 const DEFAULT_STATE = {
-  walletId: "",
+  wallet_id: "",
   otp: "",
   walletDetails: {
-    firstName: "",
-    lastName: "",
-    mobileNumber: "",
-    consent: "",
-    photo: "",
-    idType: "",
-    IdValue: "",
-    countryCode: "",
+    first_name: "",
+    last_name: "",
+    mobile_number: "",
+    has_consent: "",
+    photo_reference: "",
+    country_code: "",
   },
   covidTest: {
-    testedAt: "",
-    covidStatus: 0,
-    laboratory: 0,
-    referenceNumber: "",
-    hasConsent: false,
+    has_received_results: false,
+    result_status: "",
+    laboratory: "",
+    reference_number: "",
   },
   covidStatusUrl: "",
   token: "",
   key: "",
-  sessionId: ""
+  sessionId: "",
 };
 
 class WalletFormContainer extends Container {

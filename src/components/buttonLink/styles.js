@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
 const Container = styled.a`
@@ -14,10 +14,24 @@ const Container = styled.a`
   color: #654cf0;
   padding: 5px;
   min-width: 247px;
+  transition: 0.2s ease-in;
 
   &:hover {
     background-color: #02e8a0;
   }
+
+  ${({ variant }) => {
+    if (variant === "secondary") {
+      return `
+        background-color: transparent;
+
+        &:hover {
+          background-color: transparent;
+          color: #3F26CA;
+        }
+      `;
+    }
+  }}
 `;
 
 const InternalLinkContainer = styled(Link)`
@@ -33,10 +47,24 @@ const InternalLinkContainer = styled(Link)`
   color: #654cf0;
   padding: 5px;
   min-width: 247px;
+  transition: 0.1s ease-in;
 
   &:hover {
     background-color: #02e8a0;
   }
+
+  ${({ variant }) => {
+    if (variant === "secondary") {
+      return `
+        background-color: transparent;
+
+        &:hover {
+          background-color: transparent;
+          color: #3F26CA;
+        }
+      `;
+    }
+  }}
 `;
 
 const Text = styled.span`

@@ -14,9 +14,6 @@ import {
 import SmallButton from "components/smallButton";
 import api from "api/index.js";
 import walletFormContainer from "stateContainers/walletFormContainer";
-import getNewTaskPubKey from "utils/getNewTaskPubKey.js";
-import { encrypt } from "utils/cryptography.js";
-import keyPairContainer from "stateContainers/keyPairContainer.js";
 
 const cardText = [
   {
@@ -33,53 +30,26 @@ const cardText = [
 const VerificationConsent = ({ cancel }) => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const { covidTest, wallet_id } = walletFormContainer.state;
-  const { privateKey, publicKey } = keyPairContainer.state;
+  const { covidTest, walletId, key } = walletFormContainer.state;
 
   const submitNewTest = useCallback(
     async (value) => {
       setLoading(true);
       try {
-        const payload = {
+        await api.testResults.addTestResult({
           ...covidTest,
-          has_consent: value,
-          test_type: "Covid19",
-          laboratory_status: "Unsent",
-          issued_at: new Date().toISOString(),
-          permission_granted_at: new Date().toISOString(),
-          created_at: new Date().toISOString(),
-        };
-
-        const { taskPubKey } = await getNewTaskPubKey(publicKey);
-
-        const encryptedData = encrypt(
-          taskPubKey,
-          privateKey,
-          JSON.stringify(payload)
-        );
-
-        const encryptedUserId = encrypt(taskPubKey, privateKey, wallet_id);
-
-        const {
-          result: { addWalletTestResult },
-        } = await api.testResults.addTestResult({
-          userPubKey: publicKey,
-          encryptedData,
-          encryptedUserId,
+          walletId,
+          hasConsent: value,
+          key,
         });
-
-        if (addWalletTestResult.status !== 0) {
-          throw new Error("Unable to add test result");
-        }
-
         history.push("/create-wallet/status/updated/" + value);
       } catch (error) {
-        toast.error(error.message);
+        toast.error(error);
       } finally {
         setLoading(false);
       }
     },
-    [covidTest, history, privateKey, publicKey, wallet_id]
+    [covidTest, history, walletId, key]
   );
   return (
     <Container>

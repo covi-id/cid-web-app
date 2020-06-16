@@ -11,34 +11,62 @@ import { Form, LeadText, Container } from "./styles";
 import api from "api";
 import { useHistory } from "react-router-dom";
 import walletFormContainer from "stateContainers/walletFormContainer";
+import { encrypt } from "utils/cryptography";
+import getNewTaskPubKey from "utils/getNewTaskPubKey";
+import keyPairContainer from "stateContainers/keyPairContainer";
 
 const INITIAL_VALUES = {
   otp: "",
 };
 
 const VALIDATION_SCHEMA = object().shape({
-  otp: string().length(4).required().label("Code"),
+  otp: string().length(6).required().label("Code"),
 });
 
 const OtpContainer = ({ otpSubmitData }) => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const { walletDetails } = otpSubmitData;
+  const {
+    wallet_id,
+    walletDetails: { mobile_number },
+  } = otpSubmitData;
+  const { privateKey, publicKey } = keyPairContainer.state;
+
   const onSubmitHandler = useCallback(
     async ({ otp }) => {
       setLoading(true);
       try {
-        const { data } = await api.auth.confirmOtp({
+        // CONSTRUCT PAYLOAD
+        const payload = {
           otp,
-          walletDetails: {
-            ...walletDetails,
-          },
-        });
+        };
 
-        await walletFormContainer.set({
-          key: data.key,
-          walletId: data.walletId,
-        });
+        // GET NEW KEY
+        const { taskPubKey } = await getNewTaskPubKey(publicKey);
+
+        // ENCRYPT DATA
+        const encryptedData = encrypt(
+          taskPubKey,
+          privateKey,
+          JSON.stringify(payload)
+        );
+
+        const encryptedUserId = encrypt(taskPubKey, privateKey, wallet_id);
+
+        const body = {
+          encryptedData,
+          userPubKey: publicKey,
+          encryptedUserId,
+        };
+
+        // DECONSTRUCT RESULT
+        const {
+          result: { mobileConfirm },
+        } = await api.mobileVerification.confirm(body);
+
+        if (mobileConfirm && mobileConfirm.status !== 0) {
+          throw new Error("Failed to confirm otp");
+        }
 
         history.push("/create-wallet/created");
       } catch (error) {
@@ -47,34 +75,43 @@ const OtpContainer = ({ otpSubmitData }) => {
         setLoading(false);
       }
     },
-    [history, walletDetails]
+    [history, privateKey, publicKey, wallet_id]
   );
 
   const resendOtp = useCallback(async () => {
     setLoading(true);
     try {
-      const { token } = walletFormContainer.state;
-      const { data } = await api.auth.resendOtp(
-        { mobileNumber: walletDetails.mobileNumber },
-        { Authorization: token }
-      );
+      // GET NEW KEY
+      const { taskPubKey } = await getNewTaskPubKey(publicKey);
 
-      await walletFormContainer.set({
-        token: data.token,
+      // ENCRYPT DATA
+      const encryptedUserId = encrypt(taskPubKey, privateKey, wallet_id);
+
+      const {
+        result: { mobileVerify },
+      } = api.mobileVerification.resend({
+        userPubKey: publicKey,
+        encryptedUserId,
+        mobileNumber: mobile_number,
       });
+
+      if (mobileVerify.status !== 0) {
+        throw new Error("Unable to resend otp");
+      }
     } catch (error) {
       toast(error);
     } finally {
       setLoading(false);
     }
-  }, [walletDetails.mobileNumber]);
+  }, [mobile_number, privateKey, publicKey, wallet_id]);
 
   return (
     <Container>
       <Heading1>Verification code</Heading1>
       <LeadText>
         Please enter the verification
-        <br /> code sent to <strong>{walletDetails.mobileNumber}</strong>
+        <br /> code sent to{" "}
+        <strong>{walletFormContainer.state.mobile_number}</strong>
       </LeadText>
       <Formik
         validationSchema={VALIDATION_SCHEMA}

@@ -48,6 +48,20 @@ const Button = styled.button`
         `;
     }
 
+    if (variant === "delete") {
+      return `
+          background-color: transparent;
+          color: #654CF0;
+          font-size: 18px;
+          min-width: 247px;
+
+          &:hover {
+            color: #4C33D7;
+            background-color: transparent;
+          }
+        `;
+    }
+
     return `
           color: #513cc5;
           background-color: #03f5a9;

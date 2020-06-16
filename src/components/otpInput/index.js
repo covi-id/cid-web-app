@@ -16,7 +16,7 @@ const isObject = (obj) => typeof obj === 'object'
 
 class OtpInput extends Component {
   static defaultProps = {
-    numInputs: 4,
+    numInputs: 6,
     isDisabled: false,
     shouldAutoFocus: false,
   }
