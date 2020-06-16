@@ -32,9 +32,9 @@ export default function wallet(instance) {
      *  encryptedUserId: string
      * }} body
      */
-    deleteWallet(body, config = {}) {
+    deleteWallet(body = {}, config = {}) {
       const jsonRpcBody = createJsonRpc(DeleteWalllet, body);
-      return instance.delete(ENV.BASE_URL, jsonRpcBody, config);
+      return instance.post(ENV.BASE_URL, jsonRpcBody, config);
     },
 
     /**

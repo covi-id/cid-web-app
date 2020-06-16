@@ -14,11 +14,15 @@ import {
 import SmallButton from "components/smallButton";
 import api from "api/index.js";
 import walletFormContainer from "stateContainers/walletFormContainer";
+import getNewTaskPubKey from "utils/getNewTaskPubKey.js";
+import keyPairContainer from "stateContainers/keyPairContainer.js";
+import { encrypt } from "utils/cryptography.js";
 
 const VerificationConsent = ({ cancel }) => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const { walletId } = walletFormContainer.state;
+  const { wallet_id } = walletFormContainer.state;
+  const { publicKey, privateKey } = keyPairContainer.state;
 
   const deleteWallet = useCallback(
     async (value) => {
@@ -28,16 +32,37 @@ const VerificationConsent = ({ cancel }) => {
       }
       setLoading(true);
       try {
-        const response = await api.wallet.deleteWallet(walletId);
-        console.log(response);
-        history.push("/create-wallet/status/updated/" + value);
+        const { taskPubKey } = await getNewTaskPubKey(publicKey);
+        const encryptedUserId = encrypt(taskPubKey, privateKey, wallet_id);
+        const payload = {
+          walletId: wallet_id,
+        };
+        const encryptedData = encrypt(
+          taskPubKey,
+          privateKey,
+          JSON.stringify(payload)
+        );
+
+        const {
+          result: { deleteWallet },
+        } = await api.wallet.deleteWallet({
+          encryptedUserId,
+          userPubKey: publicKey,
+          encryptedData,
+        });
+
+        if (deleteWallet.status !== 0) {
+          throw new Error("Unable to delete wallet");
+        }
+
+        history.push("/delete-wallet/complete" + value);
       } catch (error) {
-        toast.error(error);
+        toast.error(error.message);
       } finally {
         setLoading(false);
       }
     },
-    [history, walletId]
+    [history, privateKey, publicKey, wallet_id]
   );
 
   return (
