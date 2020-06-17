@@ -8,6 +8,7 @@ function getLogo(path) {
   const backgroundChangeList = {
     '/create-wallet/status/updated/true': require('assets/images/logo-light.svg'),
     '/create-wallet/status/updated/false': require('assets/images/logo-light.svg'),
+    '/create-wallet/shared/contact-tracer': require('assets/images/logo-light.svg'),
   }
 
   return backgroundChangeList[path] || require('assets/images/logo-dark.svg')

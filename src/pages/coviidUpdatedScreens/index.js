@@ -8,10 +8,12 @@ import {
   Heading,
   ButtonLinkOverride,
   DisplayInline,
+  SocialText,
 } from "./styles";
 
 import ButtonLink from "components/buttonLink";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import SocialMediaLinks from "components/socialMediaLinks";
 
 const cardsTextConsentFalse = [
   {
@@ -33,13 +35,13 @@ const cardsTextConsentTrue = [
 ];
 
 const CoviidUpdated = () => {
-  const location = useLocation();
+  const { consent } = useParams();
 
-  const consented = location.pathname.includes(
-    "/create-wallet/status/updated/:consentNotGiven"
-  );
+  const consented = Boolean(consent);
 
   const textToShow = consented ? cardsTextConsentFalse : cardsTextConsentTrue;
+
+  console.log(consented);
 
   return (
     <Container>
@@ -53,12 +55,35 @@ const CoviidUpdated = () => {
         </Card>
       ))}
       <DisplayInline>
-        <ButtonLinkOverride>
-          <ButtonLink to="/create-wallet/status/updated/ct-sharing">
-            Next
-          </ButtonLink>
-        </ButtonLinkOverride>
+        {consented ? (
+          <ButtonLinkOverride>
+            <ButtonLink to="/create-wallet/status/updated/ct-sharing">
+              Next
+            </ButtonLink>
+          </ButtonLinkOverride>
+        ) : (
+          <>
+            <ButtonLinkOverride>
+              <ButtonLink
+                href="https://thedeltastudio.typeform.com/to/yU2WAB"
+                target="_blank"
+              >
+                Give Feedback
+              </ButtonLink>
+            </ButtonLinkOverride>
+
+            <ButtonLinkOverride>
+              <ButtonLink to="/">Home</ButtonLink>
+            </ButtonLinkOverride>
+          </>
+        )}
       </DisplayInline>
+      {!consented && (
+        <>
+          <SocialText>Share</SocialText>
+          <SocialMediaLinks />
+        </>
+      )}
     </Container>
   );
 };

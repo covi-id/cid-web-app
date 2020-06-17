@@ -68,7 +68,7 @@ const ContactTracerSharing = () => {
       <Card>
         <TextContainer>
           <Text>
-            In order to notify anyone in the Covi-ID ecosystem who may be at{" "}
+            In order to notify anyone in the Covi-ID ecosystem who may be at risk{" "}
           </Text>
           <ul style={{ color: `#7c7795` }}>
             <li>

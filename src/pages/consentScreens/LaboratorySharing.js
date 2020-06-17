@@ -14,7 +14,7 @@ import {
 import SmallButton from "components/smallButton";
 import api from "api/index.js";
 import walletFormContainer from "stateContainers/walletFormContainer";
-import nProgress from 'nprogress';
+import nProgress from "nprogress";
 
 const cardText = [
   {
@@ -35,7 +35,7 @@ const VerificationConsent = ({ cancel }) => {
 
   const submitNewTest = useCallback(
     async (value) => {
-      nProgress.start()
+      nProgress.start();
       setLoading(true);
       try {
         await api.testResults.addTestResult({
@@ -49,7 +49,7 @@ const VerificationConsent = ({ cancel }) => {
         toast.error(error);
       } finally {
         setLoading(false);
-        nProgress.done()
+        nProgress.done();
       }
     },
     [covidTest, history, walletId, key]
@@ -59,7 +59,10 @@ const VerificationConsent = ({ cancel }) => {
       {cardText.map((card, index) => (
         <Card key={index}>
           <TextContainer>
-            <Text>{card.paraOne}</Text>
+            <Text>
+              {card.paraOne}
+              <br />
+            </Text>
             <br />
             <Text>
               <b>{card.boldOne}</b>
@@ -68,10 +71,15 @@ const VerificationConsent = ({ cancel }) => {
               <b>{card.boldTwo}</b>
             </Text>
             <br />
-            <Text>{card.paraTwo}</Text>
-            <br />
-            <LargeText>{card.largeText}</LargeText>
-            <br />
+            <Text>
+              {card.paraTwo}
+              <br />
+            </Text>
+
+            <LargeText>
+              {card.largeText}
+              <br />
+            </LargeText>
           </TextContainer>
           <ButtonWrapper>
             <SmallButton
