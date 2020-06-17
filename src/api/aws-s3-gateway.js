@@ -1,11 +1,12 @@
 import { urltoFile } from "utils/urlToFile";
+import { ENV } from "utils/environment";
 
 const aws = require("aws-sdk");
 
-const s3AccessKeyId = "AKIAVA42VALQLKPHWWZL"; // TODO: Please insert
-const s3SecretAccessKey = "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"; // TODO: Please insert
-const s3BucketName = "coviid-enclave-assets-dev"; // TODO: Please insert
-const s3Region = "eu-west-2"; // TODO: Please insert
+const s3AccessKeyId = ENV.S3_ACCESS_ID;
+const s3SecretAccessKey = ENV.S3_SECRET_ACCESS_KEY;
+const s3BucketName = ENV.S3_BUCKET_NAME;
+const s3Region = ENV.S3_REGION;
 const s3 = new aws.S3({
   accessKeyId: s3AccessKeyId,
   secretAccessKey: s3SecretAccessKey,
