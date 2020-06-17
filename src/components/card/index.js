@@ -19,7 +19,6 @@ import api from "api";
 import { encrypt, decrypt } from "utils/cryptography";
 import getNewTaskPubKey from "utils/getNewTaskPubKey";
 import keyPairContainer from "stateContainers/keyPairContainer";
-import Sha256 from "utils/sha256";
 
 /**
  *

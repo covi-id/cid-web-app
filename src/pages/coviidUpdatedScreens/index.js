@@ -6,12 +6,10 @@ import {
   SmallText,
   CoviidIcon,
   Heading,
-  SocialText,
   ButtonLinkOverride,
   DisplayInline,
 } from "./styles";
 
-import SocialMediaLinks from "components/socialMediaLinks";
 import ButtonLink from "components/buttonLink";
 import { useLocation } from "react-router-dom";
 

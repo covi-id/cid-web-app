@@ -28,6 +28,8 @@ import getNewTaskPubKey from "utils/getNewTaskPubKey";
 import keyPairContainer from "stateContainers/keyPairContainer";
 import { encrypt, decrypt } from "utils/cryptography";
 import Sha256 from "utils/sha256";
+import awsS3Gateway from "api/aws-s3-gateway";
+import nProgress from "nprogress";
 
 const INITIAL_VALUES = {
   first_name: "",
@@ -161,11 +163,12 @@ const CreateWallet = ({ twoStepCallback }) => {
         ...walletFormContainer.state.walletDetails,
         hashed_mobile_number,
         //TODO: Add in image once api is ready
-        photo_reference: "image_thingy_mah_bobby",
+        photo_reference: "no_photo",
         created_at: new Date().toISOString(),
-        mobile_number_verified: false
+        mobile_number_verified: false,
       };
 
+      nProgress.start();
       setLoading(true);
 
       try {
@@ -194,6 +197,9 @@ const CreateWallet = ({ twoStepCallback }) => {
           result.createWallet.encryptedOutput
         );
 
+        // UPLOAD IMAGE
+        await awsS3Gateway.saveImageOnBucket(wallet_id, values.photo_reference);
+
         // SET WALLET ID
         await walletFormContainer.set({
           wallet_id,
@@ -203,6 +209,7 @@ const CreateWallet = ({ twoStepCallback }) => {
       } catch (error) {
         toast.error(error);
       } finally {
+        nProgress.done();
         setLoading(false);
       }
     },

@@ -4,10 +4,8 @@ import {
   LandingIcon,
   Heading,
   ButtonsContainer,
-  DeleteContainer,
 } from "./styles";
 import ButtonLink from "components/buttonLink";
-import { ENV } from "utils/environment.js";
 
 const Landing = () => {
   return (
