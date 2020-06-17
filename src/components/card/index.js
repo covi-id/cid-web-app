@@ -19,6 +19,7 @@ import api from "api";
 import { encrypt, decrypt } from "utils/cryptography";
 import getNewTaskPubKey from "utils/getNewTaskPubKey";
 import keyPairContainer from "stateContainers/keyPairContainer";
+import nProgress from "nprogress";
 
 /**
  *
@@ -55,6 +56,8 @@ const Card = ({ type, icon, link, text, buttonText, onClick, purpose }) => {
             height
           );
 
+          nProgress.start();
+
           const { walletId } = JSON.parse(covidStatusUrl);
           const { taskPubKey } = await getNewTaskPubKey(publicKey);
           const getWalletPayload = {
@@ -90,6 +93,8 @@ const Card = ({ type, icon, link, text, buttonText, onClick, purpose }) => {
           history.push(nextPage);
         } catch (error) {
           toast.error("Invalid Covi-ID QR");
+        } finally {
+          nProgress.done();
         }
       };
     },

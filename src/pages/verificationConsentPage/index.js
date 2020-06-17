@@ -17,6 +17,7 @@ import walletFormContainer from "stateContainers/walletFormContainer";
 import getNewTaskPubKey from "utils/getNewTaskPubKey.js";
 import { encrypt } from "utils/cryptography.js";
 import keyPairContainer from "stateContainers/keyPairContainer.js";
+import nProgress from 'nprogress';
 
 const cardText = [
   {
@@ -39,6 +40,7 @@ const VerificationConsent = ({ cancel }) => {
   const submitNewTest = useCallback(
     async (value) => {
       setLoading(true);
+      nProgress.start()
       try {
         const payload = {
           ...covidTest,
@@ -77,6 +79,7 @@ const VerificationConsent = ({ cancel }) => {
         toast.error(error.message);
       } finally {
         setLoading(false);
+        nProgress.done()
       }
     },
     [covidTest, history, privateKey, publicKey, wallet_id]

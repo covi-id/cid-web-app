@@ -17,6 +17,7 @@ import walletFormContainer from "stateContainers/walletFormContainer";
 import getNewTaskPubKey from "utils/getNewTaskPubKey.js";
 import keyPairContainer from "stateContainers/keyPairContainer.js";
 import { encrypt } from "utils/cryptography.js";
+import nProgress from 'nprogress';
 
 const VerificationConsent = ({ cancel }) => {
   const [loading, setLoading] = useState(false);
@@ -30,6 +31,7 @@ const VerificationConsent = ({ cancel }) => {
         history.goBack();
         return;
       }
+      nProgress.start()
       setLoading(true);
       try {
         const { taskPubKey } = await getNewTaskPubKey(publicKey);
@@ -60,6 +62,7 @@ const VerificationConsent = ({ cancel }) => {
         toast.error(error.message);
       } finally {
         setLoading(false);
+        nProgress.done()
       }
     },
     [history, privateKey, publicKey, wallet_id]

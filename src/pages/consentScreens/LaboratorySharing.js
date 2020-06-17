@@ -14,6 +14,7 @@ import {
 import SmallButton from "components/smallButton";
 import api from "api/index.js";
 import walletFormContainer from "stateContainers/walletFormContainer";
+import nProgress from 'nprogress';
 
 const cardText = [
   {
@@ -34,6 +35,7 @@ const VerificationConsent = ({ cancel }) => {
 
   const submitNewTest = useCallback(
     async (value) => {
+      nProgress.start()
       setLoading(true);
       try {
         await api.testResults.addTestResult({
@@ -47,6 +49,7 @@ const VerificationConsent = ({ cancel }) => {
         toast.error(error);
       } finally {
         setLoading(false);
+        nProgress.done()
       }
     },
     [covidTest, history, walletId, key]

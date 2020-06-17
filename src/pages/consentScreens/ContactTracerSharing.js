@@ -16,6 +16,7 @@ import walletFormContainer from "stateContainers/walletFormContainer";
 import getNewTaskPubKey from "utils/getNewTaskPubKey.js";
 import keyPairContainer from "stateContainers/keyPairContainer.js";
 import { encrypt, decrypt } from "utils/cryptography.js";
+import nProgress from 'nprogress';
 
 const ContactTracerSharing = () => {
   const [loading, setLoading] = useState(false);
@@ -29,6 +30,7 @@ const ContactTracerSharing = () => {
         history.push(`/`);
         return;
       }
+      nProgress.start()
       setLoading(true);
       try {
         const { taskPubKey } = await getNewTaskPubKey(publicKey);
@@ -55,6 +57,7 @@ const ContactTracerSharing = () => {
         toast.error(error);
       } finally {
         setLoading(false);
+        nProgress.done()
       }
     },
     [history, privateKey, publicKey, wallet_id]

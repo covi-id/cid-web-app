@@ -14,6 +14,7 @@ import walletFormContainer from "stateContainers/walletFormContainer";
 import { encrypt } from "utils/cryptography";
 import getNewTaskPubKey from "utils/getNewTaskPubKey";
 import keyPairContainer from "stateContainers/keyPairContainer";
+import nProgress from 'nprogress';
 
 const INITIAL_VALUES = {
   otp: "",
@@ -34,6 +35,7 @@ const OtpContainer = ({ otpSubmitData }) => {
 
   const onSubmitHandler = useCallback(
     async ({ otp }) => {
+      nProgress.start()
       setLoading(true);
       try {
         // CONSTRUCT PAYLOAD
@@ -73,12 +75,14 @@ const OtpContainer = ({ otpSubmitData }) => {
         toast(error);
       } finally {
         setLoading(false);
+        nProgress.done()
       }
     },
     [history, privateKey, publicKey, wallet_id]
   );
 
   const resendOtp = useCallback(async () => {
+    nProgress.start()
     setLoading(true);
     try {
       // GET NEW KEY
@@ -102,6 +106,7 @@ const OtpContainer = ({ otpSubmitData }) => {
       toast(error);
     } finally {
       setLoading(false);
+      nProgress.done()
     }
   }, [mobile_number, privateKey, publicKey, wallet_id]);
 
