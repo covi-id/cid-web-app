@@ -14,6 +14,7 @@ import {
 import ButtonLink from "components/buttonLink";
 import { useParams } from "react-router-dom";
 import SocialMediaLinks from "components/socialMediaLinks";
+import walletFormContainer from 'stateContainers/walletFormContainer';
 
 const cardsTextConsentFalse = [
   {
@@ -36,12 +37,13 @@ const cardsTextConsentTrue = [
 
 const CoviidUpdated = () => {
   const { consent } = useParams();
+  const { result_status } = walletFormContainer.state.covidTest
 
   const consented = Boolean(consent);
 
   const textToShow = consented ? cardsTextConsentFalse : cardsTextConsentTrue;
 
-  console.log(consented);
+  const isTestPostive = result_status === "Positive" ? true : false;
 
   return (
     <Container>
@@ -55,7 +57,7 @@ const CoviidUpdated = () => {
         </Card>
       ))}
       <DisplayInline>
-        {consented ? (
+        {isTestPostive ? (
           <ButtonLinkOverride>
             <ButtonLink to="/create-wallet/status/updated/ct-sharing">
               Next
@@ -78,7 +80,7 @@ const CoviidUpdated = () => {
           </>
         )}
       </DisplayInline>
-      {!consented && (
+      {!isTestPostive && (
         <>
           <SocialText>Share</SocialText>
           <SocialMediaLinks />
